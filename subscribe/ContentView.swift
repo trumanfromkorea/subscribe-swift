@@ -7,17 +7,22 @@
 
 import AuthenticationServices
 import SwiftUI
+import FirebaseAuth
 
 struct ContentView: View {
         
     @EnvironmentObject var userAuth: UserAuth
-    
+
     var body: some View {
         NavigationView {
             if !userAuth.isSignedIn {
                 LoginView()
             } else {
-                DashboardView()
+                MainView()
+            }
+        }.onAppear{
+            if Auth.auth().currentUser != nil {
+                userAuth.isSignedIn = true
             }
         }
     }

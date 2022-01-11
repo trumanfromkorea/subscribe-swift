@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D452163278DA3D200B81AE8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D452162278DA3D200B81AE8 /* LoginView.swift */; };
+		0D452165278DA3DA00B81AE8 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D452164278DA3DA00B81AE8 /* DashboardView.swift */; };
 		0D478DCD278D9BC600F9F0D9 /* subscribeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D478DCC278D9BC600F9F0D9 /* subscribeApp.swift */; };
 		0D478DCF278D9BC600F9F0D9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D478DCE278D9BC600F9F0D9 /* ContentView.swift */; };
 		0D478DD1278D9BC700F9F0D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D478DD0278D9BC700F9F0D9 /* Assets.xcassets */; };
@@ -15,6 +17,7 @@
 		0D478DE8278D9BC700F9F0D9 /* subscribeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D478DE7278D9BC700F9F0D9 /* subscribeUITests.swift */; };
 		0D478DEA278D9BC700F9F0D9 /* subscribeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D478DE9278D9BC700F9F0D9 /* subscribeUITestsLaunchTests.swift */; };
 		0D478DF7278D9CFE00F9F0D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D478DF6278D9CFE00F9F0D9 /* GoogleService-Info.plist */; };
+		0DCC9C94278DA8C60000E684 /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCC9C93278DA8C60000E684 /* UserAuth.swift */; };
 		744F586B70AA69565CDEB1BC /* Pods_subscribe_subscribeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14D759AE38F489D4718ED6F /* Pods_subscribe_subscribeUITests.framework */; };
 		AB2F5E7C8CFA2676331B6AA8 /* Pods_subscribe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C845D1B175124B643BD4269 /* Pods_subscribe.framework */; };
 		EE98905FBE1BF0AC99D354D6 /* Pods_subscribeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4184F8288BF62F043A4CA0 /* Pods_subscribeTests.framework */; };
@@ -42,6 +45,8 @@
 		0BDBFE28D1B1570F237BF46C /* Pods-subscribeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-subscribeTests.debug.xcconfig"; path = "Target Support Files/Pods-subscribeTests/Pods-subscribeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0D4184F8288BF62F043A4CA0 /* Pods_subscribeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_subscribeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D452161278D9F9500B81AE8 /* subscribe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = subscribe.entitlements; sourceTree = "<group>"; };
+		0D452162278DA3D200B81AE8 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		0D452164278DA3DA00B81AE8 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		0D478DC9278D9BC600F9F0D9 /* subscribe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = subscribe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D478DCC278D9BC600F9F0D9 /* subscribeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subscribeApp.swift; sourceTree = "<group>"; };
 		0D478DCE278D9BC600F9F0D9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +58,7 @@
 		0D478DE7278D9BC700F9F0D9 /* subscribeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subscribeUITests.swift; sourceTree = "<group>"; };
 		0D478DE9278D9BC700F9F0D9 /* subscribeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subscribeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0D478DF6278D9CFE00F9F0D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		0DCC9C93278DA8C60000E684 /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
 		11C69ECC7C1B4884BC1F693A /* Pods-subscribe-subscribeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-subscribe-subscribeUITests.debug.xcconfig"; path = "Target Support Files/Pods-subscribe-subscribeUITests/Pods-subscribe-subscribeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7C845D1B175124B643BD4269 /* Pods_subscribe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_subscribe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D4A4983EC80E0DC60F6605F /* Pods-subscribeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-subscribeTests.release.xcconfig"; path = "Target Support Files/Pods-subscribeTests/Pods-subscribeTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -117,7 +123,10 @@
 				0D452161278D9F9500B81AE8 /* subscribe.entitlements */,
 				0D478DF6278D9CFE00F9F0D9 /* GoogleService-Info.plist */,
 				0D478DCC278D9BC600F9F0D9 /* subscribeApp.swift */,
+				0DCC9C93278DA8C60000E684 /* UserAuth.swift */,
 				0D478DCE278D9BC600F9F0D9 /* ContentView.swift */,
+				0D452162278DA3D200B81AE8 /* LoginView.swift */,
+				0D452164278DA3DA00B81AE8 /* DashboardView.swift */,
 				0D478DD0278D9BC700F9F0D9 /* Assets.xcassets */,
 				0D478DD2278D9BC700F9F0D9 /* Preview Content */,
 			);
@@ -411,6 +420,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DCC9C94278DA8C60000E684 /* UserAuth.swift in Sources */,
+				0D452163278DA3D200B81AE8 /* LoginView.swift in Sources */,
+				0D452165278DA3DA00B81AE8 /* DashboardView.swift in Sources */,
 				0D478DCF278D9BC600F9F0D9 /* ContentView.swift in Sources */,
 				0D478DCD278D9BC600F9F0D9 /* subscribeApp.swift in Sources */,
 			);
@@ -572,6 +584,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = subscribe/subscribe.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"subscribe/Preview Content\"";
@@ -590,6 +603,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.trumanfromkorea.subscribe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -603,6 +617,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = subscribe/subscribe.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"subscribe/Preview Content\"";
@@ -621,6 +636,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.trumanfromkorea.subscribe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

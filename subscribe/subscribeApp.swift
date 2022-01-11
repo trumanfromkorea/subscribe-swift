@@ -11,11 +11,13 @@ import Firebase
 @main
 struct subscribeApp: App {
     
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    init() {
+        FirebaseApp.configure()
+    }
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(UserAuth())
         }
     }
 }

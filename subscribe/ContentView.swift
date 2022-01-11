@@ -9,18 +9,17 @@ import AuthenticationServices
 import SwiftUI
 
 struct ContentView: View {
+        
+    @EnvironmentObject var userAuth: UserAuth
+    
     var body: some View {
-        SignInWithAppleButton(.signIn) { request in
-            request.requestedScopes = [.fullName, .email]
-        } onCompletion: { result in
-//            switch result {
-//            case let .success(authResults):
-//                print("Authorization successful")
-//            case let .error(error):
-//                print("FAILED : \(error.localizedDescription)")
-//            }
-            print(result)
-        }.signInWithAppleButtonStyle(.black)
+        NavigationView {
+            if !userAuth.isSignedIn {
+                LoginView()
+            } else {
+                DashboardView()
+            }
+        }
     }
 }
 

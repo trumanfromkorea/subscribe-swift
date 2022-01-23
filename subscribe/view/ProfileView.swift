@@ -8,11 +8,27 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @EnvironmentObject var userAuth: UserAuth
+
     var body: some View {
         ZStack {
-            Color.black.ignoresSafeArea()
-            Text("this is profile view")
-                .foregroundColor(Color.white)
+//            Color(red: 255, green: 255, blue: 255).ignoresSafeArea()
+
+            VStack {
+                Divider()
+                
+                Button(action: {
+                    userAuth.signOut()
+                }, label: {
+                    Text("로그아웃")
+
+                    Spacer()
+
+                    Image(systemName: "chevron.right")
+                })
+                
+                Divider()
+            }
         }
     }
 }

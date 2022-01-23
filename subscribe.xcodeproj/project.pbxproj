@@ -21,6 +21,7 @@
 		0DCC9C97278DAEC70000E684 /* firebase_auth_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCC9C96278DAEC70000E684 /* firebase_auth_model.swift */; };
 		0DCC9C9A278DB9490000E684 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCC9C99278DB9490000E684 /* HomeView.swift */; };
 		0DCC9C9C278DBB0E0000E684 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCC9C9B278DBB0E0000E684 /* ProfileView.swift */; };
+		0DD8D9C2279D7E3200A7BD1B /* color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8D9C1279D7E3200A7BD1B /* color.swift */; };
 		744F586B70AA69565CDEB1BC /* Pods_subscribe_subscribeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14D759AE38F489D4718ED6F /* Pods_subscribe_subscribeUITests.framework */; };
 		AB2F5E7C8CFA2676331B6AA8 /* Pods_subscribe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C845D1B175124B643BD4269 /* Pods_subscribe.framework */; };
 		EE98905FBE1BF0AC99D354D6 /* Pods_subscribeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4184F8288BF62F043A4CA0 /* Pods_subscribeTests.framework */; };
@@ -65,6 +66,8 @@
 		0DCC9C96278DAEC70000E684 /* firebase_auth_model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firebase_auth_model.swift; sourceTree = "<group>"; };
 		0DCC9C99278DB9490000E684 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0DCC9C9B278DBB0E0000E684 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		0DD8D9BF279D78AA00A7BD1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0DD8D9C1279D7E3200A7BD1B /* color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = color.swift; sourceTree = "<group>"; };
 		11C69ECC7C1B4884BC1F693A /* Pods-subscribe-subscribeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-subscribe-subscribeUITests.debug.xcconfig"; path = "Target Support Files/Pods-subscribe-subscribeUITests/Pods-subscribe-subscribeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7C845D1B175124B643BD4269 /* Pods_subscribe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_subscribe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D4A4983EC80E0DC60F6605F /* Pods-subscribeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-subscribeTests.release.xcconfig"; path = "Target Support Files/Pods-subscribeTests/Pods-subscribeTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -126,6 +129,8 @@
 		0D478DCB278D9BC600F9F0D9 /* subscribe */ = {
 			isa = PBXGroup;
 			children = (
+				0DD8D9C0279D7E2100A7BD1B /* data */,
+				0DD8D9BF279D78AA00A7BD1B /* Info.plist */,
 				0D452161278D9F9500B81AE8 /* subscribe.entitlements */,
 				0D478DF6278D9CFE00F9F0D9 /* GoogleService-Info.plist */,
 				0D478DCC278D9BC600F9F0D9 /* subscribeApp.swift */,
@@ -181,6 +186,14 @@
 				0D452162278DA3D200B81AE8 /* LoginView.swift */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		0DD8D9C0279D7E2100A7BD1B /* data */ = {
+			isa = PBXGroup;
+			children = (
+				0DD8D9C1279D7E3200A7BD1B /* color.swift */,
+			);
+			path = data;
 			sourceTree = "<group>";
 		};
 		DE9EE555A442A9E2BEA57837 /* Frameworks */ = {
@@ -451,6 +464,7 @@
 				0D452163278DA3D200B81AE8 /* LoginView.swift in Sources */,
 				0D452165278DA3DA00B81AE8 /* MainView.swift in Sources */,
 				0D478DCF278D9BC600F9F0D9 /* ContentView.swift in Sources */,
+				0DD8D9C2279D7E3200A7BD1B /* color.swift in Sources */,
 				0DCC9C97278DAEC70000E684 /* firebase_auth_model.swift in Sources */,
 				0D478DCD278D9BC600F9F0D9 /* subscribeApp.swift in Sources */,
 			);
@@ -619,6 +633,7 @@
 				DEVELOPMENT_TEAM = 4G6ZD4247R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = subscribe/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -652,6 +667,7 @@
 				DEVELOPMENT_TEAM = 4G6ZD4247R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = subscribe/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

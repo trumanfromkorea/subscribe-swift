@@ -12,8 +12,8 @@ struct ProfileView: View {
 
     var body: some View {
         ZStack {
-//            Color(red: 255, green: 255, blue: 255).ignoresSafeArea()
-
+            Color(hex: 0xFFFFFF).ignoresSafeArea()
+            
             VStack {
                 Divider()
                 
@@ -21,8 +21,8 @@ struct ProfileView: View {
                     userAuth.signOut()
                 }, label: {
                     Text("로그아웃")
-
-                    Spacer()
+                    
+                    Spacer() 
 
                     Image(systemName: "chevron.right")
                 })

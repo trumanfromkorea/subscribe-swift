@@ -3,6 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleDefault</string>
+        <string>UIStatusBarStyleDefault</string>
+    <key>UIUserInterfaceStyle</key>
+        <string>Light</string>
 </dict>
 </plist>

@@ -12,9 +12,9 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var userAuth: UserAuth
     
-//    init() {
-//        initializeTabBar()
-//    }
+    init() {
+        initializeTabBar()
+    }
 
     var body: some View {
         if !userAuth.isSignedIn {

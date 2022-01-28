@@ -9,9 +9,13 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        ZStack {
+        
+        ZStack(alignment: .bottomTrailing) {
+            
             Color(hex: 0xF7F7F7).ignoresSafeArea()
-            ScrollView {
+            
+            ScrollView(showsIndicators: false) {
+                
                 Text("장재훈 님의 구독")
                     .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -62,6 +66,10 @@ struct HomeView: View {
             .navigationBarTitle(Text("구독 모아보기"), displayMode: .inline)
             .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
+//            Color(hex: 0x000000, alpha: 0.5).ignoresSafeArea()
+
+            FloatingButtonView().padding()
         }
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D139D6627A450BD00B8E7F6 /* FloatingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D139D6527A450BD00B8E7F6 /* FloatingButtonView.swift */; };
+		0D139D6827A453B800B8E7F6 /* UI_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D139D6727A453B800B8E7F6 /* UI_model.swift */; };
 		0D452163278DA3D200B81AE8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D452162278DA3D200B81AE8 /* LoginView.swift */; };
 		0D452165278DA3DA00B81AE8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D452164278DA3DA00B81AE8 /* MainView.swift */; };
 		0D478DCD278D9BC600F9F0D9 /* subscribeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D478DCC278D9BC600F9F0D9 /* subscribeApp.swift */; };
@@ -47,6 +49,8 @@
 /* Begin PBXFileReference section */
 		023BFFDD49C4A35D969DD10E /* Pods-subscribe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-subscribe.debug.xcconfig"; path = "Target Support Files/Pods-subscribe/Pods-subscribe.debug.xcconfig"; sourceTree = "<group>"; };
 		0BDBFE28D1B1570F237BF46C /* Pods-subscribeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-subscribeTests.debug.xcconfig"; path = "Target Support Files/Pods-subscribeTests/Pods-subscribeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		0D139D6527A450BD00B8E7F6 /* FloatingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButtonView.swift; sourceTree = "<group>"; };
+		0D139D6727A453B800B8E7F6 /* UI_model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI_model.swift; sourceTree = "<group>"; };
 		0D4184F8288BF62F043A4CA0 /* Pods_subscribeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_subscribeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D452161278D9F9500B81AE8 /* subscribe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = subscribe.entitlements; sourceTree = "<group>"; };
 		0D452162278DA3D200B81AE8 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -172,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				0DCC9C93278DA8C60000E684 /* user_auth_model.swift */,
+				0D139D6727A453B800B8E7F6 /* UI_model.swift */,
 				0DCC9C96278DAEC70000E684 /* firebase_auth_model.swift */,
 			);
 			path = model;
@@ -182,6 +187,7 @@
 			children = (
 				0D452164278DA3DA00B81AE8 /* MainView.swift */,
 				0DCC9C99278DB9490000E684 /* HomeView.swift */,
+				0D139D6527A450BD00B8E7F6 /* FloatingButtonView.swift */,
 				0DCC9C9B278DBB0E0000E684 /* ProfileView.swift */,
 				0D452162278DA3D200B81AE8 /* LoginView.swift */,
 			);
@@ -465,7 +471,9 @@
 				0D452165278DA3DA00B81AE8 /* MainView.swift in Sources */,
 				0D478DCF278D9BC600F9F0D9 /* ContentView.swift in Sources */,
 				0DD8D9C2279D7E3200A7BD1B /* color.swift in Sources */,
+				0D139D6827A453B800B8E7F6 /* UI_model.swift in Sources */,
 				0DCC9C97278DAEC70000E684 /* firebase_auth_model.swift in Sources */,
+				0D139D6627A450BD00B8E7F6 /* FloatingButtonView.swift in Sources */,
 				0D478DCD278D9BC600F9F0D9 /* subscribeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

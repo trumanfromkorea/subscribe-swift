@@ -12,7 +12,8 @@ struct MainView: View {
 
     var body: some View {
         ZStack {
-            Color(hex: 0xF7F7F7).ignoresSafeArea()
+            Color.clear
+            
             TabView(selection: $selection) {
                 HomeView().tabItem {
                     Image(systemName: "house.fill")

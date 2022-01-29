@@ -53,6 +53,7 @@ struct HomeView: View {
                     .font(.system(size: 23, weight: .bold))
                     .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 0))
 
+
                 TotalCostView()
 
                 ForEach(0 ..< 10) { _ in

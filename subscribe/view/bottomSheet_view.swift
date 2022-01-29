@@ -21,16 +21,58 @@ struct BottomSheetView: View {
     var body: some View {
         GeometryReader { proxy -> AnyView in
             let height = proxy.frame(in: .global).height
+            let width = proxy.frame(in: .global).width
 
             return AnyView(
                 ZStack(alignment: .top) {
-                    Color.white
+                    Color(hex: 0xF8F8F8)
 
-                    // Bottom Sheet Controller Bar
-                    Capsule()
-                        .fill(Color.gray)
-                        .frame(width: 60, height: 4)
-                        .padding(.top)
+                    VStack {
+                        // Bottom Sheet Controller Bar
+                        HStack {
+                            Spacer().frame(width: 45)
+                            Spacer()
+
+                            Capsule()
+                                .fill(Color.gray)
+                                .frame(width: 60, height: 4)
+
+                            Spacer()
+
+                            Button(action: {
+                                withAnimation{
+                                    offset = 0
+                                }
+                                
+                            }) {
+                                Text("닫기")
+                            }.frame(width: 45)
+
+                        }.padding(.top)
+
+                        Text("지출 등록하기")
+                            .font(.system(size: 25, weight: .bold))
+                            .frame(width: width - 60, alignment: .leading)
+                            .padding(.top)
+
+                        Spacer().frame(height: 25)
+
+                        
+                        BottomSheetItemView(title: "📝 구독 서비스 등록하기")
+                        BottomSheetItemView(title: "🛍 생활비 등록하기")
+                        BottomSheetItemView(title: "🎸 기타 지출 등록하기")
+                        
+                        Button(action: {
+                            
+                        }){
+                            HStack{
+                                Image(systemName: "plus.circle")
+                                Text("추가 카테고리 등록하기")
+                            }
+                        }
+                    }
+                    .frame(width: .infinity)
+                    .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
                 }
                 .clipShape(CustomCorner(corners: [.topLeft, .topRight], radius: 30))
                 .offset(y: height)
@@ -59,5 +101,11 @@ struct BottomSheetView: View {
                 }))
             )
         }
+    }
+}
+
+struct BottomSheetView_Previews: PreviewProvider {
+    static var previews: some View {
+        BottomSheetView(offset: .constant(-500), lastOffset: .constant(-500))
     }
 }

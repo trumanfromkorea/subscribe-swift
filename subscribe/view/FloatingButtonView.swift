@@ -14,8 +14,9 @@ struct FloatingButtonView: View {
     @Binding var lastOffset: CGFloat
     
     func showMenu() {
+        
         withAnimation{
-            offset = -300
+            offset = -500
             lastOffset = offset
         }
         

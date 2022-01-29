@@ -10,22 +10,19 @@ import SwiftUI
 struct FloatingButtonView: View {
     
     @State var showMenuItem: Bool = false
+    @Binding var offset: CGFloat
+    @Binding var lastOffset: CGFloat
     
     func showMenu() {
-        showMenuItem.toggle()
+        withAnimation{
+            offset = -300
+            lastOffset = offset
+        }
+        
     }
     
     var body: some View {
-        VStack {
-            
-            Spacer()
-            
-            if showMenuItem {
-                FloatingMenuItem(icon: "camera.fill")
-                FloatingMenuItem(icon: "photo.on.rectangle")
-                FloatingMenuItem(icon: "square.and.arrow.up.fill")
-            }
-            
+        
             Button(action: {
                 showMenu()
             }) {
@@ -35,9 +32,7 @@ struct FloatingButtonView: View {
                     .foregroundColor(Color.blue)
                     .shadow(color: .gray, radius: 0.2, x: 1, y: 1)
             }
-            
-            
-        }
+        
     }
 }
 

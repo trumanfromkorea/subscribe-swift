@@ -11,26 +11,30 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var userAuth: UserAuth
-    
+
     init() {
         initializeTabBar()
     }
 
     var body: some View {
-        if !userAuth.isSignedIn {
-            LoginView()
-                .onAppear {
-                    if Auth.auth().currentUser != nil {
-                        userAuth.isSignedIn = true
+        ZStack {
+            Color.clear.ignoresSafeArea()
+
+            if !userAuth.isSignedIn {
+                LoginView()
+                    .onAppear {
+                        if Auth.auth().currentUser != nil {
+                            userAuth.isSignedIn = true
+                        }
                     }
-                }
-        } else {
-            MainView()
-                .onAppear {
-                    if Auth.auth().currentUser != nil {
-                        userAuth.isSignedIn = true
+            } else {
+                MainView()
+                    .onAppear {
+                        if Auth.auth().currentUser != nil {
+                            userAuth.isSignedIn = true
+                        }
                     }
-                }
+            }
         }
     }
 }

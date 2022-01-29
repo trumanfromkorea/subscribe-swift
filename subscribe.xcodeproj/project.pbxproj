@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D0BF7C227A52C4100CB9E44 /* TotalCostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BF7C127A52C4100CB9E44 /* TotalCostView.swift */; };
+		0D0BF7C727A52F1D00CB9E44 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 0D0BF7C627A52F1D00CB9E44 /* PartialSheet */; };
+		0D0BF7C927A5347E00CB9E44 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BF7C827A5347E00CB9E44 /* BlurView.swift */; };
+		0D0BF7CB27A536AD00CB9E44 /* CustomCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BF7CA27A536AD00CB9E44 /* CustomCorner.swift */; };
 		0D139D6627A450BD00B8E7F6 /* FloatingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D139D6527A450BD00B8E7F6 /* FloatingButtonView.swift */; };
 		0D139D6827A453B800B8E7F6 /* UI_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D139D6727A453B800B8E7F6 /* UI_model.swift */; };
 		0D452163278DA3D200B81AE8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D452162278DA3D200B81AE8 /* LoginView.swift */; };
@@ -49,6 +53,9 @@
 /* Begin PBXFileReference section */
 		023BFFDD49C4A35D969DD10E /* Pods-subscribe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-subscribe.debug.xcconfig"; path = "Target Support Files/Pods-subscribe/Pods-subscribe.debug.xcconfig"; sourceTree = "<group>"; };
 		0BDBFE28D1B1570F237BF46C /* Pods-subscribeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-subscribeTests.debug.xcconfig"; path = "Target Support Files/Pods-subscribeTests/Pods-subscribeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		0D0BF7C127A52C4100CB9E44 /* TotalCostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCostView.swift; sourceTree = "<group>"; };
+		0D0BF7C827A5347E00CB9E44 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		0D0BF7CA27A536AD00CB9E44 /* CustomCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCorner.swift; sourceTree = "<group>"; };
 		0D139D6527A450BD00B8E7F6 /* FloatingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButtonView.swift; sourceTree = "<group>"; };
 		0D139D6727A453B800B8E7F6 /* UI_model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI_model.swift; sourceTree = "<group>"; };
 		0D4184F8288BF62F043A4CA0 /* Pods_subscribeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_subscribeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D0BF7C727A52F1D00CB9E44 /* PartialSheet in Frameworks */,
 				AB2F5E7C8CFA2676331B6AA8 /* Pods_subscribe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -187,6 +195,9 @@
 			children = (
 				0D452164278DA3DA00B81AE8 /* MainView.swift */,
 				0DCC9C99278DB9490000E684 /* HomeView.swift */,
+				0D0BF7CA27A536AD00CB9E44 /* CustomCorner.swift */,
+				0D0BF7C827A5347E00CB9E44 /* BlurView.swift */,
+				0D0BF7C127A52C4100CB9E44 /* TotalCostView.swift */,
 				0D139D6527A450BD00B8E7F6 /* FloatingButtonView.swift */,
 				0DCC9C9B278DBB0E0000E684 /* ProfileView.swift */,
 				0D452162278DA3D200B81AE8 /* LoginView.swift */,
@@ -243,6 +254,9 @@
 			dependencies = (
 			);
 			name = subscribe;
+			packageProductDependencies = (
+				0D0BF7C627A52F1D00CB9E44 /* PartialSheet */,
+			);
 			productName = subscribe;
 			productReference = 0D478DC9278D9BC600F9F0D9 /* subscribe.app */;
 			productType = "com.apple.product-type.application";
@@ -318,6 +332,9 @@
 				Base,
 			);
 			mainGroup = 0D478DC0278D9BC600F9F0D9;
+			packageReferences = (
+				0D0BF7C527A52F1D00CB9E44 /* XCRemoteSwiftPackageReference "PartialSheet" */,
+			);
 			productRefGroup = 0D478DCA278D9BC600F9F0D9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -473,7 +490,10 @@
 				0DD8D9C2279D7E3200A7BD1B /* color.swift in Sources */,
 				0D139D6827A453B800B8E7F6 /* UI_model.swift in Sources */,
 				0DCC9C97278DAEC70000E684 /* firebase_auth_model.swift in Sources */,
+				0D0BF7C927A5347E00CB9E44 /* BlurView.swift in Sources */,
 				0D139D6627A450BD00B8E7F6 /* FloatingButtonView.swift in Sources */,
+				0D0BF7CB27A536AD00CB9E44 /* CustomCorner.swift in Sources */,
+				0D0BF7C227A52C4100CB9E44 /* TotalCostView.swift in Sources */,
 				0D478DCD278D9BC600F9F0D9 /* subscribeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -815,6 +835,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0D0BF7C527A52F1D00CB9E44 /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0D0BF7C627A52F1D00CB9E44 /* PartialSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D0BF7C527A52F1D00CB9E44 /* XCRemoteSwiftPackageReference "PartialSheet" */;
+			productName = PartialSheet;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0D478DC1278D9BC600F9F0D9 /* Project object */;
 }

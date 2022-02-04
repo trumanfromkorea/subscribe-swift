@@ -60,7 +60,7 @@ struct HomeView: View {
                     
                     NavigationLink(destination: CreateItemView(), isActive: self.$navigateToCreateView){
                         EmptyView()
-                    }.isDetailLink(false)
+                    }
 
                     TotalCostView()
 
@@ -110,5 +110,12 @@ struct HomeView: View {
             .onAppear(perform: requestData)
         
         
+    }
+}
+
+struct HomeView_Previews: PreviewProvider {
+        
+    static var previews: some View {
+        HomeView(offset: .constant(0), lastOffset: .constant(0), navigateToCreateView: .constant(false))
     }
 }

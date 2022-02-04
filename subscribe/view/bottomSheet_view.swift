@@ -10,6 +10,9 @@ import SwiftUI
 struct BottomSheetView: View {
     @Binding var offset: CGFloat
     @Binding var lastOffset: CGFloat
+
+    @Binding var navigateToCreateView: Bool
+
     @GestureState var gestureOffset: CGFloat = 0
 
     func onChange() {
@@ -25,7 +28,7 @@ struct BottomSheetView: View {
 
             return AnyView(
                 ZStack(alignment: .top) {
-                    Color(hex: 0xF8F8F8)
+                    Color(hex: 0xFFFFFF)
 
                     VStack {
                         // Bottom Sheet Controller Bar
@@ -40,10 +43,10 @@ struct BottomSheetView: View {
                             Spacer()
 
                             Button(action: {
-                                withAnimation{
+                                withAnimation {
                                     offset = 0
                                 }
-                                
+
                             }) {
                                 Text("닫기")
                             }.frame(width: 45)
@@ -57,25 +60,30 @@ struct BottomSheetView: View {
 
                         Spacer().frame(height: 25)
 
-                        
                         BottomSheetItemView(title: "📝 구독 서비스 등록하기")
+                            .onTapGesture {
+                                navigateToCreateView = true
+                                withAnimation {
+                                    offset = 0
+                                }
+                            }
+
                         BottomSheetItemView(title: "🛍 생활비 등록하기")
                         BottomSheetItemView(title: "🎸 기타 지출 등록하기")
-                        
+
                         Button(action: {
-                            
-                        }){
-                            HStack{
+                            print("카테고리 추가 버튼 클릭")
+                        }) {
+                            HStack {
                                 Image(systemName: "plus.circle")
                                 Text("추가 카테고리 등록하기")
                             }
                         }
                     }
-                    .frame(width: .infinity)
-                    .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
+                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                 }
                 .clipShape(CustomCorner(corners: [.topLeft, .topRight], radius: 30))
-                .offset(y: height)
+                .offset(y: height + 100)
                 .offset(
                     y: -offset > 0
                         ? -offset <= height
@@ -101,11 +109,5 @@ struct BottomSheetView: View {
                 }))
             )
         }
-    }
-}
-
-struct BottomSheetView_Previews: PreviewProvider {
-    static var previews: some View {
-        BottomSheetView(offset: .constant(-500), lastOffset: .constant(-500))
     }
 }

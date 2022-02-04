@@ -30,6 +30,8 @@ struct ProfileView: View {
                 Divider()
             }
         }
+        .navigationTitle("")
+        .navigationBarHidden(true)
     }
 }
 

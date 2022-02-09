@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 enum subscribeCycle {
     case none
@@ -15,13 +16,18 @@ enum subscribeCycle {
 }
 
 struct CreateItemView: View {
-    @State var cycle: subscribeCycle
+    @State var cycle: subscribeCycle = .none
+    @State var subscribeCycleText: String = ""
+    @State var subscribeCycleConfirm: String = ""
+
+    @State var subscribeName: String = ""
+    @State var subscribeFee: String = ""
+    @State var subscribeDate: Date = Date()
 
     let navigationController = UINavigationController()
 
     init() {
         navigationController.navigationBar.topItem?.title = ""
-        cycle = .none
     }
 
     var body: some View {
@@ -29,46 +35,36 @@ struct CreateItemView: View {
 
             let windowWidth = proxy.size.width
 
-            VStack {
-                HStack {
-                    SubscribeCycleButton(seletedCycle: $cycle, cycleType: .week, windowWidth: windowWidth, cycleText: "주")
+            ScrollView(showsIndicators: false) {
+                Spacer().frame(height: 30)
 
-                    Spacer()
+                SubscribeName(title: "구독 서비스명", placeholder: "구독 서비스명을 입력해주세요", text: $subscribeName)
 
-                    SubscribeCycleButton(seletedCycle: $cycle, cycleType: .month, windowWidth: windowWidth, cycleText: "월")
+                Spacer().frame(height: 30)
 
-                    Spacer()
+                SubscriptionFee(priceText: $subscribeFee)
 
-                    SubscribeCycleButton(seletedCycle: $cycle, cycleType: .year, windowWidth: windowWidth, cycleText: "년")
-                }
+                Spacer().frame(height: 30)
+
+                SubscriptionCycle(cycle: $cycle, subscribeCycleText: $subscribeCycleText, windowWidth: windowWidth)
+
+                Spacer().frame(height: 30)
+
+                SubscriptionDate(date: $subscribeDate)
+
+                Spacer().frame(height: 30)
+
+                Text("추가하기")
+                    .padding()
+                    .frame(width: windowWidth, alignment: .center)
+                    .background(.blue)
+                    .foregroundColor(.white)
+                    .font(.system(size: 19, weight: .bold))
+                    .cornerRadius(10)
             }
         }
-        .padding()
+        .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
         .navigationBarTitle("구독 추가하기", displayMode: .inline)
-    }
-}
-
-struct SubscribeCycleButton: View {
-    @Binding var seletedCycle: subscribeCycle
-
-    var cycleType: subscribeCycle
-    var windowWidth: CGFloat
-    var cycleText: String
-
-    var body: some View {
-        Text(cycleText)
-            .foregroundColor(seletedCycle == cycleType ? Color.blue : Color(hex: 0x8B8B8B))
-            .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
-            .frame(width: windowWidth * 0.3, alignment: .center)
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(seletedCycle == cycleType ? Color.blue : Color(hex: 0x8B8B8B), lineWidth: 2)
-            )
-            .background(seletedCycle == cycleType ? Color.white : Color(hex: 0xefefef))
-            .cornerRadius(10)
-            .onTapGesture {
-                seletedCycle = cycleType
-            }
     }
 }
 

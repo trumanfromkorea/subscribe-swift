@@ -22,3 +22,18 @@ struct User: Codable {
         case following
     }
 }
+
+
+struct SubscriptionInfo: Codable, Hashable {
+    let id: String
+    let title: String
+    let fee: String
+    let date: Date
+    
+    enum SubscriptionInfoKeys: String, CodingKey{
+        case id
+        case title
+        case fee
+        case date
+    }
+}

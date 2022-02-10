@@ -24,16 +24,25 @@ struct User: Codable {
 }
 
 
-struct SubscriptionInfo: Codable, Hashable {
+struct SubscriptionInfo: Hashable {
     let id: String
+    let category: String
     let title: String
     let fee: String
-    let date: Date
+    let startDate: Date
+    let nextDate: Date
+    let cycle: subscribeCycle
+    let cycleNum: Int
+    
     
     enum SubscriptionInfoKeys: String, CodingKey{
         case id
+        case category
         case title
         case fee
-        case date
+        case startDate
+        case nextDate
+        case cycle
+        case cycleNum
     }
 }

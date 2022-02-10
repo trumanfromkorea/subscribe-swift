@@ -22,12 +22,12 @@ struct HomeView: View {
 
     // 리스트 샘플 데이터
     @State var subscriptionInfoData: [SubscriptionInfo]?
-    
+
     // Formatter 초기화 메소드
-    func initialFormatter(){
+    func initialFormatter() {
         inputFormatter.locale = Locale(identifier: "ko_KR")
         inputFormatter.dateFormat = "yyyy-MM-dd"
-        
+
         outputDate.locale = Locale(identifier: "ko_KR")
         outputDate.dateFormat = "MM월 dd일 (EE)"
     }
@@ -38,15 +38,23 @@ struct HomeView: View {
             return progress * 30
         }
     }
-    
+
     // 데이터 샘플 메소드
     func structData() {
         subscriptionInfoData = [
-            SubscriptionInfo(id: "1", title: "NETFLIX", fee: "14000", date: inputFormatter.date(from: "2022-03-01")!),
-            SubscriptionInfo(id: "2", title: "쏘카 패스포트", fee: "29000", date: inputFormatter.date(from: "2022-12-31")!),
-            SubscriptionInfo(id: "3", title: "멜론", fee: "10800", date: inputFormatter.date(from: "2022-02-28")!),
-            SubscriptionInfo(id: "4", title: "로켓와우", fee: "2900", date: inputFormatter.date(from: "2022-03-31")!),
-
+            SubscriptionInfo(
+                id: "1",
+                category: "구독 서비스",
+                title: "NETFLIX",
+                fee: "14000",
+                startDate: inputFormatter.date(from: "2022-02-01")!,
+                nextDate: inputFormatter.date(from: "2022-03-01")!,
+                cycle: .month,
+                cycleNum: 1
+            ),
+//            SubscriptionInfo(id: "2", title: "쏘카 패스포트", fee: "29000", date: inputFormatter.date(from: "2022-12-31")!),
+//            SubscriptionInfo(id: "3", title: "멜론", fee: "10800", date: inputFormatter.date(from: "2022-02-28")!),
+//            SubscriptionInfo(id: "4", title: "로켓와우", fee: "2900", date: inputFormatter.date(from: "2022-03-31")!),
         ]
     }
 
@@ -77,10 +85,10 @@ struct HomeView: View {
             ScrollView(showsIndicators: false) {
                 Spacer().frame(height: 20)
 
-                    Text("\(user?.name ?? "") 님의\n구독 모아보기")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .font(.system(size: 25, weight: .bold))
-                        .padding(EdgeInsets(top: 0, leading: 10, bottom: 15, trailing: 0))
+                Text("\(user?.name ?? "") 님의\n구독 모아보기")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.system(size: 25, weight: .bold))
+                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 15, trailing: 0))
 
                 NavigationLink(destination: CreateItemView(), isActive: self.$navigateToCreateView) {
                     EmptyView()
@@ -90,7 +98,7 @@ struct HomeView: View {
 
                 ForEach(subscriptionInfoData ?? [], id: \.self) { data in
                     Spacer().frame(height: 10)
-                    NavigationLink(destination: DetailsView()) {
+                    NavigationLink(destination: DetailsView(detailsInfo: data)) {
                         VStack(alignment: .leading, spacing: 10) {
                             Text(data.title)
                                 .foregroundColor(Color.black)
@@ -110,12 +118,11 @@ struct HomeView: View {
                                 Text("다음 결제일")
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(.black)
-                                Text("\(outputDate.string(from: data.date))")
+                                Text("\(outputDate.string(from: data.nextDate))")
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(.black)
                             }
                             .frame(maxWidth: .infinity)
-
                         }
                         .padding()
                         .frame(maxWidth: .infinity)
@@ -123,7 +130,6 @@ struct HomeView: View {
                         .cornerRadius(10)
                     }
                 }
-
             }
             .disabled(offset != 0) // bottom sheet 올라와있으면 스크롤 금지
             .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))

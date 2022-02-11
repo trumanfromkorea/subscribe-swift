@@ -11,7 +11,7 @@ import FirebaseFirestore
 import Foundation
 
 class SubscriptionListManager: ObservableObject {
-    @Published var subscriptionList: [SubscriptionInfo] = []
+    @Published var subscriptionList: [SubscriptionInfo]?
 
     init() {
         fetchSubscriptionList()
@@ -24,9 +24,20 @@ class SubscriptionListManager: ObservableObject {
         
         db.collection("subscriptions").document(uid!)
             .collection("services").getDocuments { snapshot, error in
+                
+                self.subscriptionList = []
+                
                 if let error = error {
                     print("Error getting Docs : \(error)")
+                    return
                 } else {
+                    
+                    // 문서가 비었을 때
+                    if snapshot!.documents.isEmpty {
+                        return
+                    }
+                    
+                    // 있으면 데이터 추가
                     for document in snapshot!.documents {
 
                         let newData = document.data()
@@ -45,7 +56,7 @@ class SubscriptionListManager: ObservableObject {
                             cycleNum: newData["cycleNum"] as! Int
                         )
                         
-                        self.subscriptionList.append(tempData)
+                        self.subscriptionList!.append(tempData)
                     }
                 }
             }

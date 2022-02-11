@@ -42,22 +42,6 @@ struct HomeView: View {
         }
     }
 
-    // 데이터 샘플 메소드
-    func structData() {
-//        subscriptionInfoData = [
-//            SubscriptionInfo(
-//                id: "1",
-//                category: "구독 서비스",
-//                title: "NETFLIX",
-//                fee: "14000",
-//                startDate: inputFormatter.date(from: "2022-02-01")!,
-//                nextDate: inputFormatter.date(from: "2022-03-01")!,
-//                cycle: 1,
-//                cycleNum: 1
-//            ),
-//        ]
-    }
-
     // 깃헙에 데이터 요청
     func requestData() {
         guard let url = URL(string: "https://api.github.com/users/trumanfromkorea")
@@ -79,76 +63,90 @@ struct HomeView: View {
     }
 
     var body: some View {
-        ZStack(alignment: .bottomTrailing) {
-            Color(hex: 0xF7F7F7).ignoresSafeArea()
+        GeometryReader { proxy in
+            let windowWidth = proxy.size.width
+            let windowHeight = proxy.size.height
 
-            ScrollView(showsIndicators: false) {
-                Spacer().frame(height: 20)
+            ZStack {
+                Color(hex: 0xF7F7F7).ignoresSafeArea()
 
-                Text("\(userInfoManager.userName) 님의\n구독 모아보기")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.system(size: 25, weight: .bold))
-                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 15, trailing: 0))
+                ScrollView(showsIndicators: false) {
+                    Spacer().frame(height: 20)
 
-                NavigationLink(destination: CreateItemView(), isActive: self.$navigateToCreateView) {
-                    EmptyView()
-                }
+                    Text("\(userInfoManager.userName) 님의\n구독 모아보기")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .font(.system(size: 25, weight: .bold))
+                        .padding(EdgeInsets(top: 0, leading: 10, bottom: 15, trailing: 0))
 
-                TotalCostView()
+                    NavigationLink(destination: CreateItemView(), isActive: self.$navigateToCreateView) {
+                        EmptyView()
+                    }
 
-                ForEach(subscriptionListManager.subscriptionList ?? [], id: \.self) { data in
-                    Spacer().frame(height: 10)
-                    NavigationLink(destination: DetailsView(detailsInfo: data)) {
-                        VStack(alignment: .leading, spacing: 10) {
-                            Text(data.title)
-                                .foregroundColor(Color.black)
-                                .font(.system(size: 19, weight: .bold))
+                    TotalCostView()
 
-                            HStack {
-                                Text("결제 금액")
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .foregroundColor(.black)
-                                Text("\(data.fee)원")
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .foregroundColor(.black)
+                    ForEach(subscriptionListManager.subscriptionList ?? [], id: \.self) { data in
+                        Spacer().frame(height: 10)
+                        NavigationLink(destination: DetailsView(detailsInfo: data)) {
+                            VStack(alignment: .leading, spacing: 10) {
+                                Text(data.title)
+                                    .foregroundColor(Color.black)
+                                    .font(.system(size: 19, weight: .bold))
+
+                                HStack {
+                                    Text("결제 금액")
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .foregroundColor(.black)
+                                    Text("\(data.fee)원")
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .foregroundColor(.black)
+                                }
+                                .frame(maxWidth: .infinity)
+
+                                HStack {
+                                    Text("다음 결제일")
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .foregroundColor(.black)
+                                    Text("\(outputDate.string(from: data.nextDate))")
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .foregroundColor(.black)
+                                }
+                                .frame(maxWidth: .infinity)
                             }
+                            .padding()
                             .frame(maxWidth: .infinity)
-
-                            HStack {
-                                Text("다음 결제일")
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .foregroundColor(.black)
-                                Text("\(outputDate.string(from: data.nextDate))")
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .foregroundColor(.black)
-                            }
-                            .frame(maxWidth: .infinity)
+                            .background(Color(hex: 0xFFFFFF))
+                            .cornerRadius(10)
                         }
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color(hex: 0xFFFFFF))
-                        .cornerRadius(10)
                     }
                 }
+                .disabled(offset != 0) // bottom sheet 올라와있으면 스크롤 금지
+                .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .blur(radius: getBlurRadius()) // bottom sheet 올라올때 blur
+                .navigationTitle("")
+                .navigationBarHidden(true)
+
+                Color(hex: 0x000000, alpha: offset == 0 ? 0 : 0.5).ignoresSafeArea()
+
+                // Binding 으로 State 를 넘겨줘서 자식 -> 부모 값 전달가능
+                FloatingButtonView(offset: $offset, lastOffset: $lastOffset)
+                    .offset(x: (windowWidth - 50) / 2 - 15, y: (windowHeight - 50) / 2 - 15)
+
+                if subscriptionListManager.subscriptionList == nil {
+                    ProgressView()
+                        .scaleEffect(1.5)
+                        .frame(width: 100, height: 100, alignment: .center)
+                        .background(.white)
+                        .cornerRadius(20)
+                        .shadow(color: .black.opacity(0.5), radius: 5)
+                        .progressViewStyle(CircularProgressViewStyle(tint: .blue))
+                }
             }
-            .disabled(offset != 0) // bottom sheet 올라와있으면 스크롤 금지
-            .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .blur(radius: getBlurRadius()) // bottom sheet 올라올때 blur
-            .navigationTitle("")
-            .navigationBarHidden(true)
-
-            Color(hex: 0x000000, alpha: offset == 0 ? 0 : 0.5).ignoresSafeArea()
-
-            // Binding 으로 State 를 넘겨줘서 자식 -> 부모 값 전달가능
-            FloatingButtonView(offset: $offset, lastOffset: $lastOffset)
-                .padding()
         }
         .onAppear(perform: {
             // 순서에 유의하자! Formatter 등 뒤에서 사용해야 하는 메소드는 제일 먼저 실행해주기
             initialFormatter()
             requestData()
-            structData()
         })
     }
 }

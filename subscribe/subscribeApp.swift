@@ -21,6 +21,7 @@ struct subscribeApp: App {
                 .environmentObject(UserAuth())
                 .environmentObject(UserInfoManager())
                 .environmentObject(SubscriptionListManager())
+                .environmentObject(CreateItemManager())
         }
     }
 }

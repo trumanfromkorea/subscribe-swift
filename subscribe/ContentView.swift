@@ -46,6 +46,7 @@ struct ContentView_Previews: PreviewProvider {
             .environmentObject(UserAuth())
             .environmentObject(UserInfoManager())
             .environmentObject(SubscriptionListManager())
+            .environmentObject(CreateItemManager())
             .previewInterfaceOrientation(.portrait)
     }
 }

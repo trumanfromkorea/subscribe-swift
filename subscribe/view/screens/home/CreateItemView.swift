@@ -19,6 +19,8 @@ enum subscribeCycle {
 }
 
 struct CreateItemView: View {
+    @EnvironmentObject var createItem: CreateItemManager
+
     @State var cycle: subscribeCycle = .none
 
     @State var subscribeName: String = ""
@@ -43,8 +45,8 @@ struct CreateItemView: View {
         let hashString = sha256.compactMap { String(format: "%02x", $0) }.joined()
 
         db.collection("subscriptions").document(uid ?? "zwYEL3pFT8YCUe3QNeadvFrSFYJ2")
-            .collection("livings").document(hashString).setData([
-                "category": "living",
+            .collection(createItem.type!).document(hashString).setData([
+                "category": createItem.type!,
                 "cycle": Int(subscribeCycleText)!,
                 "cycleNum": 1,
                 "fee": subscribeFee,
@@ -111,6 +113,7 @@ struct CreateItemView: View {
                 Spacer().frame(height: 30)
             }
         }
+        .gesture(DragGesture().onChanged {_ in hideKeyboard() })
         .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
         .navigationBarTitle("구독 추가하기", displayMode: .inline)
     }

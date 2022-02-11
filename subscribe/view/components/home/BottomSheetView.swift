@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct BottomSheetView: View {
+    
+    @EnvironmentObject var createItem: CreateItemManager
+    
     @Binding var offset: CGFloat
     @Binding var lastOffset: CGFloat
 
@@ -60,16 +63,32 @@ struct BottomSheetView: View {
 
                         Spacer().frame(height: 25)
 
-                        BottomSheetItemView(title: "📝 구독 서비스 등록하기")
+                        BottomSheetItemView(title: "🧮 구독 서비스 등록하기")
                             .onTapGesture {
+                                createItem.setService()
                                 navigateToCreateView = true
                                 withAnimation {
                                     offset = 0
                                 }
                             }
 
-                        BottomSheetItemView(title: "🛍 생활비 등록하기")
+                        BottomSheetItemView(title: "🛋 생활비 등록하기")
+                            .onTapGesture {
+                                createItem.setLiving()
+                                navigateToCreateView = true
+                                withAnimation {
+                                    offset = 0
+                                }
+                            }
+                        
                         BottomSheetItemView(title: "🎸 기타 지출 등록하기")
+                            .onTapGesture {
+                                createItem.setETC()
+                                navigateToCreateView = true
+                                withAnimation {
+                                    offset = 0
+                                }
+                            }
 
                         Button(action: {
                             print("카테고리 추가 버튼 클릭")

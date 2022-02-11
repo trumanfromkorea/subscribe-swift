@@ -10,6 +10,22 @@ import FirebaseAuth
 import FirebaseFirestore
 import Foundation
 
+class CreateItemManager: ObservableObject {
+    @Published var type: String?
+    
+    func setService() {
+        self.type = "services"
+    }
+    
+    func setLiving() {
+        self.type = "livings"
+    }
+    
+    func setETC(){
+        self.type = "etc"
+    }
+}
+
 class SubscriptionListManager: ObservableObject {
     @Published var serviceList: [SubscriptionInfo]?
     @Published var livingsList: [SubscriptionInfo]?

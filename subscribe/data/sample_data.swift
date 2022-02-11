@@ -33,26 +33,6 @@ struct SubscriptionInfo: Hashable {
     var cycle: Int
     var cycleNum: Int
 
-//    init(
-//        id: String,
-//        category: String,
-//        title: String,
-//        fee: String,
-//        startDate: Date,
-//        nextDate: Date,
-//        cycle: Int,
-//        cycleNum: Int
-//    ) {
-//        self.id = id
-//        self.category = category
-//        self.title = title
-//        self.fee = fee
-//        self.startDate = startDate
-//        self.nextDate = nextDate
-//        self.cycle = cycle
-//        self.cycleNum = cycleNum
-//    }
-
     enum SubscriptionInfoKeys: String, CodingKey {
         case id
         case category

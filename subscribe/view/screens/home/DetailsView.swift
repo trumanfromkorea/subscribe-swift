@@ -28,7 +28,9 @@ struct DetailsView: View {
 
                 Text(detailsInfo.title)
                     .foregroundColor(.black)
-                    .font(.system(size: 50, weight: .bold))
+                    .font(.system(size: 35, weight: .bold))
+                
+                Spacer().frame(height: 10)
 
                 HStack(alignment: .bottom) {
                     Text("구독 시작일 ")
@@ -142,7 +144,7 @@ struct DetailsView_Previews: PreviewProvider {
             detailsInfo: SubscriptionInfo(
                 id: "1",
                 category: "구독 서비스",
-                title: "NETFLIX",
+                title: "유튜브 프리미엄",
                 fee: "14000",
                 startDate: Date(),
                 nextDate: Date(),

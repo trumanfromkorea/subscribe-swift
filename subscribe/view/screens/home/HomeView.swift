@@ -71,51 +71,55 @@ struct HomeView: View {
                 Color(hex: 0xF7F7F7).ignoresSafeArea()
 
                 ScrollView(showsIndicators: false) {
-                    Spacer().frame(height: 20)
+                    VStack(alignment: .leading) {
+                        Spacer().frame(height: 20)
 
-                    Text("\(userInfoManager.userName ) 님의\n구독 모아보기")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .font(.system(size: 25, weight: .bold))
-                        .padding(EdgeInsets(top: 0, leading: 10, bottom: 15, trailing: 0))
+                        Text("\(userInfoManager.userName) 님의 구독 모아보기")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .font(.system(size: 25, weight: .bold))
+                            .padding(EdgeInsets(top: 0, leading: 10, bottom: 15, trailing: 0))
 
-                    NavigationLink(destination: CreateItemView(), isActive: self.$navigateToCreateView) {
-                        EmptyView()
-                    }
+                        // 구독 생성 화면으로 연결
+                        NavigationLink(
+                            destination: CreateItemView(),
+                            isActive: self.$navigateToCreateView
+                        ) {
+                            EmptyView()
+                        }
 
-                    TotalCostView()
+                        TotalCostView()
 
-                    ForEach(subscriptionListManager.subscriptionList ?? [], id: \.self) { data in
-                        Spacer().frame(height: 10)
-                        NavigationLink(destination: DetailsView(detailsInfo: data)) {
-                            VStack(alignment: .leading, spacing: 10) {
-                                Text(data.title)
-                                    .foregroundColor(Color.black)
-                                    .font(.system(size: 19, weight: .bold))
-
-                                HStack {
-                                    Text("결제 금액")
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .foregroundColor(.black)
-                                    Text("\(data.fee)원")
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .foregroundColor(.black)
-                                }
-                                .frame(maxWidth: .infinity)
-
-                                HStack {
-                                    Text("다음 결제일")
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .foregroundColor(.black)
-                                    Text("\(outputDate.string(from: data.nextDate))")
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .foregroundColor(.black)
-                                }
-                                .frame(maxWidth: .infinity)
+                        Group {
+                            if subscriptionListManager.serviceList != nil && !subscriptionListManager.serviceList!.isEmpty {
+                                Text("🧮 구독 서비스")
+                                    .font(.system(size: 20, weight: .bold))
+                                    .padding(EdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 0))
                             }
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color(hex: 0xFFFFFF))
-                            .cornerRadius(10)
+                            ForEach(subscriptionListManager.serviceList ?? [], id: \.self) { data in
+                                ListItemView(data: data, dateFormatter: outputDate)
+                            }
+                        }
+                        
+                        Group {
+                            if subscriptionListManager.livingsList != nil && !subscriptionListManager.livingsList!.isEmpty {
+                                Text("🛋 생활비")
+                                    .font(.system(size: 20, weight: .bold))
+                                    .padding(EdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 0))
+                            }
+                            ForEach(subscriptionListManager.livingsList ?? [], id: \.self) { data in
+                                ListItemView(data: data, dateFormatter: outputDate)
+                            }
+                        }
+                        
+                        Group {
+                            if subscriptionListManager.etcList != nil && !subscriptionListManager.etcList!.isEmpty {
+                                Text("🎸 기타 지출")
+                                    .font(.system(size: 20, weight: .bold))
+                                    .padding(EdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 0))
+                            }
+                            ForEach(subscriptionListManager.etcList ?? [], id: \.self) { data in
+                                ListItemView(data: data, dateFormatter: outputDate)
+                            }
                         }
                     }
                 }
@@ -126,13 +130,17 @@ struct HomeView: View {
                 .navigationTitle("")
                 .navigationBarHidden(true)
 
+                // 바텀 시트 올라왔을때 배경 처리
                 Color(hex: 0x000000, alpha: offset == 0 ? 0 : 0.5).ignoresSafeArea()
 
-                // Binding 으로 State 를 넘겨줘서 자식 -> 부모 값 전달가능
+                // 추가 버튼
                 FloatingButtonView(offset: $offset, lastOffset: $lastOffset)
                     .offset(x: (windowWidth - 50) / 2 - 15, y: (windowHeight - 50) / 2 - 15)
 
-                if subscriptionListManager.subscriptionList == nil {
+                // 데이터 로딩
+                let isDataNil: Bool = self.subscriptionListManager.serviceList == nil || self.subscriptionListManager.livingsList == nil || self.subscriptionListManager.etcList == nil
+                
+                if isDataNil {
                     ProgressView()
                         .scaleEffect(1.5)
                         .frame(width: 100, height: 100, alignment: .center)

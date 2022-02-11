@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D0BE09827B64F6D0043F98D /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BE09727B64F6D0043F98D /* ListItemView.swift */; };
 		0D0BF7C227A52C4100CB9E44 /* TotalCostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BF7C127A52C4100CB9E44 /* TotalCostView.swift */; };
 		0D0BF7C727A52F1D00CB9E44 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 0D0BF7C627A52F1D00CB9E44 /* PartialSheet */; };
 		0D0BF7CB27A536AD00CB9E44 /* CustomCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BF7CA27A536AD00CB9E44 /* CustomCorner.swift */; };
@@ -58,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D0BE09727B64F6D0043F98D /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
 		0D0BF7C127A52C4100CB9E44 /* TotalCostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCostView.swift; sourceTree = "<group>"; };
 		0D0BF7CA27A536AD00CB9E44 /* CustomCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCorner.swift; sourceTree = "<group>"; };
 		0D0BF7CC27A542AF00CB9E44 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
@@ -130,6 +132,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D0BE09627B64F5A0043F98D /* main */ = {
+			isa = PBXGroup;
+			children = (
+				0D139D6527A450BD00B8E7F6 /* FloatingButtonView.swift */,
+				0D0BF7C127A52C4100CB9E44 /* TotalCostView.swift */,
+				0D0BE09727B64F6D0043F98D /* ListItemView.swift */,
+			);
+			path = main;
+			sourceTree = "<group>";
+		};
 		0D0BF7D027A561D200CB9E44 /* components */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,11 +263,10 @@
 		0D74551527AD03A400122F9C /* home */ = {
 			isa = PBXGroup;
 			children = (
+				0D0BE09627B64F5A0043F98D /* main */,
 				0D15986727B3A79D00202AB3 /* createItem */,
 				0D0BF7CA27A536AD00CB9E44 /* CustomCorner.swift */,
 				0D0BF7D127A561EE00CB9E44 /* BottomSheetItemView.swift */,
-				0D139D6527A450BD00B8E7F6 /* FloatingButtonView.swift */,
-				0D0BF7C127A52C4100CB9E44 /* TotalCostView.swift */,
 				0D0BF7CC27A542AF00CB9E44 /* BottomSheetView.swift */,
 			);
 			path = home;
@@ -410,7 +421,7 @@
 			);
 			mainGroup = 0D478DC0278D9BC600F9F0D9;
 			packageReferences = (
-				0D0BF7C527A52F1D00CB9E44 /* XCRemoteSwiftPackageReference "PartialSheet.git" */,
+				0D0BF7C527A52F1D00CB9E44 /* XCRemoteSwiftPackageReference "PartialSheet" */,
 			);
 			productRefGroup = 0D478DCA278D9BC600F9F0D9 /* Products */;
 			projectDirPath = "";
@@ -561,6 +572,7 @@
 				0DCC9C9C278DBB0E0000E684 /* ProfileView.swift in Sources */,
 				0DCC9C94278DA8C60000E684 /* UserAuth_model.swift in Sources */,
 				0DCC9C9A278DB9490000E684 /* HomeView.swift in Sources */,
+				0D0BE09827B64F6D0043F98D /* ListItemView.swift in Sources */,
 				0D15986A27B3A7DF00202AB3 /* Fields.swift in Sources */,
 				0D452163278DA3D200B81AE8 /* LoginView.swift in Sources */,
 				0D452165278DA3DA00B81AE8 /* MainView.swift in Sources */,
@@ -921,7 +933,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0D0BF7C527A52F1D00CB9E44 /* XCRemoteSwiftPackageReference "PartialSheet.git" */ = {
+		0D0BF7C527A52F1D00CB9E44 /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet.git";
 			requirement = {
@@ -934,7 +946,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		0D0BF7C627A52F1D00CB9E44 /* PartialSheet */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0D0BF7C527A52F1D00CB9E44 /* XCRemoteSwiftPackageReference "PartialSheet.git" */;
+			package = 0D0BF7C527A52F1D00CB9E44 /* XCRemoteSwiftPackageReference "PartialSheet" */;
 			productName = PartialSheet;
 		};
 /* End XCSwiftPackageProductDependency section */

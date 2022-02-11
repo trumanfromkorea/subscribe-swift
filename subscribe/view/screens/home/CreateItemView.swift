@@ -5,6 +5,9 @@
 //  Created by 장재훈 on 2022/02/04.
 //
 
+import CryptoKit
+import FirebaseAuth
+import FirebaseFirestore
 import SwiftUI
 import UIKit
 
@@ -29,6 +32,27 @@ struct CreateItemView: View {
 
     init() {
         navigationController.navigationBar.topItem?.title = ""
+    }
+
+    func uploadItem() {
+        let uid: String? = Auth.auth().currentUser?.uid
+        let db = Firestore.firestore()
+
+        let data = subscribeName.data(using: .utf8)
+        let sha256 = SHA256.hash(data: data!)
+        let hashString = sha256.compactMap { String(format: "%02x", $0) }.joined()
+
+        db.collection("subscriptions").document(uid ?? "zwYEL3pFT8YCUe3QNeadvFrSFYJ2")
+            .collection("livings").document(hashString).setData([
+                "category": "living",
+                "cycle": Int(subscribeCycleText)!,
+                "cycleNum": 1,
+                "fee": subscribeFee,
+                "id": hashString,
+                "startDate": Timestamp(date: subscribeDate),
+                "nextDate": Timestamp(date: subscribeDate),
+                "title": subscribeName,
+            ])
     }
 
     var body: some View {
@@ -74,11 +98,16 @@ struct CreateItemView: View {
                             title: Text("구독 추가"),
                             message: Text("입력하신 내용으로 구독을 추가하시겠습니까?"),
                             primaryButton: .default(Text("닫기")),
-                            secondaryButton: .default(Text("확인"))
+                            secondaryButton: .default(
+                                Text("확인"),
+                                action: {
+                                    uploadItem()
+                                }
+                            )
                         )
                     }
                 }
-           
+
                 Spacer().frame(height: 30)
             }
         }

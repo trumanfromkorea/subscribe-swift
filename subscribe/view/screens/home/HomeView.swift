@@ -73,7 +73,7 @@ struct HomeView: View {
                 ScrollView(showsIndicators: false) {
                     Spacer().frame(height: 20)
 
-                    Text("\(userInfoManager.userName) 님의\n구독 모아보기")
+                    Text("\(userInfoManager.userName ) 님의\n구독 모아보기")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.system(size: 25, weight: .bold))
                         .padding(EdgeInsets(top: 0, leading: 10, bottom: 15, trailing: 0))
@@ -154,5 +154,7 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView(offset: .constant(0), lastOffset: .constant(0), navigateToCreateView: .constant(false))
+            .environmentObject(UserInfoManager())
+            .environmentObject(SubscriptionListManager())
     }
 }

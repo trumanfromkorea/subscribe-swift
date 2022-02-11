@@ -22,7 +22,7 @@ class UserInfoManager: ObservableObject {
         let uid: String? = Auth.auth().currentUser?.uid
         
         let db = Firestore.firestore()
-        let docRef = db.collection("users").document(uid!)
+        let docRef = db.collection("users").document(uid ?? "zwYEL3pFT8YCUe3QNeadvFrSFYJ2")
         
         docRef.getDocument { document, error in
             guard error == nil

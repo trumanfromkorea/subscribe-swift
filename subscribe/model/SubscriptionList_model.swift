@@ -22,7 +22,7 @@ class SubscriptionListManager: ObservableObject {
 
         let db = Firestore.firestore()
         
-        db.collection("subscriptions").document(uid!)
+        db.collection("subscriptions").document(uid ?? "zwYEL3pFT8YCUe3QNeadvFrSFYJ2")
             .collection("services").getDocuments { snapshot, error in
                 
                 self.subscriptionList = []

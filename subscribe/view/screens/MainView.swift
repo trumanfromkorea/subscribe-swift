@@ -22,13 +22,17 @@ struct MainView: View {
                 TabView(selection: $selection) {
                     HomeView(offset: $offset, lastOffset: $lastOffset, navigateToCreateView: $navigateToCreateView)
                         .tabItem {
-                        Image(systemName: "house.fill")
-                        Text("Home")
-                    }.tag(0)
-                    ProfileView().tabItem {
-                        Image(systemName: "person.fill")
-                        Text("Profile")
-                    }.tag(1)
+                            Image(systemName: "house.fill")
+                            Text("Home")
+                        }
+                        .tag(0)
+
+                    ProfileView()
+                        .tabItem {
+                            Image(systemName: "person.fill")
+                            Text("Profile")
+                        }
+                        .tag(1)
                 }
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             }

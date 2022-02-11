@@ -17,7 +17,10 @@ struct subscribeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(UserAuth())
+            ContentView()
+                .environmentObject(UserAuth())
+                .environmentObject(UserInfoManager())
+                .environmentObject(SubscriptionListManager())
         }
     }
 }

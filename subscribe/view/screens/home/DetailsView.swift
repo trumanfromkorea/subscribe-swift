@@ -146,7 +146,7 @@ struct DetailsView_Previews: PreviewProvider {
                 fee: "14000",
                 startDate: Date(),
                 nextDate: Date(),
-                cycle: .month,
+                cycle: 1,
                 cycleNum: 1
             )
         )

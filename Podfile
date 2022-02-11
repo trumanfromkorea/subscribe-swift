@@ -9,6 +9,9 @@ target 'subscribe' do
   
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  
+  pod 'FirebaseFirestoreSwift'
 
   target 'subscribeTests' do
     inherit! :search_paths

@@ -10,10 +10,10 @@ import Foundation
 struct User: Codable {
     let name: String
     let accountName: String
-    let avatarURL : String
+    let avatarURL: String
     let followers: Int
     let following: Int
-    
+
     enum CodingKeys: String, CodingKey {
         case name
         case accountName = "login"
@@ -23,19 +23,37 @@ struct User: Codable {
     }
 }
 
-
 struct SubscriptionInfo: Hashable {
-    let id: String
-    let category: String
-    let title: String
-    let fee: String
-    let startDate: Date
-    let nextDate: Date
-    let cycle: subscribeCycle
-    let cycleNum: Int
-    
-    
-    enum SubscriptionInfoKeys: String, CodingKey{
+    var id: String
+    var category: String
+    var title: String
+    var fee: String
+    var startDate: Date
+    var nextDate: Date
+    var cycle: Int
+    var cycleNum: Int
+
+//    init(
+//        id: String,
+//        category: String,
+//        title: String,
+//        fee: String,
+//        startDate: Date,
+//        nextDate: Date,
+//        cycle: Int,
+//        cycleNum: Int
+//    ) {
+//        self.id = id
+//        self.category = category
+//        self.title = title
+//        self.fee = fee
+//        self.startDate = startDate
+//        self.nextDate = nextDate
+//        self.cycle = cycle
+//        self.cycleNum = cycleNum
+//    }
+
+    enum SubscriptionInfoKeys: String, CodingKey {
         case id
         case category
         case title

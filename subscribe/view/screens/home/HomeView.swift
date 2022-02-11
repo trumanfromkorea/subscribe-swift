@@ -9,6 +9,9 @@ import PartialSheet
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var userInfoManager: UserInfoManager
+    @EnvironmentObject var subscriptionListManager: SubscriptionListManager
+
     @Binding var offset: CGFloat
     @Binding var lastOffset: CGFloat
 
@@ -41,21 +44,18 @@ struct HomeView: View {
 
     // 데이터 샘플 메소드
     func structData() {
-        subscriptionInfoData = [
-            SubscriptionInfo(
-                id: "1",
-                category: "구독 서비스",
-                title: "NETFLIX",
-                fee: "14000",
-                startDate: inputFormatter.date(from: "2022-02-01")!,
-                nextDate: inputFormatter.date(from: "2022-03-01")!,
-                cycle: .month,
-                cycleNum: 1
-            ),
-//            SubscriptionInfo(id: "2", title: "쏘카 패스포트", fee: "29000", date: inputFormatter.date(from: "2022-12-31")!),
-//            SubscriptionInfo(id: "3", title: "멜론", fee: "10800", date: inputFormatter.date(from: "2022-02-28")!),
-//            SubscriptionInfo(id: "4", title: "로켓와우", fee: "2900", date: inputFormatter.date(from: "2022-03-31")!),
-        ]
+//        subscriptionInfoData = [
+//            SubscriptionInfo(
+//                id: "1",
+//                category: "구독 서비스",
+//                title: "NETFLIX",
+//                fee: "14000",
+//                startDate: inputFormatter.date(from: "2022-02-01")!,
+//                nextDate: inputFormatter.date(from: "2022-03-01")!,
+//                cycle: 1,
+//                cycleNum: 1
+//            ),
+//        ]
     }
 
     // 깃헙에 데이터 요청
@@ -85,7 +85,7 @@ struct HomeView: View {
             ScrollView(showsIndicators: false) {
                 Spacer().frame(height: 20)
 
-                Text("\(user?.name ?? "") 님의\n구독 모아보기")
+                Text("\(userInfoManager.userName) 님의\n구독 모아보기")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.system(size: 25, weight: .bold))
                     .padding(EdgeInsets(top: 0, leading: 10, bottom: 15, trailing: 0))
@@ -96,7 +96,7 @@ struct HomeView: View {
 
                 TotalCostView()
 
-                ForEach(subscriptionInfoData ?? [], id: \.self) { data in
+                ForEach(subscriptionListManager.subscriptionList ?? [], id: \.self) { data in
                     Spacer().frame(height: 10)
                     NavigationLink(destination: DetailsView(detailsInfo: data)) {
                         VStack(alignment: .leading, spacing: 10) {

@@ -11,6 +11,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var userAuth: UserAuth
+    @EnvironmentObject var userInfoManager: UserInfoManager
 
     init() {
         initializeTabBar()
@@ -43,6 +44,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environmentObject(UserAuth())
+            .environmentObject(UserInfoManager())
             .previewInterfaceOrientation(.portrait)
     }
 }

@@ -11,17 +11,8 @@ import FirebaseFirestore
 import SwiftUI
 import UIKit
 
-enum subscribeCycle {
-    case none
-    case week
-    case month
-    case year
-}
-
 struct CreateItemView: View {
     @EnvironmentObject var createItem: CreateItemManager
-
-    @State var cycle: subscribeCycle = .none
 
     var cycleOptions = ["매주", "매월", "매년"]
     @State var selectedCycle = 3
@@ -50,14 +41,45 @@ struct CreateItemView: View {
         db.collection("subscriptions").document(uid ?? "zwYEL3pFT8YCUe3QNeadvFrSFYJ2")
             .collection(createItem.type!).document(hashString).setData([
                 "category": createItem.type!,
-                "cycle": Int(subscribeCycleText)!,
-                "cycleNum": 1,
+                "cycleType": selectedCycle,
+                "cycleValue": getCycleValue(),
                 "fee": subscribeFee,
                 "id": hashString,
                 "startDate": Timestamp(date: subscribeDate),
-                "nextDate": Timestamp(date: subscribeDate),
                 "title": subscribeName,
+                "isLastDate": selectedCycle == 1 ? isLastDate() : false
             ])
+    }
+    
+    // 월간구독일때 마지막날인지
+    func isLastDate() -> Bool {
+        let lastDayOfMonth = lastDayOfMonth(subscribeDate)
+        let getDayValue = getCycleValue()
+        
+        return lastDayOfMonth == getDayValue
+    }
+    
+    // 구독 주기에 따라 반환하는 값
+    // 주간:요일, 월간:날짜, 연간:월일
+    func getCycleValue() -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        
+        if selectedCycle == 0 {
+            dateFormatter.dateFormat = "EE"
+            let value = dateFormatter.string(from: subscribeDate)
+            return value
+        } else if selectedCycle == 1 {
+            dateFormatter.dateFormat = "dd"
+            let value = dateFormatter.string(from: subscribeDate)
+            return value
+        } else if selectedCycle == 2 {
+            dateFormatter.dateFormat = "MMdd"
+            let value = dateFormatter.string(from: subscribeDate)
+            return value
+        } else {
+            return ""
+        }
     }
 
     var body: some View {
@@ -78,16 +100,8 @@ struct CreateItemView: View {
 
                 Group {
                     Spacer().frame(height: 30)
-//                    SubscriptionCycle(cycle: $cycle, subscribeCycleText: $subscribeCycleText, windowWidth: windowWidth)
+                    SubscriptionCycle(selectedCycle: $selectedCycle, cycleOptions: cycleOptions, windowWidth: windowWidth)
                 }
-
-                Picker("구독 갱신 주기를 선택해주세요", selection: $selectedCycle) {
-                    ForEach(cycleOptions.indices) { index in
-                        Text(self.cycleOptions[index])
-                            .tag(cycleOptions[index])
-                    }
-                }
-                .pickerStyle(SegmentedPickerStyle())
 
                 Group {
                     Spacer().frame(height: 30)

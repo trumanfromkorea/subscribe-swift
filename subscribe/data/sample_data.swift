@@ -30,8 +30,9 @@ struct SubscriptionInfo: Hashable {
     var fee: String
     var startDate: Date
     var nextDate: Date
-    var cycle: Int
-    var cycleNum: Int
+    var cycleType: Int
+    var cycleValue: String
+    var isLastDate: Bool
 
     enum SubscriptionInfoKeys: String, CodingKey {
         case id
@@ -40,8 +41,9 @@ struct SubscriptionInfo: Hashable {
         case fee
         case startDate
         case nextDate
-        case cycle
-        case cycleNum
+        case cycleType
+        case cycleValue
+        case isLastDate
     }
 }
 

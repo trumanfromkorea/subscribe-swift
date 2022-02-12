@@ -70,7 +70,7 @@ struct DetailsView: View {
                     HStack {
                         SubscriptionInfoKeyText(label: "구독 주기")
                         Spacer()
-                        Text("\(detailsInfo.cycleNum)개월 마다")
+//                        Text("\(detailsInfo.cycleNum)개월 마다")
                     }
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
 
@@ -137,20 +137,20 @@ struct SubscriptionInfoKeyText: View {
             .font(.system(size: 18, weight: .bold))
     }
 }
-
-struct DetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailsView(
-            detailsInfo: SubscriptionInfo(
-                id: "1",
-                category: "구독 서비스",
-                title: "유튜브 프리미엄",
-                fee: "14000",
-                startDate: Date(),
-                nextDate: Date(),
-                cycle: 1,
-                cycleNum: 1
-            )
-        )
-    }
-}
+//
+//struct DetailsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DetailsView(
+//            detailsInfo: SubscriptionInfo(
+//                id: "1",
+//                category: "구독 서비스",
+//                title: "유튜브 프리미엄",
+//                fee: "14000",
+//                startDate: Date(),
+//                nextDate: Date(),
+//                cycle: 1,
+//                cycleNum: 1
+//            )
+//        )
+//    }
+//}

@@ -57,3 +57,34 @@ struct ListItemView: View {
         }
     }
 }
+
+// 리스트 그룹
+struct ListGroupView: View {
+    var data: [SubscriptionInfo]
+    var sum: Int
+    var label: String
+    var dateFormatter: DateFormatter
+
+    var body: some View {
+        VStack {
+            if !data.isEmpty {
+                HStack(alignment: .bottom) {
+                    Text(label)
+                        .font(.system(size: 20, weight: .bold))
+                        .padding(EdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 0))
+
+                    Spacer()
+
+                    Text("총 \(sum)원")
+                        .font(.system(size: 18, weight: .semibold))
+                        .foregroundColor(Color.gray)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
+                }
+            }
+
+            ForEach(data, id: \.self) { data in
+                ListItemView(data: data, dateFormatter: dateFormatter)
+            }
+        }
+    }
+}

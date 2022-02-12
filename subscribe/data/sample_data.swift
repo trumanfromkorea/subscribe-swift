@@ -23,28 +23,3 @@ struct User: Codable {
     }
 }
 
-struct SubscriptionInfo: Hashable {
-    var id: String
-    var category: String
-    var title: String
-    var fee: String
-    var startDate: Date
-    var nextDate: Date
-    var cycleType: Int
-    var cycleValue: String
-    var isLastDate: Bool
-
-    enum SubscriptionInfoKeys: String, CodingKey {
-        case id
-        case category
-        case title
-        case fee
-        case startDate
-        case nextDate
-        case cycleType
-        case cycleValue
-        case isLastDate
-    }
-}
-
-

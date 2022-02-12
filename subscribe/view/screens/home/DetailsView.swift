@@ -70,7 +70,7 @@ struct DetailsView: View {
                     HStack {
                         SubscriptionInfoKeyText(label: "구독 주기")
                         Spacer()
-//                        Text("\(detailsInfo.cycleNum)개월 마다")
+                        Text(detailsInfo.cycleType == 0 ? "주간 구독" : detailsInfo.cycleType == 1 ? "월간 구독" : "연간 구독")
                     }
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
 

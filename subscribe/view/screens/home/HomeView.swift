@@ -89,38 +89,27 @@ struct HomeView: View {
 
                         TotalCostView()
 
-                        Group {
-                            if subscriptionListManager.serviceList != nil && !subscriptionListManager.serviceList!.isEmpty {
-                                Text("🧮 구독 서비스")
-                                    .font(.system(size: 20, weight: .bold))
-                                    .padding(EdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 0))
-                            }
-                            ForEach(subscriptionListManager.serviceList ?? [], id: \.self) { data in
-                                ListItemView(data: data, dateFormatter: outputDate)
-                            }
-                        }
-                        
-                        Group {
-                            if subscriptionListManager.livingsList != nil && !subscriptionListManager.livingsList!.isEmpty {
-                                Text("🛋 생활비")
-                                    .font(.system(size: 20, weight: .bold))
-                                    .padding(EdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 0))
-                            }
-                            ForEach(subscriptionListManager.livingsList ?? [], id: \.self) { data in
-                                ListItemView(data: data, dateFormatter: outputDate)
-                            }
-                        }
-                        
-                        Group {
-                            if subscriptionListManager.etcList != nil && !subscriptionListManager.etcList!.isEmpty {
-                                Text("🎸 기타 지출")
-                                    .font(.system(size: 20, weight: .bold))
-                                    .padding(EdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 0))
-                            }
-                            ForEach(subscriptionListManager.etcList ?? [], id: \.self) { data in
-                                ListItemView(data: data, dateFormatter: outputDate)
-                            }
-                        }
+                        ListGroupView(
+                            data: subscriptionListManager.serviceList ?? [],
+                            sum: subscriptionListManager.serviceSum,
+                            label: "🧮 구독 서비스",
+                            dateFormatter: outputDate
+                        )
+
+                        ListGroupView(
+                            data: subscriptionListManager.livingsList ?? [],
+                            sum: subscriptionListManager.livingsSum,
+                            label: "🛋 생활비",
+                            dateFormatter: outputDate
+                        )
+
+                        ListGroupView(
+                            data: subscriptionListManager.etcList ?? [],
+                            sum: subscriptionListManager.etcSum,
+                            label: "🎸 기타 지출",
+                            dateFormatter: outputDate
+                        )
+                        Spacer().frame(height: 40)
                     }
                 }
                 .disabled(offset != 0) // bottom sheet 올라와있으면 스크롤 금지
@@ -138,10 +127,10 @@ struct HomeView: View {
                     .offset(x: (windowWidth - 50) / 2 - 15, y: (windowHeight - 50) / 2 - 15)
 
                 // 데이터 로딩
-                let isDataNil: Bool = self.subscriptionListManager.serviceList == nil || self.subscriptionListManager.livingsList == nil || self.subscriptionListManager.etcList == nil
-
-                
-                if isDataNil {
+                if self.subscriptionListManager.serviceList == nil
+                    || self.subscriptionListManager.livingsList == nil
+                    || self.subscriptionListManager.etcList == nil
+                {
                     ProgressView()
                         .scaleEffect(1.5)
                         .frame(width: 100, height: 100, alignment: .center)

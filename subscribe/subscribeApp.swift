@@ -22,6 +22,8 @@ struct subscribeApp: App {
                 .environmentObject(UserInfoManager())
                 .environmentObject(SubscriptionListManager())
                 .environmentObject(CreateItemManager())
+                .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
+
         }
     }
 }

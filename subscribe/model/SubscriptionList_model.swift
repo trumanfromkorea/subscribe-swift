@@ -57,11 +57,10 @@ class SubscriptionListManager: ObservableObject {
     func fetchSubscriptionList() {
         let uid: String? = Auth.auth().currentUser?.uid
 
-        let db = Firestore.firestore()
+        let db = Firestore.firestore().collection("subscriptions").document(uid ?? "zwYEL3pFT8YCUe3QNeadvFrSFYJ2")
 
         // 구독 서비스 가져오기
-        db.collection("subscriptions").document(uid ?? "zwYEL3pFT8YCUe3QNeadvFrSFYJ2")
-            .collection("services").getDocuments { snapshot, error in
+        db.collection("services").getDocuments { snapshot, error in
 
                 self.serviceList = []
 
@@ -82,8 +81,7 @@ class SubscriptionListManager: ObservableObject {
             }
         
         // 생활비 지출 가져오기
-        db.collection("subscriptions").document(uid ?? "zwYEL3pFT8YCUe3QNeadvFrSFYJ2")
-            .collection("livings").getDocuments { snapshot, error in
+        db.collection("livings").getDocuments { snapshot, error in
 
                 self.livingsList = []
 
@@ -104,8 +102,7 @@ class SubscriptionListManager: ObservableObject {
             }
         
         // 기타 지출 가져오기
-        db.collection("subscriptions").document(uid ?? "zwYEL3pFT8YCUe3QNeadvFrSFYJ2")
-            .collection("etc").getDocuments { snapshot, error in
+        db.collection("etc").getDocuments { snapshot, error in
 
                 self.etcList = []
 

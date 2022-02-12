@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0D0BE09827B64F6D0043F98D /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BE09727B64F6D0043F98D /* ListItemView.swift */; };
-		0D0BE09A27B665860043F98D /* View_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BE09927B665860043F98D /* View_extension.swift */; };
+		0D0BE09A27B665860043F98D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BE09927B665860043F98D /* Extensions.swift */; };
 		0D0BF7C227A52C4100CB9E44 /* TotalCostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BF7C127A52C4100CB9E44 /* TotalCostView.swift */; };
 		0D0BF7C727A52F1D00CB9E44 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 0D0BF7C627A52F1D00CB9E44 /* PartialSheet */; };
 		0D0BF7CB27A536AD00CB9E44 /* CustomCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BF7CA27A536AD00CB9E44 /* CustomCorner.swift */; };
@@ -61,7 +61,7 @@
 
 /* Begin PBXFileReference section */
 		0D0BE09727B64F6D0043F98D /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
-		0D0BE09927B665860043F98D /* View_extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View_extension.swift; sourceTree = "<group>"; };
+		0D0BE09927B665860043F98D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0D0BF7C127A52C4100CB9E44 /* TotalCostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCostView.swift; sourceTree = "<group>"; };
 		0D0BF7CA27A536AD00CB9E44 /* CustomCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCorner.swift; sourceTree = "<group>"; };
 		0D0BF7CC27A542AF00CB9E44 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
@@ -281,7 +281,7 @@
 				0DCC9C96278DAEC70000E684 /* FirebaseAuth_model.swift */,
 				0D79DAE127B61EB800EB7AC2 /* UserInfo_model.swift */,
 				0D79DAE327B62C0F00EB7AC2 /* SubscriptionList_model.swift */,
-				0D0BE09927B665860043F98D /* View_extension.swift */,
+				0D0BE09927B665860043F98D /* Extensions.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -593,7 +593,7 @@
 				0D0BF7D227A561EE00CB9E44 /* BottomSheetItemView.swift in Sources */,
 				0D0BF7CB27A536AD00CB9E44 /* CustomCorner.swift in Sources */,
 				0D0BF7C227A52C4100CB9E44 /* TotalCostView.swift in Sources */,
-				0D0BE09A27B665860043F98D /* View_extension.swift in Sources */,
+				0D0BE09A27B665860043F98D /* Extensions.swift in Sources */,
 				0D478DCD278D9BC600F9F0D9 /* subscribeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

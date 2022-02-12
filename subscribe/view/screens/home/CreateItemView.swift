@@ -23,6 +23,9 @@ struct CreateItemView: View {
 
     @State var cycle: subscribeCycle = .none
 
+    var cycleOptions = ["매주", "매월", "매년"]
+    @State var selectedCycle = 3
+
     @State var subscribeName: String = ""
     @State var subscribeFee: String = ""
     @State var subscribeCycleText: String = ""
@@ -75,8 +78,16 @@ struct CreateItemView: View {
 
                 Group {
                     Spacer().frame(height: 30)
-                    SubscriptionCycle(cycle: $cycle, subscribeCycleText: $subscribeCycleText, windowWidth: windowWidth)
+//                    SubscriptionCycle(cycle: $cycle, subscribeCycleText: $subscribeCycleText, windowWidth: windowWidth)
                 }
+
+                Picker("구독 갱신 주기를 선택해주세요", selection: $selectedCycle) {
+                    ForEach(cycleOptions.indices) { index in
+                        Text(self.cycleOptions[index])
+                            .tag(cycleOptions[index])
+                    }
+                }
+                .pickerStyle(SegmentedPickerStyle())
 
                 Group {
                     Spacer().frame(height: 30)
@@ -113,7 +124,6 @@ struct CreateItemView: View {
                 Spacer().frame(height: 30)
             }
         }
-        .gesture(DragGesture().onChanged {_ in hideKeyboard() })
         .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
         .navigationBarTitle("구독 추가하기", displayMode: .inline)
     }

@@ -139,6 +139,7 @@ struct HomeView: View {
 
                 // 데이터 로딩
                 let isDataNil: Bool = self.subscriptionListManager.serviceList == nil || self.subscriptionListManager.livingsList == nil || self.subscriptionListManager.etcList == nil
+
                 
                 if isDataNil {
                     ProgressView()

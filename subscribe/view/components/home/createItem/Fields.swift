@@ -34,10 +34,10 @@ struct SubscriptionFee: View {
             VStack(alignment: .leading) {
                 Text("구독 요금")
                     .font(.system(size: 20, weight: .bold))
-                    .keyboardType(.numberPad)
 
                 TextField("구독 요금을 입력해주세요", text: $priceText)
                     .textFieldStyle(.roundedBorder)
+                    .keyboardType(.numberPad)
             }
         }
     }

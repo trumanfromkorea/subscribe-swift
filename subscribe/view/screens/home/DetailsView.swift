@@ -5,6 +5,8 @@
 //  Created by 장재훈 on 2022/02/04.
 //
 
+import FirebaseAuth
+import FirebaseFirestore
 import SwiftUI
 
 struct DetailsView: View {
@@ -15,6 +17,23 @@ struct DetailsView: View {
 
     @State var showAlert: Bool = false
 
+    // 아이템 삭제
+    func deleteItem() {
+        let uid: String = Auth.auth().currentUser!.uid
+        let docId: String = detailsInfo.id
+        let category: String = detailsInfo.category
+
+        let docRef: DocumentReference = Firestore.firestore().collection("subscriptions").document(uid)
+
+        docRef.collection(category).document(docId).delete { error in
+            if let error: Error = error {
+                print("삭제 오류 : \(error)")
+            } else {
+                print("삭제되었습니다")
+            }
+        }
+    }
+
 //    init() {
 //        navigationController.navigationBar.topItem?.title = ""
 //    }
@@ -24,66 +43,9 @@ struct DetailsView: View {
             let windowWidth = proxy.size.width
 
             VStack(alignment: .leading) {
-                Spacer().frame(height: 50)
+                DetailsTitleView(title: detailsInfo.title, date: detailsInfo.startDate, dateFormatter: dateFormatter)
 
-                Text(detailsInfo.title)
-                    .foregroundColor(.black)
-                    .font(.system(size: 35, weight: .bold))
-                
-                Spacer().frame(height: 10)
-
-                HStack(alignment: .bottom) {
-                    Text("구독 시작일 ")
-                        .foregroundColor(.gray)
-                        .font(.system(size: 16))
-                    Text(dateFormatter.string(from: detailsInfo.startDate))
-                        .font(.system(size: 18))
-                }
-
-                Divider().frame(height: 30)
-
-                HStack {
-                    Text("정보")
-                        .font(.system(size: 22, weight: .bold))
-                        .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0))
-
-                    Spacer()
-
-                    Text(detailsInfo.category)
-                        .foregroundColor(.blue)
-                        .fontWeight(.semibold)
-                        .padding(EdgeInsets(top: 5, leading: 15, bottom: 5, trailing: 15))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 100)
-                                .stroke(.blue, lineWidth: 2)
-                        )
-                }
-
-                VStack {
-                    HStack {
-                        SubscriptionInfoKeyText(label: "구독 요금")
-                        Spacer()
-                        Text("\(detailsInfo.fee) 원")
-                    }
-                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
-
-                    HStack {
-                        SubscriptionInfoKeyText(label: "구독 주기")
-                        Spacer()
-                        Text(detailsInfo.cycleType == 0 ? "주간 구독" : detailsInfo.cycleType == 1 ? "월간 구독" : "연간 구독")
-                    }
-                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
-
-                    HStack {
-                        SubscriptionInfoKeyText(label: "다음 결제일")
-                        Spacer()
-                        Text(dateFormatter.string(from: detailsInfo.nextDate))
-                    }
-                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
-                }
-                .padding()
-                .background(Color(hex: 0xF7F7F7))
-                .cornerRadius(10)
+                DetailsInfoView(detailsInfo: detailsInfo, dateFormatter: dateFormatter)
 
                 Spacer()
 
@@ -114,7 +76,7 @@ struct DetailsView: View {
                         title: Text("삭제"),
                         message: Text("정말 삭제하시겠습니까? 삭제한 데이터는 복구가 불가능합니다."),
                         primaryButton: .default(Text("취소")),
-                        secondaryButton: .default(Text("삭제"))
+                        secondaryButton: .default(Text("삭제"), action: { deleteItem() })
                     )
                 }
             }
@@ -137,8 +99,9 @@ struct SubscriptionInfoKeyText: View {
             .font(.system(size: 18, weight: .bold))
     }
 }
+
 //
-//struct DetailsView_Previews: PreviewProvider {
+// struct DetailsView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        DetailsView(
 //            detailsInfo: SubscriptionInfo(
@@ -153,4 +116,4 @@ struct SubscriptionInfoKeyText: View {
 //            )
 //        )
 //    }
-//}
+// }

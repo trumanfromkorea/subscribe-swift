@@ -10,8 +10,7 @@ import SwiftUI
 // 상세보기 제목 부분
 struct DetailsTitleView: View {
     var title: String
-    var date: Date
-    var dateFormatter: DateFormatter
+    var date: String
 
     var body: some View {
         Spacer().frame(height: 50)
@@ -26,7 +25,7 @@ struct DetailsTitleView: View {
             Text("구독 시작일 ")
                 .foregroundColor(.gray)
                 .font(.system(size: 16))
-            Text(dateFormatter.string(from: date))
+            Text(date)
                 .font(.system(size: 18))
         }
 
@@ -37,7 +36,7 @@ struct DetailsTitleView: View {
 // 상세보기 정보 부분
 struct DetailsInfoView: View {
     var detailsInfo: SubscriptionInfo
-    var dateFormatter: DateFormatter
+    var nextDate: String
 
     var body: some View {
         HStack {
@@ -61,7 +60,7 @@ struct DetailsInfoView: View {
             HStack {
                 SubscriptionInfoKeyText(label: "구독 요금")
                 Spacer()
-                Text("\(detailsInfo.fee) 원")
+                Text("\(Int(detailsInfo.fee)!) 원")
             }
             .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
 
@@ -75,7 +74,7 @@ struct DetailsInfoView: View {
             HStack {
                 SubscriptionInfoKeyText(label: "다음 결제일")
                 Spacer()
-                Text(dateFormatter.string(from: detailsInfo.nextDate))
+                Text(nextDate)
             }
             .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
         }

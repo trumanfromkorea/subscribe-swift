@@ -28,7 +28,7 @@ struct ListItemView: View {
                                 .font(.system(size: 15))
                                 .foregroundColor(Color(hex: 0x454545))
 
-                            Text("\(data.fee) 원")
+                            Text("\(Int(data.fee)!) 원")
                                 .foregroundColor(.black.opacity(0.9))
                                 .font(.system(size: 17, weight: .semibold))
                         }

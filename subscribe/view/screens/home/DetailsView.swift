@@ -43,9 +43,15 @@ struct DetailsView: View {
             let windowWidth = proxy.size.width
 
             VStack(alignment: .leading) {
-                DetailsTitleView(title: detailsInfo.title, date: detailsInfo.startDate, dateFormatter: dateFormatter)
+                DetailsTitleView(
+                    title: detailsInfo.title,
+                    date: dateFormatter.string(from: detailsInfo.startDate)
+                )
 
-                DetailsInfoView(detailsInfo: detailsInfo, dateFormatter: dateFormatter)
+                DetailsInfoView(
+                    detailsInfo: detailsInfo,
+                    nextDate: dateFormatter.string(from: detailsInfo.nextDate)
+                )
 
                 Spacer()
 

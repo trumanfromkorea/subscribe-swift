@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TotalCostView: View {
+    
+    @EnvironmentObject var subscription: SubscriptionListManager
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 5) {
@@ -34,7 +37,8 @@ struct TotalCostView: View {
                         .foregroundColor(Color(hex: 0x454545))
                         .frame(width: 80, alignment: .leading)
                                         
-                    Text("300,000 원")
+                    let totalFee: Int = subscription.serviceSum + subscription.livingsSum + subscription.etcSum
+                    Text("\(totalFee) 원")
                         .font(.system(size:18, weight: .semibold))
                 }
             }

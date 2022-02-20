@@ -39,7 +39,7 @@ struct TotalCostView: View {
                                         
                     let totalFee: Int = subscription.serviceSum + subscription.livingsSum + subscription.etcSum
                     Text("\(totalFee) 원")
-                        .font(.system(size:18, weight: .semibold))
+                        .font(.system(size:18, weight: .semibold))                     
                 }
             }
             Spacer()

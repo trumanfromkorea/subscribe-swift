@@ -47,36 +47,39 @@ struct CreateItemView: View {
                 "id": hashString,
                 "startDate": Timestamp(date: subscribeDate),
                 "title": subscribeName,
-                "isLastDate": selectedCycle == 1 ? isLastDate() : false
+                "isLastDate": selectedCycle == 1 ? isLastDate() : false,
             ])
     }
-    
+
     // 월간구독일때 마지막날인지
     func isLastDate() -> Bool {
-        let lastDayOfMonth = lastDayOfMonth(subscribeDate)
-        let getDayValue = getCycleValue()
-        
+        let dateFormatter: DateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "dd"
+
+        let lastDate: Date = lastDayOfMonth(subscribeDate)
+        let lastDayOfMonth: String = dateFormatter.string(from: lastDate)
+
+        let getDayValue: String = getCycleValue()
+
         return lastDayOfMonth == getDayValue
     }
-    
+
     // 구독 주기에 따라 반환하는 값
     // 주간:요일, 월간:날짜, 연간:월일
-    func getCycleValue() -> String{
+    func getCycleValue() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ko_KR")
-        
+
         if selectedCycle == 0 {
             dateFormatter.dateFormat = "EE"
-            let value = dateFormatter.string(from: subscribeDate)
-            return value
+            return dateFormatter.string(from: subscribeDate)
         } else if selectedCycle == 1 {
             dateFormatter.dateFormat = "dd"
-            let value = dateFormatter.string(from: subscribeDate)
-            return value
+            return dateFormatter.string(from: subscribeDate)
         } else if selectedCycle == 2 {
             dateFormatter.dateFormat = "MMdd"
-            let value = dateFormatter.string(from: subscribeDate)
-            return value
+            return dateFormatter.string(from: subscribeDate)
         } else {
             return ""
         }

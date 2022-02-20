@@ -16,7 +16,7 @@ struct CreateItemView: View {
     @EnvironmentObject var subscriptionListManager: SubscriptionListManager
 
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
+
     var cycleOptions = ["매주", "매월", "매년"]
     @State var selectedCycle = 3
 
@@ -34,14 +34,14 @@ struct CreateItemView: View {
     }
 
     func uploadItem() {
-        let uid: String? = Auth.auth().currentUser?.uid
+        let uid: String = Auth.auth().currentUser!.uid
         let db = Firestore.firestore()
 
         let data = subscribeName.data(using: .utf8)
         let sha256 = SHA256.hash(data: data!)
         let hashString = sha256.compactMap { String(format: "%02x", $0) }.joined()
 
-        db.collection("subscriptions").document(uid ?? "zwYEL3pFT8YCUe3QNeadvFrSFYJ2")
+        db.collection("subscriptions").document(uid)
             .collection(createItem.type!).document(hashString).setData([
                 "category": createItem.type!,
                 "cycleType": selectedCycle,

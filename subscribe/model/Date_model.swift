@@ -71,7 +71,7 @@ func isSameMonth(_ date: Date) -> Bool {
     return thisMonth == compareMonth
 }
 
-// MARK: 다음 구독날짜 계산 메소드
+// MARK: - 다음 구독날짜 계산 메소드
 
 // 다음 구독 날짜 계산 메소드
 func nextDateCalculator(_ cycleType: Int, _ cycleValue: String) -> Date {

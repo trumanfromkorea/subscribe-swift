@@ -38,6 +38,7 @@
 		0DCC9C97278DAEC70000E684 /* FirebaseAuth_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCC9C96278DAEC70000E684 /* FirebaseAuth_model.swift */; };
 		0DCC9C9A278DB9490000E684 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCC9C99278DB9490000E684 /* HomeView.swift */; };
 		0DCC9C9C278DBB0E0000E684 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCC9C9B278DBB0E0000E684 /* ProfileView.swift */; };
+		0DFB4A0A27C2515C00448275 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFB4A0927C2515C00448275 /* SignupView.swift */; };
 		33B5F9DBEC155098244A2A53 /* Pods_subscribe_subscribeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31313A4A6504EFDC1649DA5 /* Pods_subscribe_subscribeUITests.framework */; };
 		3FB0D69EDF205BB5D855B062 /* Pods_subscribeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D3B9B105914F7EB317FD8DE /* Pods_subscribeTests.framework */; };
 		B1A3571AC58D8765BDB0F4B9 /* Pods_subscribe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9099AC2703E6D9D2877CF3FC /* Pods_subscribe.framework */; };
@@ -96,6 +97,7 @@
 		0DCC9C99278DB9490000E684 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0DCC9C9B278DBB0E0000E684 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		0DD8D9BF279D78AA00A7BD1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0DFB4A0927C2515C00448275 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		38EFCAB8ED164ADD95348749 /* Pods-subscribe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-subscribe.debug.xcconfig"; path = "Target Support Files/Pods-subscribe/Pods-subscribe.debug.xcconfig"; sourceTree = "<group>"; };
 		3D744A62CBA0F5BE8B48D74A /* Pods-subscribe-subscribeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-subscribe-subscribeUITests.debug.xcconfig"; path = "Target Support Files/Pods-subscribe-subscribeUITests/Pods-subscribe-subscribeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5193F106DA724931127E9E1A /* Pods-subscribeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-subscribeTests.release.xcconfig"; path = "Target Support Files/Pods-subscribeTests/Pods-subscribeTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				0D452162278DA3D200B81AE8 /* LoginView.swift */,
+				0DFB4A0927C2515C00448275 /* SignupView.swift */,
 			);
 			path = auth;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 			files = (
 				0DCC9C9C278DBB0E0000E684 /* ProfileView.swift in Sources */,
 				0DCC9C94278DA8C60000E684 /* UserAuth_model.swift in Sources */,
+				0DFB4A0A27C2515C00448275 /* SignupView.swift in Sources */,
 				0DCC9C9A278DB9490000E684 /* HomeView.swift in Sources */,
 				0D2A1D5F27B7D29400526266 /* DetailsComponents.swift in Sources */,
 				0D0BE09827B64F6D0043F98D /* ListItemView.swift in Sources */,
@@ -774,11 +778,13 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = subscribe/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Superscribe;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -808,11 +814,13 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = subscribe/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Superscribe;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

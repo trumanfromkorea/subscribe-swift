@@ -11,6 +11,7 @@ import Foundation
 
 class UserAuth: ObservableObject {
     @Published var isSignedIn: Bool = false
+    @Published var firstLogin: Bool = true
 
     func signIn(credential: AuthCredential) {
         Auth.auth().signIn(with: credential) { _, error in

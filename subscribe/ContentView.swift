@@ -28,6 +28,8 @@ struct ContentView: View {
                             userAuth.isSignedIn = true
                         }
                     }
+            } else if userInfoManager.firstLogin {
+                SignupView()
             } else {
                 MainView()
                     .onAppear {

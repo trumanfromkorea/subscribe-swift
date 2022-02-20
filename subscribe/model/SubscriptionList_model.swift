@@ -70,9 +70,9 @@ class SubscriptionListManager: ObservableObject {
 
     // 구독 정보 가져오기
     func fetchSubscriptionList() {
-        let uid: String? = Auth.auth().currentUser?.uid
+        let uid: String = Auth.auth().currentUser!.uid
 
-        let db: DocumentReference = Firestore.firestore().collection("subscriptions").document(uid ?? "zwYEL3pFT8YCUe3QNeadvFrSFYJ2")
+        let db: DocumentReference = Firestore.firestore().collection("subscriptions").document(uid)
 
         resetSum()
         

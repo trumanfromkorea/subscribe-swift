@@ -13,7 +13,10 @@ import UIKit
 
 struct CreateItemView: View {
     @EnvironmentObject var createItem: CreateItemManager
+    @EnvironmentObject var subscriptionListManager: SubscriptionListManager
 
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     var cycleOptions = ["매주", "매월", "매년"]
     @State var selectedCycle = 3
 
@@ -72,8 +75,9 @@ struct CreateItemView: View {
         dateFormatter.locale = Locale(identifier: "ko_KR")
 
         if selectedCycle == 0 {
-            dateFormatter.dateFormat = "EE"
-            return dateFormatter.string(from: subscribeDate)
+            let calendar: Calendar = Calendar(identifier: .gregorian)
+            let value: String = String(calendar.dateComponents([.weekday], from: subscribeDate).weekday!)
+            return value
         } else if selectedCycle == 1 {
             dateFormatter.dateFormat = "dd"
             return dateFormatter.string(from: subscribeDate)
@@ -132,6 +136,8 @@ struct CreateItemView: View {
                                 Text("확인"),
                                 action: {
                                     uploadItem()
+                                    subscriptionListManager.fetchSubscriptionList()
+                                    self.presentationMode.wrappedValue.dismiss()
                                 }
                             )
                         )

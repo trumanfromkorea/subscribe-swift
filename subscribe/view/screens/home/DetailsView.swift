@@ -16,6 +16,8 @@ struct DetailsView: View {
     private let dateFormatter: DateFormatter = DateFormatter()
 
     @State var showAlert: Bool = false
+    @EnvironmentObject var subscriptionListManager: SubscriptionListManager
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     // 아이템 삭제
     func deleteItem() {
@@ -33,10 +35,6 @@ struct DetailsView: View {
             }
         }
     }
-
-//    init() {
-//        navigationController.navigationBar.topItem?.title = ""
-//    }
 
     var body: some View {
         GeometryReader { proxy in
@@ -82,7 +80,14 @@ struct DetailsView: View {
                         title: Text("삭제"),
                         message: Text("정말 삭제하시겠습니까? 삭제한 데이터는 복구가 불가능합니다."),
                         primaryButton: .default(Text("취소")),
-                        secondaryButton: .default(Text("삭제"), action: { deleteItem() })
+                        secondaryButton:
+                        .default(Text("삭제"),
+                                 action: {
+                                     deleteItem()
+                                     subscriptionListManager.fetchSubscriptionList()
+                                     self.presentationMode.wrappedValue.dismiss()
+                                 }
+                        )
                     )
                 }
             }

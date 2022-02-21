@@ -7,6 +7,8 @@
 
 import Combine
 import FirebaseAuth
+import FirebaseFirestore
+import AuthenticationServices
 import Foundation
 
 class UserAuth: ObservableObject {
@@ -31,6 +33,35 @@ class UserAuth: ObservableObject {
             print("로그아웃 성공")
         } catch {
             print("로그아웃 오류 - \(error)")
+        }
+    }
+
+    func deleteUser() async throws {
+        let currentUser = Auth.auth().currentUser!
+        
+        do {
+            let token = try await currentUser.getIDToken()
+            let appleIdProvider = ASAuthorizationAppleIDProvider().createRequest()
+            let appleIdController = ASAuthorizationController(authorizationRequests: [appleIdProvider])
+            
+            let nonce = randomNonceString()
+            let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: token, rawNonce: nonce)
+            
+            try await currentUser.reauthenticate(with: credential)
+        } catch {
+            print("재인증 관련 에러 : \(error)")
+        }
+        
+
+        let db = Firestore.firestore()
+
+        do {
+            try await db.collection("subscriptions").document(currentUser.uid).delete()
+            try await db.collection("users").document(currentUser.uid).delete()
+            try await Auth.auth().currentUser!.delete()
+            self.isSignedIn = false
+        } catch {
+            print(error)
         }
     }
 }

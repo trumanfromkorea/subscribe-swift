@@ -26,15 +26,21 @@ struct ContentView: View {
                     .onAppear {
                         if Auth.auth().currentUser != nil {
                             userAuth.isSignedIn = true
+                        } else {
+                            userAuth.isSignedIn = false
                         }
                     }
             } else if userInfoManager.firstLogin {
                 SignupView()
             } else {
+                var _: Void = userInfoManager.fetchUserInfo()
+                
                 MainView()
                     .onAppear {
                         if Auth.auth().currentUser != nil {
                             userAuth.isSignedIn = true
+                        } else {
+                            userAuth.isSignedIn = false
                         }
                     }
             }

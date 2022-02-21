@@ -11,6 +11,8 @@ import SwiftUI
 
 struct LoginView: View {
     @EnvironmentObject var userAuth: UserAuth
+    @EnvironmentObject var userInfoManager: UserInfoManager
+
     @State var currentNonce: String?
 
     var body: some View {
@@ -46,7 +48,7 @@ struct LoginView: View {
                             let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
 
                             userAuth.signIn(credential: credential)
-
+                            
                         default:
                             break
                         }

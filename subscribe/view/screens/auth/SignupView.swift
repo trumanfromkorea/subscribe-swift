@@ -13,7 +13,6 @@ struct SignupView: View {
     @EnvironmentObject var userAuth: UserAuth
     @EnvironmentObject var userInfoManager: UserInfoManager
 
-
     @State var userName: String = ""
     @State var showAlert: Bool = false
 

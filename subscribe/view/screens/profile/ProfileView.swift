@@ -9,6 +9,10 @@ import SwiftUI
 
 struct ProfileView: View {
     @EnvironmentObject var userAuth: UserAuth
+    
+    @State var canDelete: Bool = false
+    
+    @State var showModal = false
 
     var body: some View {
         ZStack {
@@ -28,6 +32,24 @@ struct ProfileView: View {
                 })
                 
                 Divider()
+                
+                Button(action: {
+                    showModal = true
+//                    Task {
+//                       try await userAuth.deleteUser()
+//                    }
+                }, label: {
+                    Text("탈퇴하기")
+                    
+                    Spacer()
+
+                    Image(systemName: "chevron.right")
+                }).sheet(isPresented: self.$showModal) {
+                    ReauthenticateView(canDelete: $canDelete)
+                }
+
+                
+                Divider()
             }
         }
         .navigationTitle("")
@@ -35,8 +57,8 @@ struct ProfileView: View {
     }
 }
 
-struct ProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileView()
-    }
-}
+//struct ProfileView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProfileView()
+//    }
+//}

@@ -11,8 +11,9 @@ import FirebaseFirestore
 import FirebaseAuth
 
 class UserInfoManager: ObservableObject {
+    
     @Published var userName: String = ""
-    @Published var firstLogin: Bool = false
+    @Published var firstLogin: Bool = true
     
     init() {
         fetchUserInfo()
@@ -20,10 +21,14 @@ class UserInfoManager: ObservableObject {
     
     func fetchUserInfo() {
         
-        let uid: String = Auth.auth().currentUser!.uid
+        let uid: String? = Auth.auth().currentUser?.uid
+        
+        if uid == nil {
+            return
+        }
         
         let db = Firestore.firestore()
-        let docRef = db.collection("users").document(uid)
+        let docRef = db.collection("users").document(uid!)
         
         docRef.getDocument { document, error in
             guard error == nil

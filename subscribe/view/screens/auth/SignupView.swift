@@ -60,7 +60,7 @@ struct SignupView: View {
                                     uploadUserInfo()
                                     subscriptionManager.fetchSubscriptionList()
                                     userAuth.isSignedIn = true
-                                    userInfoManager.firstLogin = false
+                                    userInfoManager.fetchUserInfo()
                                 }
                             )
                         )

@@ -22,11 +22,11 @@ struct LoginView: View {
 
             SignInWithAppleButton(
                 onRequest: { request in
-                    let nonce = randomNonceString()
+                    let nonce = FBAuth.randomNonceString()
                     currentNonce = nonce
 
                     request.requestedScopes = [.fullName, .email]
-                    request.nonce = sha256(nonce)
+                    request.nonce = FBAuth.sha256(nonce)
                 },
                 onCompletion: { result in
                     switch result {

@@ -37,18 +37,23 @@ class UserAuth: ObservableObject {
         }
     }
 
-    func deleteUser() async throws {
+    func deleteUser(completion: @escaping (Result<Bool, Error>) -> Void)  {
         let currentUser = Auth.auth().currentUser!
-
         let db = Firestore.firestore()
-
-        do {
-            try await db.collection("subscriptions").document(currentUser.uid).delete()
-            try await db.collection("users").document(currentUser.uid).delete()
-            try await Auth.auth().currentUser!.delete()
-            self.isSignedIn = false
-        } catch {
-            print(error)
+        
+        db.collection("subscriptions").document(currentUser.uid).delete { subResult in
+            db.collection("users").document(currentUser.uid).delete { userResult in
+                currentUser.delete { error in
+                    if let error = error {
+                        completion(.failure(error))
+                    } else {
+                        self.isSignedIn = false
+                        completion(.success(true))
+                    }
+                }
+            }
         }
+        
+      
     }
 }

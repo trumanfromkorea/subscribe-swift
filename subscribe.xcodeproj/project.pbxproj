@@ -21,6 +21,7 @@
 		0D15986A27B3A7DF00202AB3 /* Fields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D15986927B3A7DF00202AB3 /* Fields.swift */; };
 		0D2188A627C3807600F45C50 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2188A527C3807600F45C50 /* LoadingView.swift */; };
 		0D2188A827C382C200F45C50 /* UI_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2188A727C382C200F45C50 /* UI_model.swift */; };
+		0D2188AA27C388A800F45C50 /* FBAuth_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2188A927C388A800F45C50 /* FBAuth_model.swift */; };
 		0D2A1D5B27B7CE9C00526266 /* subscription_data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2A1D5A27B7CE9C00526266 /* subscription_data.swift */; };
 		0D2A1D5F27B7D29400526266 /* DetailsComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2A1D5E27B7D29400526266 /* DetailsComponents.swift */; };
 		0D452163278DA3D200B81AE8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D452162278DA3D200B81AE8 /* LoginView.swift */; };
@@ -78,6 +79,7 @@
 		0D15986927B3A7DF00202AB3 /* Fields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fields.swift; sourceTree = "<group>"; };
 		0D2188A527C3807600F45C50 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		0D2188A727C382C200F45C50 /* UI_model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI_model.swift; sourceTree = "<group>"; };
+		0D2188A927C388A800F45C50 /* FBAuth_model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBAuth_model.swift; sourceTree = "<group>"; };
 		0D2A1D5A27B7CE9C00526266 /* subscription_data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subscription_data.swift; sourceTree = "<group>"; };
 		0D2A1D5E27B7D29400526266 /* DetailsComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsComponents.swift; sourceTree = "<group>"; };
 		0D452161278D9F9500B81AE8 /* subscribe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = subscribe.entitlements; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				0DCC9C96278DAEC70000E684 /* FirebaseAuth_model.swift */,
 				0D79DAE127B61EB800EB7AC2 /* UserInfo_model.swift */,
 				0D79DAE327B62C0F00EB7AC2 /* SubscriptionList_model.swift */,
+				0D2188A927C388A800F45C50 /* FBAuth_model.swift */,
 				0D0BE09927B665860043F98D /* Extensions.swift */,
 				0D12EB2C27B9246400BE8321 /* Date_model.swift */,
 			);
@@ -620,6 +623,7 @@
 				0D0BF7CB27A536AD00CB9E44 /* CustomCorner.swift in Sources */,
 				0D12EB2D27B9246400BE8321 /* Date_model.swift in Sources */,
 				0D0BF7C227A52C4100CB9E44 /* TotalCostView.swift in Sources */,
+				0D2188AA27C388A800F45C50 /* FBAuth_model.swift in Sources */,
 				0D0BE09A27B665860043F98D /* Extensions.swift in Sources */,
 				0D06F96827C35F7200FEBEA4 /* ReauthenticateView.swift in Sources */,
 				0D478DCD278D9BC600F9F0D9 /* subscribeApp.swift in Sources */,

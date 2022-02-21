@@ -13,6 +13,11 @@ struct ReauthenticateView: View {
     @State var errorText: String = ""
     @Binding var canDelete: Bool
 
+    @EnvironmentObject var userAuth: UserAuth
+    @EnvironmentObject var userInfoManager: UserInfoManager
+
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
     func handleResult(result: Result<Bool, Error>) {
         switch result {
         case .success:
@@ -30,15 +35,20 @@ struct ReauthenticateView: View {
         Text(errorText)
 
         Button {
+            
             if canDelete {
-                deleteUser { result in
+                userAuth.deleteUser { result in
+                    userInfoManager.resetUserInfo()
+                    
                     if case let .failure(error) = result {
                         print(error.localizedDescription)
                     }
                 }
+
             } else {
                 errorText = "기다리세요"
             }
+            self.presentationMode.wrappedValue.dismiss()
         } label: {
             Text(canDelete ? "삭제" : "기다려")
         }
@@ -51,10 +61,10 @@ struct SignInWithAppleButtonView: View {
     var body: some View {
         SignInWithAppleButton(.continue,
                               onRequest: { request in
-                                  let nonce = randomNonceString()
+                                  let nonce = FBAuth.randomNonceString()
                                   currentNonce = nonce
                                   request.requestedScopes = [.fullName, .email]
-                                  request.nonce = sha256(nonce)
+                                  request.nonce = FBAuth.sha256(nonce)
                               },
                               onCompletion: { result in
                                   switch result {
@@ -73,11 +83,11 @@ struct SignInWithAppleButtonView: View {
                                               return
                                           }
                                           if let handleResult = handleResult {
-                                              reauthenticateWithApple(idTokenString: idTokenString, nonce: nonce) { result in
+                                              FBAuth.reauthenticateWithApple(idTokenString: idTokenString, nonce: nonce) { result in
                                                   handleResult(result)
                                               }
                                           } else {
-                                              signInWithApple(idTokenString: idTokenString, nonce: nonce) { result in
+                                              FBAuth.signInWithApple(idTokenString: idTokenString, nonce: nonce) { result in
                                                   switch result {
                                                   case let .failure(error):
                                                       print(error.localizedDescription)
@@ -107,8 +117,8 @@ struct SignInWithAppleButtonView: View {
     }
 }
 
-//struct ReauthenticateView_Previews: PreviewProvider {
+// struct ReauthenticateView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        ReauthenticateView()
 //    }
-//}
+// }

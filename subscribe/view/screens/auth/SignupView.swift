@@ -12,6 +12,7 @@ import SwiftUI
 struct SignupView: View {
     @EnvironmentObject var userAuth: UserAuth
     @EnvironmentObject var userInfoManager: UserInfoManager
+    @EnvironmentObject var subscriptionManager: SubscriptionListManager
 
     @State var userName: String = ""
     @State var showAlert: Bool = false
@@ -57,6 +58,7 @@ struct SignupView: View {
                                 Text("확인"),
                                 action: {
                                     uploadUserInfo()
+                                    subscriptionManager.fetchSubscriptionList()
                                     userAuth.isSignedIn = true
                                     userInfoManager.firstLogin = false
                                 }

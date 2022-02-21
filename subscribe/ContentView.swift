@@ -12,6 +12,7 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var userAuth: UserAuth
     @EnvironmentObject var userInfoManager: UserInfoManager
+    @EnvironmentObject var uiManager: UIManager
 
     init() {
         initializeTabBar()
@@ -30,11 +31,11 @@ struct ContentView: View {
                             userAuth.isSignedIn = false
                         }
                     }
-            } else if userInfoManager.firstLogin {
+            } else if userInfoManager.firstLogin == nil {
+                LoadingView()
+            } else if userInfoManager.firstLogin! {
                 SignupView()
             } else {
-                var _: Void = userInfoManager.fetchUserInfo()
-                
                 MainView()
                     .onAppear {
                         if Auth.auth().currentUser != nil {
@@ -44,6 +45,8 @@ struct ContentView: View {
                         }
                     }
             }
+
+            
         }
     }
 }
@@ -55,6 +58,7 @@ struct ContentView_Previews: PreviewProvider {
             .environmentObject(UserInfoManager())
             .environmentObject(SubscriptionListManager())
             .environmentObject(CreateItemManager())
+            .environmentObject(UIManager())
             .previewInterfaceOrientation(.portrait)
     }
 }

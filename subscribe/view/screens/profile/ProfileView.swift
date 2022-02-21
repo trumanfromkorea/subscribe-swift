@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @EnvironmentObject var userAuth: UserAuth
+    @EnvironmentObject var userInfoManager: UserInfoManager
     
     @State var canDelete: Bool = false
     
@@ -23,6 +24,7 @@ struct ProfileView: View {
                 
                 Button(action: {
                     userAuth.signOut()
+                    userInfoManager.resetUserInfo()
                 }, label: {
                     Text("로그아웃")
                     

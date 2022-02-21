@@ -13,10 +13,15 @@ import FirebaseAuth
 class UserInfoManager: ObservableObject {
     
     @Published var userName: String = ""
-    @Published var firstLogin: Bool = true
+    @Published var firstLogin: Bool?
     
     init() {
         fetchUserInfo()
+    }
+    
+    func resetUserInfo() {
+        self.userName = ""
+        firstLogin = nil
     }
     
     func fetchUserInfo() {
@@ -26,6 +31,8 @@ class UserInfoManager: ObservableObject {
         if uid == nil {
             return
         }
+        
+        print("사용자 정보를 받아옵니다")
         
         let db = Firestore.firestore()
         let docRef = db.collection("users").document(uid!)

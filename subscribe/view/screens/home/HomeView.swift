@@ -11,6 +11,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var userInfoManager: UserInfoManager
     @EnvironmentObject var subscriptionListManager: SubscriptionListManager
+    @EnvironmentObject var uiManager :UIManager
 
     @Binding var offset: CGFloat
     @Binding var lastOffset: CGFloat
@@ -131,13 +132,7 @@ struct HomeView: View {
                     || self.subscriptionListManager.livingsList == nil
                     || self.subscriptionListManager.etcList == nil
                 {
-                    ProgressView()
-                        .scaleEffect(1.5)
-                        .frame(width: 100, height: 100, alignment: .center)
-                        .background(.white)
-                        .cornerRadius(20)
-                        .shadow(color: .black.opacity(0.5), radius: 5)
-                        .progressViewStyle(CircularProgressViewStyle(tint: .blue))
+                    LoadingView()
                 }
             }
         }

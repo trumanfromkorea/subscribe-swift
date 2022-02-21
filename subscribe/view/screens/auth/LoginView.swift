@@ -46,8 +46,8 @@ struct LoginView: View {
                             }
 
                             let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
-
-                            userAuth.signIn(credential: credential)
+                            
+                            userAuth.signIn(credential: credential, userInfoManager: userInfoManager)
                             
                         default:
                             break

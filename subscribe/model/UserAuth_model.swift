@@ -13,16 +13,18 @@ import Foundation
 
 class UserAuth: ObservableObject {
     @Published var isSignedIn: Bool = false
-    @Published var firstLogin: Bool = true
 
-    func signIn(credential: AuthCredential) {
+    func signIn(credential: AuthCredential, userInfoManager: UserInfoManager) {
         Auth.auth().signIn(with: credential) { _, error in
             if error != nil {
                 print(error?.localizedDescription as Any)
                 return
             }
-            print("애플 로그인 성공")
+            
+            userInfoManager.fetchUserInfo()
+            
             self.isSignedIn = true
+            
         }
     }
 
@@ -30,7 +32,6 @@ class UserAuth: ObservableObject {
         do {
             try Auth.auth().signOut()
             isSignedIn = false
-            print("로그아웃 성공")
         } catch {
             print("로그아웃 오류 - \(error)")
         }
@@ -38,20 +39,6 @@ class UserAuth: ObservableObject {
 
     func deleteUser() async throws {
         let currentUser = Auth.auth().currentUser!
-        
-        do {
-            let token = try await currentUser.getIDToken()
-            let appleIdProvider = ASAuthorizationAppleIDProvider().createRequest()
-            let appleIdController = ASAuthorizationController(authorizationRequests: [appleIdProvider])
-            
-            let nonce = randomNonceString()
-            let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: token, rawNonce: nonce)
-            
-            try await currentUser.reauthenticate(with: credential)
-        } catch {
-            print("재인증 관련 에러 : \(error)")
-        }
-        
 
         let db = Firestore.firestore()
 

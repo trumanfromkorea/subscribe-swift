@@ -25,13 +25,16 @@ struct FloatingButtonView: View {
     var body: some View {
         
             Button(action: {
-                showMenu()
+//                showMenu()
+                showMenuItem = true
             }) {
                 Image(systemName: "plus.circle.fill")
                     .resizable()
                     .frame(width: 50, height: 50)
                     .foregroundColor(Color.blue)
                     .shadow(color: .gray, radius: 0.2, x: 1, y: 1)
+            }.sheet(isPresented: self.$showMenuItem) {
+                BottomModalView()
             }
         
     }

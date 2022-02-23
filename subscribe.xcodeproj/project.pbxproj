@@ -41,6 +41,7 @@
 		0DCC9C94278DA8C60000E684 /* UserAuth_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCC9C93278DA8C60000E684 /* UserAuth_model.swift */; };
 		0DCC9C9A278DB9490000E684 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCC9C99278DB9490000E684 /* HomeView.swift */; };
 		0DCC9C9C278DBB0E0000E684 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCC9C9B278DBB0E0000E684 /* ProfileView.swift */; };
+		0DE1663A27C66DF700BD3CBF /* BottomModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE1663927C66DF700BD3CBF /* BottomModalView.swift */; };
 		0DFB4A0A27C2515C00448275 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFB4A0927C2515C00448275 /* SignupView.swift */; };
 		33B5F9DBEC155098244A2A53 /* Pods_subscribe_subscribeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31313A4A6504EFDC1649DA5 /* Pods_subscribe_subscribeUITests.framework */; };
 		3FB0D69EDF205BB5D855B062 /* Pods_subscribeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D3B9B105914F7EB317FD8DE /* Pods_subscribeTests.framework */; };
@@ -103,6 +104,7 @@
 		0DCC9C99278DB9490000E684 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0DCC9C9B278DBB0E0000E684 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		0DD8D9BF279D78AA00A7BD1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0DE1663927C66DF700BD3CBF /* BottomModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomModalView.swift; sourceTree = "<group>"; };
 		0DFB4A0927C2515C00448275 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		38EFCAB8ED164ADD95348749 /* Pods-subscribe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-subscribe.debug.xcconfig"; path = "Target Support Files/Pods-subscribe/Pods-subscribe.debug.xcconfig"; sourceTree = "<group>"; };
 		3D744A62CBA0F5BE8B48D74A /* Pods-subscribe-subscribeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-subscribe-subscribeUITests.debug.xcconfig"; path = "Target Support Files/Pods-subscribe-subscribeUITests/Pods-subscribe-subscribeUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				0D0BF7CA27A536AD00CB9E44 /* CustomCorner.swift */,
 				0D0BF7D127A561EE00CB9E44 /* BottomSheetItemView.swift */,
 				0D0BF7CC27A542AF00CB9E44 /* BottomSheetView.swift */,
+				0DE1663927C66DF700BD3CBF /* BottomModalView.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -617,6 +620,7 @@
 				0D74550E27ACEA5C00122F9C /* CreateItemView.swift in Sources */,
 				0D0BF7D227A561EE00CB9E44 /* BottomSheetItemView.swift in Sources */,
 				0D0BF7CB27A536AD00CB9E44 /* CustomCorner.swift in Sources */,
+				0DE1663A27C66DF700BD3CBF /* BottomModalView.swift in Sources */,
 				0D12EB2D27B9246400BE8321 /* Date_model.swift in Sources */,
 				0D0BF7C227A52C4100CB9E44 /* TotalCostView.swift in Sources */,
 				0D2188AA27C388A800F45C50 /* FBAuth_model.swift in Sources */,

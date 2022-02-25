@@ -41,6 +41,8 @@
 		0DCC9C94278DA8C60000E684 /* UserAuth_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCC9C93278DA8C60000E684 /* UserAuth_model.swift */; };
 		0DCC9C9A278DB9490000E684 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCC9C99278DB9490000E684 /* HomeView.swift */; };
 		0DCC9C9C278DBB0E0000E684 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCC9C9B278DBB0E0000E684 /* ProfileView.swift */; };
+		0DDCCA7C27C8CBC8000E2454 /* DatePickerPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCCA7B27C8CBC8000E2454 /* DatePickerPopup.swift */; };
+		0DDCCA7F27C8CBFF000E2454 /* ProfileMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCCA7E27C8CBFF000E2454 /* ProfileMenuItem.swift */; };
 		0DE1663A27C66DF700BD3CBF /* BottomModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE1663927C66DF700BD3CBF /* BottomModalView.swift */; };
 		0DFB4A0A27C2515C00448275 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFB4A0927C2515C00448275 /* SignupView.swift */; };
 		33B5F9DBEC155098244A2A53 /* Pods_subscribe_subscribeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31313A4A6504EFDC1649DA5 /* Pods_subscribe_subscribeUITests.framework */; };
@@ -104,6 +106,8 @@
 		0DCC9C99278DB9490000E684 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0DCC9C9B278DBB0E0000E684 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		0DD8D9BF279D78AA00A7BD1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0DDCCA7B27C8CBC8000E2454 /* DatePickerPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerPopup.swift; sourceTree = "<group>"; };
+		0DDCCA7E27C8CBFF000E2454 /* ProfileMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenuItem.swift; sourceTree = "<group>"; };
 		0DE1663927C66DF700BD3CBF /* BottomModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomModalView.swift; sourceTree = "<group>"; };
 		0DFB4A0927C2515C00448275 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		38EFCAB8ED164ADD95348749 /* Pods-subscribe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-subscribe.debug.xcconfig"; path = "Target Support Files/Pods-subscribe/Pods-subscribe.debug.xcconfig"; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 		0D0BF7D027A561D200CB9E44 /* components */ = {
 			isa = PBXGroup;
 			children = (
+				0DDCCA7D27C8CBF4000E2454 /* profile */,
+				0DDCCA7A27C8CBB9000E2454 /* auth */,
 				0D74551527AD03A400122F9C /* home */,
 			);
 			path = components;
@@ -328,6 +334,22 @@
 				0D2A1D5A27B7CE9C00526266 /* subscription_data.swift */,
 			);
 			path = data;
+			sourceTree = "<group>";
+		};
+		0DDCCA7A27C8CBB9000E2454 /* auth */ = {
+			isa = PBXGroup;
+			children = (
+				0DDCCA7B27C8CBC8000E2454 /* DatePickerPopup.swift */,
+			);
+			path = auth;
+			sourceTree = "<group>";
+		};
+		0DDCCA7D27C8CBF4000E2454 /* profile */ = {
+			isa = PBXGroup;
+			children = (
+				0DDCCA7E27C8CBFF000E2454 /* ProfileMenuItem.swift */,
+			);
+			path = profile;
 			sourceTree = "<group>";
 		};
 		81B21749D1F44069873C80BE /* Frameworks */ = {
@@ -608,6 +630,7 @@
 				0D452163278DA3D200B81AE8 /* LoginView.swift in Sources */,
 				0D2188A627C3807600F45C50 /* LoadingView.swift in Sources */,
 				0D452165278DA3DA00B81AE8 /* MainView.swift in Sources */,
+				0DDCCA7F27C8CBFF000E2454 /* ProfileMenuItem.swift in Sources */,
 				0D478DCF278D9BC600F9F0D9 /* ContentView.swift in Sources */,
 				0D2188A827C382C200F45C50 /* UI_model.swift in Sources */,
 				0D0BF7CF27A5517F00CB9E44 /* sample_data.swift in Sources */,
@@ -618,6 +641,7 @@
 				0D79DAE427B62C0F00EB7AC2 /* SubscriptionList_model.swift in Sources */,
 				0D0BF7CD27A542AF00CB9E44 /* BottomSheetView.swift in Sources */,
 				0D74550E27ACEA5C00122F9C /* CreateItemView.swift in Sources */,
+				0DDCCA7C27C8CBC8000E2454 /* DatePickerPopup.swift in Sources */,
 				0D0BF7D227A561EE00CB9E44 /* BottomSheetItemView.swift in Sources */,
 				0D0BF7CB27A536AD00CB9E44 /* CustomCorner.swift in Sources */,
 				0DE1663A27C66DF700BD3CBF /* BottomModalView.swift in Sources */,

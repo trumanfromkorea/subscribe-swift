@@ -23,14 +23,14 @@ struct MainView: View {
                     HomeView(offset: $offset, lastOffset: $lastOffset, navigateToCreateView: $navigateToCreateView)
                         .tabItem {
                             Image(systemName: "house.fill")
-                            Text("Home")
+                            Text("홈")
                         }
                         .tag(0)
 
                     ProfileView()
                         .tabItem {
                             Image(systemName: "person.fill")
-                            Text("Profile")
+                            Text("프로필")
                         }
                         .tag(1)
                 }

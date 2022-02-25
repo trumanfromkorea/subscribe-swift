@@ -25,8 +25,8 @@ struct FloatingButtonView: View {
     var body: some View {
         
             Button(action: {
-//                showMenu()
-                showMenuItem = true
+                showMenu()
+//                showMenuItem = true
             }) {
                 Image(systemName: "plus.circle.fill")
                     .resizable()

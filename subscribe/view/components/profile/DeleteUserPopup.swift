@@ -1,22 +1,20 @@
 //
-//  ReauthenticateView.swift
+//  DeleteUserPopup.swift
 //  subscribe
 //
-//  Created by 장재훈 on 2022/02/21.
+//  Created by 장재훈 on 2022/02/25.
 //
 
-import AuthenticationServices
-import FirebaseFirestoreSwift
 import SwiftUI
 
-struct ReauthenticateView: View {
-    @State var errorText: String = ""
+struct DeleteUserPopup: View {
+    @Binding var showPopup: Bool
     @Binding var canDelete: Bool
 
     @EnvironmentObject var userAuth: UserAuth
     @EnvironmentObject var userInfoManager: UserInfoManager
 
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State var errorText: String = ""
 
     func handleResult(result: Result<Bool, Error>) {
         switch result {
@@ -30,32 +28,34 @@ struct ReauthenticateView: View {
     }
 
     var body: some View {
-        GeometryReader { proxy in
-            let windowWidth = proxy.size.width
+        ZStack {
+            Color.black.opacity(0.3).edgesIgnoringSafeArea(.all)
 
-            VStack(alignment: .leading) {
+            VStack(alignment:.leading) {
                 HStack {
                     Text("탈퇴하기")
                         .font(.system(size: 25, weight: .bold))
-                    
+
                     Spacer()
                     Button {
-                        self.presentationMode.wrappedValue.dismiss()
+                        showPopup = false
                     } label: {
                         Text("취소")
                     }
                 }
-                
+
                 Spacer().frame(height: 30)
 
                 Text("회원 탈퇴를 진행할 시,\n모든 데이터는 삭제되며 다시는 복구할 수 없습니다.")
                     .font(.system(size: 18, weight: .semibold))
-                
-                Spacer()
-                
+
+                Spacer().frame(height: 10)
+
                 Text("이에 동의하신다면 회원 확인 절차를 위해\n아래 버튼을 눌러 인증을 완료한 뒤 탈퇴를 진행해주세요.")
                     .font(.system(size: 15))
                     .foregroundColor(Color(hex: 0x303030))
+
+                Spacer().frame(height: 20)
 
                 if canDelete {
                     Button {
@@ -66,27 +66,25 @@ struct ReauthenticateView: View {
                                 print(error.localizedDescription)
                             }
                         }
-                        self.presentationMode.wrappedValue.dismiss()
+                        showPopup = false
                     } label: {
                         Text("탈퇴 진행하기")
                             .padding()
-                            .frame(width: windowWidth, height: 50, alignment: .center)
+                            .frame(width: 300, height: 40, alignment: .center)
                             .background(.blue)
                             .foregroundColor(.white)
-                            .font(.system(size: 19, weight: .bold))
+                            .font(.system(size: 15, weight: .bold))
                             .cornerRadius(10)
                     }
                 } else {
                     ReauthenticateAppleButton(handleResult: handleResult)
                 }
             }
+            .frame(width: 300)
+            .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
+            .background(
+                Color.white.cornerRadius(20)
+            )
         }
-        .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
-    }
-}
-
-struct ReauthenticateView_Previews: PreviewProvider {
-    static var previews: some View {
-        ReauthenticateView(canDelete: .constant(true))
     }
 }

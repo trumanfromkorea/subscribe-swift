@@ -70,13 +70,15 @@ struct ProfileView: View {
                     ProfileMenuItem(title: "탈퇴하기")
                         .onTapGesture {
                             showModal = true
-                        }.sheet(isPresented: self.$showModal) {
-                            ReauthenticateView(canDelete: $canDelete)
                         }
 
                     Divider()
                 }
                 .padding(EdgeInsets(top: 30, leading: 15, bottom: 0, trailing: 15))
+            }
+            
+            if showModal {
+                DeleteUserPopup(showPopup: $showModal, canDelete: $canDelete)
             }
             
         }

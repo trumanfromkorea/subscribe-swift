@@ -43,6 +43,8 @@
 		0DCC9C9C278DBB0E0000E684 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCC9C9B278DBB0E0000E684 /* ProfileView.swift */; };
 		0DDCCA7C27C8CBC8000E2454 /* DatePickerPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCCA7B27C8CBC8000E2454 /* DatePickerPopup.swift */; };
 		0DDCCA7F27C8CBFF000E2454 /* ProfileMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCCA7E27C8CBFF000E2454 /* ProfileMenuItem.swift */; };
+		0DDCCA8227C8D137000E2454 /* ReauthenticateAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCCA8127C8D137000E2454 /* ReauthenticateAppleButton.swift */; };
+		0DDCCA8427C8DA42000E2454 /* DeleteUserPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCCA8327C8DA42000E2454 /* DeleteUserPopup.swift */; };
 		0DE1663A27C66DF700BD3CBF /* BottomModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE1663927C66DF700BD3CBF /* BottomModalView.swift */; };
 		0DFB4A0A27C2515C00448275 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFB4A0927C2515C00448275 /* SignupView.swift */; };
 		33B5F9DBEC155098244A2A53 /* Pods_subscribe_subscribeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31313A4A6504EFDC1649DA5 /* Pods_subscribe_subscribeUITests.framework */; };
@@ -108,6 +110,8 @@
 		0DD8D9BF279D78AA00A7BD1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0DDCCA7B27C8CBC8000E2454 /* DatePickerPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerPopup.swift; sourceTree = "<group>"; };
 		0DDCCA7E27C8CBFF000E2454 /* ProfileMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenuItem.swift; sourceTree = "<group>"; };
+		0DDCCA8127C8D137000E2454 /* ReauthenticateAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReauthenticateAppleButton.swift; sourceTree = "<group>"; };
+		0DDCCA8327C8DA42000E2454 /* DeleteUserPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserPopup.swift; sourceTree = "<group>"; };
 		0DE1663927C66DF700BD3CBF /* BottomModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomModalView.swift; sourceTree = "<group>"; };
 		0DFB4A0927C2515C00448275 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		38EFCAB8ED164ADD95348749 /* Pods-subscribe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-subscribe.debug.xcconfig"; path = "Target Support Files/Pods-subscribe/Pods-subscribe.debug.xcconfig"; sourceTree = "<group>"; };
@@ -348,6 +352,8 @@
 			isa = PBXGroup;
 			children = (
 				0DDCCA7E27C8CBFF000E2454 /* ProfileMenuItem.swift */,
+				0DDCCA8127C8D137000E2454 /* ReauthenticateAppleButton.swift */,
+				0DDCCA8327C8DA42000E2454 /* DeleteUserPopup.swift */,
 			);
 			path = profile;
 			sourceTree = "<group>";
@@ -624,6 +630,7 @@
 				0DCC9C94278DA8C60000E684 /* UserAuth_model.swift in Sources */,
 				0DFB4A0A27C2515C00448275 /* SignupView.swift in Sources */,
 				0DCC9C9A278DB9490000E684 /* HomeView.swift in Sources */,
+				0DDCCA8427C8DA42000E2454 /* DeleteUserPopup.swift in Sources */,
 				0D2A1D5F27B7D29400526266 /* DetailsComponents.swift in Sources */,
 				0D0BE09827B64F6D0043F98D /* ListItemView.swift in Sources */,
 				0D15986A27B3A7DF00202AB3 /* Fields.swift in Sources */,
@@ -650,6 +657,7 @@
 				0D2188AA27C388A800F45C50 /* FBAuth_model.swift in Sources */,
 				0D0BE09A27B665860043F98D /* Extensions.swift in Sources */,
 				0D06F96827C35F7200FEBEA4 /* ReauthenticateView.swift in Sources */,
+				0DDCCA8227C8D137000E2454 /* ReauthenticateAppleButton.swift in Sources */,
 				0D478DCD278D9BC600F9F0D9 /* subscribeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

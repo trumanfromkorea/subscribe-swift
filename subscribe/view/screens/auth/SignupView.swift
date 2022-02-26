@@ -18,13 +18,16 @@ struct SignupView: View {
     @State var userBirthday: Date?
 
     @State var showDatePicker: Bool = false
-
     @State var showAlert: Bool = false
-
     @State var genderSelection: Int = -1
-    let genderList: [String] = ["남성", "여성", "공개불가"]
 
-    var dateFormatter: DateFormatter = DateFormatter()
+    @State var agreeAll: Bool = false
+    @State var agree_01: Bool = false
+    @State var agree_02: Bool = false
+    @State var agree_03: Bool = false
+    
+    let genderList: [String] = ["남성", "여성", "공개불가"]
+    let dateFormatter: DateFormatter = DateFormatter()
 
     func uploadUserInfo() {
         let uid: String = Auth.auth().currentUser!.uid
@@ -40,11 +43,13 @@ struct SignupView: View {
             GeometryReader { proxy in
 
                 let windowWidth = proxy.size.width
+                var canStart: Bool = userName != "" && userBirthday != nil && genderSelection != -1 && agree_01 && agree_02
 
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading) {
                         Group {
-                            Text("환영합니다!")
+                            Spacer().frame(height: 20)
+                            Text("환영합니다! 👋")
                                 .font(.system(size: 30))
                                 .bold()
                             Spacer().frame(height: 10)
@@ -56,9 +61,9 @@ struct SignupView: View {
                         Spacer().frame(height: 40)
 
                         Group {
-                            Text("닉네임")
+                            Text("별명")
                                 .bold()
-                            TextField("닉네임을 입력해주세요", text: $userName)
+                            TextField("앱 내에서 사용할 별명을 입력해주세요", text: $userName)
                                 .textFieldStyle(.roundedBorder)
                         }
 
@@ -100,15 +105,16 @@ struct SignupView: View {
                             }
                         }
 
-                        Spacer().frame(height: 40)
-                        
+                        AgreePolicy(agreeAll: $agreeAll, agree_01: $agree_01, agree_02: $agree_02, agree_03: $agree_03)
+                            .padding(EdgeInsets(top: 40, leading: 0, bottom: 20, trailing: 0))
+
                         Button {
                             showAlert = true
                         } label: {
                             Text("시작하기")
                                 .padding()
                                 .frame(width: windowWidth, alignment: .center)
-                                .background(.blue)
+                                .background(canStart ? .blue : .gray)
                                 .foregroundColor(.white)
                                 .font(.system(size: 19, weight: .bold))
                                 .cornerRadius(10)
@@ -128,10 +134,13 @@ struct SignupView: View {
                                 )
                             )
                         }
+                        .disabled(!canStart)
+                        
+                        Spacer().frame(height: 40)
                     }
                 }
             }
-            .padding(EdgeInsets(top: 30, leading: 15, bottom: 0, trailing: 15))
+            .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
 
             if showDatePicker {
                 DatePickerPopup(showDatePicker: $showDatePicker, savedDate: $userBirthday)

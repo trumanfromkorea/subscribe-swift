@@ -37,6 +37,9 @@
 		0D74551727AD065400122F9C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D74551627AD065400122F9C /* GoogleService-Info.plist */; };
 		0D79DAE227B61EB800EB7AC2 /* UserInfo_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D79DAE127B61EB800EB7AC2 /* UserInfo_model.swift */; };
 		0D79DAE427B62C0F00EB7AC2 /* SubscriptionList_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D79DAE327B62C0F00EB7AC2 /* SubscriptionList_model.swift */; };
+		0D947AD927CA2C8C00908822 /* ProfileContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D947AD827CA2C8C00908822 /* ProfileContainer.swift */; };
+		0D947ADB27CA2D5100908822 /* AppleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D947ADA27CA2D5100908822 /* AppleLoginButton.swift */; };
+		0D947AE027CA35F100908822 /* AgreePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D947ADF27CA35F100908822 /* AgreePolicy.swift */; };
 		0DCC9C94278DA8C60000E684 /* UserAuth_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCC9C93278DA8C60000E684 /* UserAuth_model.swift */; };
 		0DCC9C9A278DB9490000E684 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCC9C99278DB9490000E684 /* HomeView.swift */; };
 		0DCC9C9C278DBB0E0000E684 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCC9C9B278DBB0E0000E684 /* ProfileView.swift */; };
@@ -102,6 +105,9 @@
 		0D74551627AD065400122F9C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "gitignore/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		0D79DAE127B61EB800EB7AC2 /* UserInfo_model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo_model.swift; sourceTree = "<group>"; };
 		0D79DAE327B62C0F00EB7AC2 /* SubscriptionList_model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionList_model.swift; sourceTree = "<group>"; };
+		0D947AD827CA2C8C00908822 /* ProfileContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContainer.swift; sourceTree = "<group>"; };
+		0D947ADA27CA2D5100908822 /* AppleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginButton.swift; sourceTree = "<group>"; };
+		0D947ADF27CA35F100908822 /* AgreePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreePolicy.swift; sourceTree = "<group>"; };
 		0DCC9C93278DA8C60000E684 /* UserAuth_model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth_model.swift; sourceTree = "<group>"; };
 		0DCC9C99278DB9490000E684 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0DCC9C9B278DBB0E0000E684 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -341,6 +347,8 @@
 			isa = PBXGroup;
 			children = (
 				0DDCCA7B27C8CBC8000E2454 /* DatePickerPopup.swift */,
+				0D947ADA27CA2D5100908822 /* AppleLoginButton.swift */,
+				0D947ADF27CA35F100908822 /* AgreePolicy.swift */,
 			);
 			path = auth;
 			sourceTree = "<group>";
@@ -349,6 +357,7 @@
 			isa = PBXGroup;
 			children = (
 				0DDCCA7E27C8CBFF000E2454 /* ProfileMenuItem.swift */,
+				0D947AD827CA2C8C00908822 /* ProfileContainer.swift */,
 				0DDCCA8127C8D137000E2454 /* ReauthenticateAppleButton.swift */,
 				0DDCCA8327C8DA42000E2454 /* DeleteUserPopup.swift */,
 			);
@@ -627,6 +636,8 @@
 				0DCC9C94278DA8C60000E684 /* UserAuth_model.swift in Sources */,
 				0DFB4A0A27C2515C00448275 /* SignupView.swift in Sources */,
 				0DCC9C9A278DB9490000E684 /* HomeView.swift in Sources */,
+				0D947AE027CA35F100908822 /* AgreePolicy.swift in Sources */,
+				0D947ADB27CA2D5100908822 /* AppleLoginButton.swift in Sources */,
 				0DDCCA8427C8DA42000E2454 /* DeleteUserPopup.swift in Sources */,
 				0D2A1D5F27B7D29400526266 /* DetailsComponents.swift in Sources */,
 				0D0BE09827B64F6D0043F98D /* ListItemView.swift in Sources */,
@@ -646,6 +657,7 @@
 				0D0BF7CD27A542AF00CB9E44 /* BottomSheetView.swift in Sources */,
 				0D74550E27ACEA5C00122F9C /* CreateItemView.swift in Sources */,
 				0DDCCA7C27C8CBC8000E2454 /* DatePickerPopup.swift in Sources */,
+				0D947AD927CA2C8C00908822 /* ProfileContainer.swift in Sources */,
 				0D0BF7D227A561EE00CB9E44 /* BottomSheetItemView.swift in Sources */,
 				0D0BF7CB27A536AD00CB9E44 /* CustomCorner.swift in Sources */,
 				0DE1663A27C66DF700BD3CBF /* BottomModalView.swift in Sources */,

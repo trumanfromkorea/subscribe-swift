@@ -19,41 +19,14 @@ struct ProfileView: View {
         ZStack {
             Color(hex: 0xFFFFFF).ignoresSafeArea()
 
-            ScrollView{
+            ScrollView {
                 VStack(alignment: .leading) {
-                    
                     Text("프로필")
                         .font(.system(size: 25, weight: .bold))
 
                     Spacer().frame(height: 30)
-                    
-                    HStack {
-                        Image(systemName: "person.circle.fill")
-                            .resizable()
-                            .frame(width: 55, height: 55)
-                            .foregroundColor(Color(hex: 0xD1D1D1))
-                        
-                        Spacer().frame(width: 10)
 
-                        VStack(alignment: .leading) {
-                            Text(userInfoManager.userName)
-                                .font(.system(size: 20))
-                                .bold()
-                            
-                            Spacer().frame(height: 5)
-                            
-                            Text("프로필 편집")
-                                .font(.system(size: 13))
-                                .foregroundColor(.gray)
-                        }
-
-                        Spacer()
-
-                        Image(systemName: "chevron.right")
-                            .foregroundColor(.gray)
-                    }
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
-
+                    ProfileContainer(userName: userInfoManager.userName)
                     
                     Spacer().frame(height: 30)
 
@@ -88,18 +61,15 @@ struct ProfileView: View {
                 }
                 .padding(EdgeInsets(top: 30, leading: 15, bottom: 0, trailing: 15))
             }
-            
+
             if showPopup {
                 DeleteUserPopup(showPopup: $showPopup, canDelete: $canDelete)
             }
-            
         }
         .navigationTitle("")
         .navigationBarHidden(true)
     }
 }
-
-
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {

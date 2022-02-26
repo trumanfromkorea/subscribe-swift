@@ -15,6 +15,7 @@ struct DeleteUserPopup: View {
     @EnvironmentObject var userInfoManager: UserInfoManager
 
     @State var errorText: String = ""
+    @State var showAlert: Bool = false
 
     func handleResult(result: Result<Bool, Error>) {
         switch result {
@@ -31,51 +32,68 @@ struct DeleteUserPopup: View {
         ZStack {
             Color.black.opacity(0.3).edgesIgnoringSafeArea(.all)
 
-            VStack(alignment:.leading) {
-                HStack {
+            VStack(alignment: .leading) {
+                HStack(alignment: .center) {
                     Text("탈퇴하기")
                         .font(.system(size: 25, weight: .bold))
 
                     Spacer()
-                    Button {
-                        showPopup = false
-                    } label: {
-                        Text("취소")
-                    }
+
+                    Image(systemName: "xmark")
+                        .foregroundColor(Color(hex: 0x303030))
+                        .background(.white)
+                        .onTapGesture {
+                            showPopup = false
+                        }
                 }
 
-                Spacer().frame(height: 30)
+                Spacer().frame(height: 20)
 
                 Text("회원 탈퇴를 진행할 시,\n모든 데이터는 삭제되며 다시는 복구할 수 없습니다.")
-                    .font(.system(size: 18, weight: .semibold))
+                    .font(.system(size: 16, weight: .semibold))
 
                 Spacer().frame(height: 10)
 
                 Text("이에 동의하신다면 회원 확인 절차를 위해\n아래 버튼을 눌러 인증을 완료한 뒤 탈퇴를 진행해주세요.")
-                    .font(.system(size: 15))
+                    .font(.system(size: 13))
                     .foregroundColor(Color(hex: 0x303030))
 
-                Spacer().frame(height: 20)
+                Spacer().frame(height: 15)
 
                 if canDelete {
-                    Button {
-                        userAuth.deleteUser { result in
-                            userInfoManager.resetUserInfo()
-
-                            if case let .failure(error) = result {
-                                print(error.localizedDescription)
-                            }
+                    Button(
+                        action: {
+                            showAlert = true
+                        }, label: {
+                            Text("탈퇴 진행하기")
+                                .padding()
+                                .frame(width: 300, height: 40, alignment: .center)
+                                .background(.blue)
+                                .foregroundColor(.white)
+                                .font(.system(size: 15, weight: .bold))
+                                .cornerRadius(10)
                         }
-                        showPopup = false
-                    } label: {
-                        Text("탈퇴 진행하기")
-                            .padding()
-                            .frame(width: 300, height: 40, alignment: .center)
-                            .background(.blue)
-                            .foregroundColor(.white)
-                            .font(.system(size: 15, weight: .bold))
-                            .cornerRadius(10)
+                    ).alert(isPresented: $showAlert) {
+                        Alert(
+                            title: Text("회원 탈퇴"),
+                            message: Text("그동안 SuperScribe 서비스를 이용해주셔서 감사합니다. 확인 버튼을 누르면 탈퇴가 완료됩니다."),
+                            primaryButton: .default(Text("취소")),
+                            secondaryButton: .default(
+                                Text("확인"),
+                                action: {
+                                    userAuth.deleteUser { result in
+                                        userInfoManager.resetUserInfo()
+
+                                        if case let .failure(error) = result {
+                                            print(error.localizedDescription)
+                                        }
+                                    }
+                                    showPopup = false
+                                }
+                            )
+                        )
                     }
+
                 } else {
                     ReauthenticateAppleButton(handleResult: handleResult)
                 }

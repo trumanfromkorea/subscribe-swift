@@ -37,6 +37,7 @@
 		0D74551727AD065400122F9C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D74551627AD065400122F9C /* GoogleService-Info.plist */; };
 		0D79DAE227B61EB800EB7AC2 /* UserInfo_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D79DAE127B61EB800EB7AC2 /* UserInfo_model.swift */; };
 		0D79DAE427B62C0F00EB7AC2 /* SubscriptionList_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D79DAE327B62C0F00EB7AC2 /* SubscriptionList_model.swift */; };
+		0D801BC927CD2AD800696192 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D801BC827CD2AD800696192 /* LocalNotificationManager.swift */; };
 		0D947AD927CA2C8C00908822 /* ProfileContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D947AD827CA2C8C00908822 /* ProfileContainer.swift */; };
 		0D947ADB27CA2D5100908822 /* AppleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D947ADA27CA2D5100908822 /* AppleLoginButton.swift */; };
 		0D947AE027CA35F100908822 /* AgreePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D947ADF27CA35F100908822 /* AgreePolicy.swift */; };
@@ -105,6 +106,7 @@
 		0D74551627AD065400122F9C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "gitignore/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		0D79DAE127B61EB800EB7AC2 /* UserInfo_model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo_model.swift; sourceTree = "<group>"; };
 		0D79DAE327B62C0F00EB7AC2 /* SubscriptionList_model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionList_model.swift; sourceTree = "<group>"; };
+		0D801BC827CD2AD800696192 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		0D947AD827CA2C8C00908822 /* ProfileContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContainer.swift; sourceTree = "<group>"; };
 		0D947ADA27CA2D5100908822 /* AppleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginButton.swift; sourceTree = "<group>"; };
 		0D947ADF27CA35F100908822 /* AgreePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreePolicy.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				0D2188A927C388A800F45C50 /* FBAuth_model.swift */,
 				0D0BE09927B665860043F98D /* Extensions.swift */,
 				0D12EB2C27B9246400BE8321 /* Date_model.swift */,
+				0D801BC827CD2AD800696192 /* LocalNotificationManager.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				0DCC9C9A278DB9490000E684 /* HomeView.swift in Sources */,
 				0D947AE027CA35F100908822 /* AgreePolicy.swift in Sources */,
 				0D947ADB27CA2D5100908822 /* AppleLoginButton.swift in Sources */,
+				0D801BC927CD2AD800696192 /* LocalNotificationManager.swift in Sources */,
 				0DDCCA8427C8DA42000E2454 /* DeleteUserPopup.swift in Sources */,
 				0D2A1D5F27B7D29400526266 /* DetailsComponents.swift in Sources */,
 				0D0BE09827B64F6D0043F98D /* ListItemView.swift in Sources */,

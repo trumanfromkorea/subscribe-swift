@@ -89,6 +89,12 @@ struct HomeView: View {
                         }
 
                         TotalCostView()
+                            .onTapGesture {
+                                let manager = LocalNotificationManager()
+                                manager.requestPermission()
+                                manager.addNotification(title: "테스트 알림")
+                                manager.schedule()
+                            }
 
                         ListGroupView(
                             data: subscriptionListManager.serviceList ?? [],

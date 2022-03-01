@@ -18,23 +18,26 @@ struct HomeView: View {
 
     @Binding var navigateToCreateView: Bool
 
-    private let inputFormatter: DateFormatter = DateFormatter()
-    private let outputDate: DateFormatter = DateFormatter()
+    static let inputFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+    
+    static let outputDate: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "MM월 dd일 (EE)"
+        return formatter
+    }()
 
     // http request sample code
     @State private var user: User?
 
     // 리스트 샘플 데이터
     @State var subscriptionInfoData: [SubscriptionInfo]?
-
-    // Formatter 초기화 메소드
-    func initialFormatter() {
-        inputFormatter.locale = Locale(identifier: "ko_KR")
-        inputFormatter.dateFormat = "yyyy-MM-dd"
-
-        outputDate.locale = Locale(identifier: "ko_KR")
-        outputDate.dateFormat = "MM월 dd일 (EE)"
-    }
+    
 
     func getBlurRadius() -> CGFloat {
         withAnimation { let progress = -offset / (UIScreen.main.bounds.height - 100)
@@ -100,21 +103,21 @@ struct HomeView: View {
                             data: subscriptionListManager.serviceList ?? [],
                             sum: subscriptionListManager.serviceSum,
                             label: "🧮 구독 서비스",
-                            dateFormatter: outputDate
+                            dateFormatter: HomeView.outputDate
                         )
 
                         ListGroupView(
                             data: subscriptionListManager.livingsList ?? [],
                             sum: subscriptionListManager.livingsSum,
                             label: "🛋 생활비",
-                            dateFormatter: outputDate
+                            dateFormatter: HomeView.outputDate
                         )
 
                         ListGroupView(
                             data: subscriptionListManager.etcList ?? [],
                             sum: subscriptionListManager.etcSum,
                             label: "🎸 기타 지출",
-                            dateFormatter: outputDate
+                            dateFormatter: HomeView.outputDate
                         )
                         Spacer().frame(height: 40)
                     }
@@ -142,18 +145,13 @@ struct HomeView: View {
                 }
             }
         }
-        .onAppear(perform: {
-            // 순서에 유의하자! Formatter 등 뒤에서 사용해야 하는 메소드는 제일 먼저 실행해주기
-            initialFormatter()
-            requestData()
-        })
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView(offset: .constant(0), lastOffset: .constant(0), navigateToCreateView: .constant(false))
-            .environmentObject(UserInfoManager())
-            .environmentObject(SubscriptionListManager())
-    }
-}
+//struct HomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView(offset: .constant(0), lastOffset: .constant(0), navigateToCreateView: .constant(false))
+//            .environmentObject(UserInfoManager())
+//            .environmentObject(SubscriptionListManager())
+//    }
+//}

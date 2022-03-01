@@ -75,6 +75,9 @@ func isSameMonth(_ date: Date) -> Bool {
 
 // 다음 구독 날짜 계산 메소드
 func nextDateCalculator(_ cycleType: Int, _ cycleValue: String) -> Date {
+    
+    print("다음 날짜 계산 시작")
+    
     // 주간구독
     if cycleType == 0 {
         return weeklyDate(cycleValue)
@@ -147,6 +150,8 @@ func yearlyDate(_ cycleValue: String) -> Date{
 
     let year: Int = calendar.dateComponents([.year], from: Date()).year!
     let nextDate: Date? = format02.date(from: String(year) + cycleValue)
+    
+    print("다음 날짜 계산 끝 \(nextDate)")
 
     if cycleValue > todayString { // 구독날짜 전일때
         return nextDate!

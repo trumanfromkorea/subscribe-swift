@@ -10,7 +10,6 @@ import SwiftUI
 
 // 키보드 닫기를 위함
 extension UIApplication {
-
     func addTapGestureRecognizer() {
         guard let window = windows.first else { return }
 
@@ -51,3 +50,33 @@ extension Color {
     }
 }
 
+// custom corner radius
+extension View {
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape(RoundedCorner(radius: radius, corners: corners))
+    }
+
+    @ViewBuilder
+    func applyIf<T: View>(_ condition: Bool, apply: (Self) -> T) -> some View {
+        if condition {
+            apply(self)
+        } else {
+            self
+        }
+    }
+}
+
+struct RoundedCorner: Shape {
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(
+            roundedRect: rect,
+            byRoundingCorners: corners,
+            cornerRadii: CGSize(width: radius, height: radius)
+        )
+
+        return Path(path.cgPath)
+    }
+}

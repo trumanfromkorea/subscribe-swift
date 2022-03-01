@@ -14,13 +14,15 @@ struct MainView: View {
     @State var lastOffset: CGFloat = 0
     @State var navigateToCreateView = false
 
+    @State var showBottomSheet = false
+
     var body: some View {
         ZStack {
             Color.clear
 
             NavigationView {
                 TabView(selection: $selection) {
-                    HomeView(offset: $offset, lastOffset: $lastOffset, navigateToCreateView: $navigateToCreateView)
+                    HomeView(navigateToCreateView: $navigateToCreateView, showBottomSheet: $showBottomSheet)
                         .tabItem {
                             Image(systemName: "house.fill")
                             Text("홈")
@@ -37,8 +39,17 @@ struct MainView: View {
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             }
 
-            // Bottom Sheet
-            BottomSheetView(offset: $offset, lastOffset: $lastOffset, navigateToCreateView: $navigateToCreateView)
+        }
+        .edgesIgnoringSafeArea(.all)
+        .popup(
+            isPresented: $showBottomSheet,
+            type: .toast,
+            position: .bottom,
+            closeOnTap: false,
+            closeOnTapOutside: true,
+            backgroundColor: .black.opacity(0.5)
+        ) {
+            BottomSheetView(navigateToCreateView: $navigateToCreateView, showBottomSheet: $showBottomSheet)
         }
     }
 }

@@ -10,7 +10,6 @@ import SwiftUI
 
 struct ListItemView: View {
     var data: SubscriptionInfo
-    var dateFormatter: DateFormatter
 
     var body: some View {
         VStack {
@@ -41,7 +40,7 @@ struct ListItemView: View {
                             
                             var _ = print("실행순서 검사 - 다음날짜")
 
-                            Text("\(dateFormatter.string(from: data.nextDate))")
+                            Text("\(DateStruct.outputDate.string(from: data.nextDate))")
                                 .foregroundColor(.black.opacity(0.9))
                                 .font(.system(size: 17, weight: .semibold))
                         }
@@ -65,7 +64,6 @@ struct ListGroupView: View {
     var data: [SubscriptionInfo]
     var sum: Int
     var label: String
-    var dateFormatter: DateFormatter
 
     var body: some View {
         VStack {
@@ -85,7 +83,7 @@ struct ListGroupView: View {
             }
 
             ForEach(data, id: \.self) { data in
-                ListItemView(data: data, dateFormatter: dateFormatter)
+                ListItemView(data: data)
             }
         }
     }

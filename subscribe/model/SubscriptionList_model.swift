@@ -45,7 +45,7 @@ class SubscriptionListManager: ObservableObject {
     // 구독 정보 객체 생성
     func setSubscriptionInfo(_ newData: [String: Any]) -> SubscriptionInfo {
         let startDate: Timestamp! = newData["startDate"] as? Timestamp
-        let nextDate: Date = nextDateCalculator(newData["cycleType"] as! Int, newData["cycleValue"] as! String)
+        let nextDate: Date = DateCalculator.nextDateCalculator(newData["cycleType"] as! Int, newData["cycleValue"] as! String)
 
         let subscriptionData: SubscriptionInfo = SubscriptionInfo(
             id: newData["id"] as! String,
@@ -114,11 +114,11 @@ class SubscriptionListManager: ObservableObject {
     // 구독 지출 합
     func setServiceSum(data: SubscriptionInfo) {
         if data.cycleType == 0 {
-            serviceSum += Int(data.fee)! * getWeekday(Date(), Int(data.cycleValue)!)
+            serviceSum += Int(data.fee)! * DateStruct.getWeekday(Date(), Int(data.cycleValue)!)
         } else if data.cycleType == 1 {
             serviceSum += Int(data.fee)!
         } else {
-            if isSameMonth(data.startDate) {
+            if DateStruct.isSameMonth(data.startDate) {
                 serviceSum += Int(data.fee)!
             }
         }
@@ -151,11 +151,11 @@ class SubscriptionListManager: ObservableObject {
     // 생활비 지출 합
     func setLivingsSum(data: SubscriptionInfo) {
         if data.cycleType == 0 {
-            livingsSum += Int(data.fee)! * getWeekday(Date(), Int(data.cycleValue)!)
+            livingsSum += Int(data.fee)! * DateStruct.getWeekday(Date(), Int(data.cycleValue)!)
         } else if data.cycleType == 1 {
             livingsSum += Int(data.fee)!
         } else {
-            if isSameMonth(data.startDate) {
+            if DateStruct.isSameMonth(data.startDate) {
                 livingsSum += Int(data.fee)!
             }
         }
@@ -188,11 +188,11 @@ class SubscriptionListManager: ObservableObject {
     // 생활비 지출 합
     func setEtcSum(data: SubscriptionInfo) {
         if data.cycleType == 0 {
-            etcSum += Int(data.fee)! * getWeekday(Date(), Int(data.cycleValue)!)
+            etcSum += Int(data.fee)! * DateStruct.getWeekday(Date(), Int(data.cycleValue)!)
         } else if data.cycleType == 1 {
             etcSum += Int(data.fee)!
         } else {
-            if isSameMonth(data.startDate) {
+            if DateStruct.isSameMonth(data.startDate) {
                 etcSum += Int(data.fee)!
             }
         }

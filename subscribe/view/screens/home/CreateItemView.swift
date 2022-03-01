@@ -60,7 +60,7 @@ struct CreateItemView: View {
         dateFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.dateFormat = "dd"
 
-        let lastDate: Date = lastDayOfMonth(subscribeDate)
+        let lastDate: Date = DateStruct.lastDayOfMonth(subscribeDate)
         let lastDayOfMonth: String = dateFormatter.string(from: lastDate)
 
         let getDayValue: String = getCycleValue()

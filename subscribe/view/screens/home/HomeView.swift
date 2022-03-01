@@ -11,33 +11,18 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var userInfoManager: UserInfoManager
     @EnvironmentObject var subscriptionListManager: SubscriptionListManager
-    @EnvironmentObject var uiManager :UIManager
+    @EnvironmentObject var uiManager: UIManager
 
     @Binding var offset: CGFloat
     @Binding var lastOffset: CGFloat
 
     @Binding var navigateToCreateView: Bool
 
-    static let inputFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter
-    }()
-    
-    static let outputDate: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "MM월 dd일 (EE)"
-        return formatter
-    }()
-
     // http request sample code
     @State private var user: User?
 
     // 리스트 샘플 데이터
     @State var subscriptionInfoData: [SubscriptionInfo]?
-    
 
     func getBlurRadius() -> CGFloat {
         withAnimation { let progress = -offset / (UIScreen.main.bounds.height - 100)
@@ -92,32 +77,23 @@ struct HomeView: View {
                         }
 
                         TotalCostView()
-                            .onTapGesture {
-                                let manager = LocalNotificationManager()
-                                manager.requestPermission()
-                                manager.addNotification(title: "테스트 알림")
-                                manager.schedule()
-                            }
 
                         ListGroupView(
                             data: subscriptionListManager.serviceList ?? [],
                             sum: subscriptionListManager.serviceSum,
-                            label: "🧮 구독 서비스",
-                            dateFormatter: HomeView.outputDate
+                            label: "🧮 구독 서비스"
                         )
 
                         ListGroupView(
                             data: subscriptionListManager.livingsList ?? [],
                             sum: subscriptionListManager.livingsSum,
-                            label: "🛋 생활비",
-                            dateFormatter: HomeView.outputDate
+                            label: "🛋 생활비"
                         )
 
                         ListGroupView(
                             data: subscriptionListManager.etcList ?? [],
                             sum: subscriptionListManager.etcSum,
-                            label: "🎸 기타 지출",
-                            dateFormatter: HomeView.outputDate
+                            label: "🎸 기타 지출"
                         )
                         Spacer().frame(height: 40)
                     }
@@ -148,10 +124,10 @@ struct HomeView: View {
     }
 }
 
-//struct HomeView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HomeView(offset: .constant(0), lastOffset: .constant(0), navigateToCreateView: .constant(false))
-//            .environmentObject(UserInfoManager())
-//            .environmentObject(SubscriptionListManager())
-//    }
-//}
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView(offset: .constant(0), lastOffset: .constant(0), navigateToCreateView: .constant(false))
+            .environmentObject(UserInfoManager())
+            .environmentObject(SubscriptionListManager())
+    }
+}

@@ -27,7 +27,7 @@ struct ProfileView: View {
                     Spacer().frame(height: 30)
 
                     ProfileContainer(userName: userInfoManager.userName)
-                    
+
                     Spacer().frame(height: 30)
 
                     Divider()
@@ -62,9 +62,18 @@ struct ProfileView: View {
                 .padding(EdgeInsets(top: 30, leading: 15, bottom: 0, trailing: 15))
             }
 
-            if showPopup {
-                DeleteUserPopup(showPopup: $showPopup, canDelete: $canDelete)
-            }
+//            if showPopup {
+//                DeleteUserPopup(showPopup: $showPopup, canDelete: $canDelete)
+//            }
+        }
+        .popup(
+            isPresented: $showPopup,
+            animation: .spring(),
+            closeOnTap: false,
+            closeOnTapOutside: true,
+            backgroundColor: .black.opacity(0.5)
+        ) {
+            DeleteUserPopup(showPopup: $showPopup, canDelete: $canDelete)
         }
         .navigationTitle("")
         .navigationBarHidden(true)

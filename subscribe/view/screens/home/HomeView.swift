@@ -75,8 +75,10 @@ struct HomeView: View {
                         ) {
                             EmptyView()
                         }
-
-                        TotalCostView()
+                        
+                        NavigationLink(destination: TestView()) {
+                            TotalCostView()
+                        }
 
                         ListGroupView(
                             data: subscriptionListManager.serviceList ?? [],

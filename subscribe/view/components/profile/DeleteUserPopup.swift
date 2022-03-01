@@ -29,8 +29,9 @@ struct DeleteUserPopup: View {
     }
 
     var body: some View {
-        ZStack {
-            Color.black.opacity(0.3).edgesIgnoringSafeArea(.all)
+//        ZStack {
+//            Color.black.opacity(0.3).edgesIgnoringSafeArea(.all)
+            
 
             VStack(alignment: .leading) {
                 HStack(alignment: .center) {
@@ -103,6 +104,6 @@ struct DeleteUserPopup: View {
             .background(
                 Color.white.cornerRadius(20)
             )
-        }
+//        }
     }
 }

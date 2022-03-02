@@ -46,7 +46,7 @@ struct DetailsInfoView: View {
 
             Spacer()
 
-            Text(detailsInfo.category)
+            Text(detailsInfo.category == "services" ? "구독 서비스" : detailsInfo.category == "livings" ? "생활비" : "기타 지출")
                 .foregroundColor(.blue)
                 .fontWeight(.semibold)
                 .padding(EdgeInsets(top: 5, leading: 15, bottom: 5, trailing: 15))

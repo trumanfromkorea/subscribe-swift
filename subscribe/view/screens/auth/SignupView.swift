@@ -25,7 +25,7 @@ struct SignupView: View {
     @State var agree_01: Bool = false
     @State var agree_02: Bool = false
     @State var agree_03: Bool = false
-    
+
     let genderList: [String] = ["남성", "여성", "공개불가"]
     let dateFormatter: DateFormatter = DateFormatter()
 
@@ -36,7 +36,7 @@ struct SignupView: View {
         db.collection("users").document(uid).setData([
             "name": userName,
             "gender": genderSelection,
-            "birthday": Timestamp(date: userBirthday!)
+            "birthday": Timestamp(date: userBirthday!),
         ])
     }
 
@@ -45,7 +45,7 @@ struct SignupView: View {
             GeometryReader { proxy in
 
                 let windowWidth = proxy.size.width
-                var canStart: Bool = userName != "" && userBirthday != nil && genderSelection != -1 && agree_01 && agree_02
+                let canStart: Bool = userName != "" && userBirthday != nil && genderSelection != -1 && agree_01 && agree_02
 
                 ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading) {
@@ -62,50 +62,12 @@ struct SignupView: View {
 
                         Spacer().frame(height: 40)
 
-                        Group {
-                            Text("별명")
-                                .bold()
-                            TextField("앱 내에서 사용할 별명을 입력해주세요", text: $userName)
-                                .textFieldStyle(.roundedBorder)
-                        }
-
-                        Spacer().frame(height: 40)
-
-                        Group {
-                            Text("성별")
-                                .bold()
-
-                            Picker("", selection: $genderSelection) {
-                                ForEach(genderList.indices) { index in
-                                    Text(genderList[index]).tag(genderList[index])
-                                }
-                            }
-                            .pickerStyle(SegmentedPickerStyle())
-                        }
-
-                        Spacer().frame(height: 40)
-
-                        Group {
-                            Text("생년월일")
-                                .bold()
-
-                            HStack {
-                                Text(dateFormatter.string(from: userBirthday ?? Date()))
-                                Spacer()
-                                Image(systemName: "calendar.circle.fill")
-                                    .resizable()
-                                    .frame(width: 25, height: 25)
-                                    .foregroundColor(.blue)
-                            }
-                            .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
-                            .frame(width: windowWidth, alignment: .leading)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 5).stroke(Color(hex: 0xD7D7D7), lineWidth: 0.5)
-                            )
-                            .onTapGesture {
-                                showDatePicker = true
-                            }
-                        }
+                        ProfileInputView(
+                            userName: $userName,
+                            genderSelection: $genderSelection,
+                            userBirthday: $userBirthday,
+                            showDatePicker: $showDatePicker
+                        )
 
                         AgreePolicy(agreeAll: $agreeAll, agree_01: $agree_01, agree_02: $agree_02, agree_03: $agree_03)
                             .padding(EdgeInsets(top: 40, leading: 0, bottom: 20, trailing: 0))
@@ -137,16 +99,19 @@ struct SignupView: View {
                             )
                         }
                         .disabled(!canStart)
-                        
+
                         Spacer().frame(height: 40)
                     }
                 }
             }
             .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
-
-            if showDatePicker {
-                DatePickerPopup(showDatePicker: $showDatePicker, savedDate: $userBirthday)
-            }
+        }
+        .popup(
+            isPresented: $showDatePicker,
+            closeOnTap: false,
+            backgroundColor: .black.opacity(0.5)
+        ) {
+            DatePickerPopupView(showDatePicker: $showDatePicker, savedDate: $userBirthday)
         }
         .onAppear(perform: {
             dateFormatter.locale = Locale(identifier: "ko_KR")

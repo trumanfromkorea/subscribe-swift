@@ -29,17 +29,6 @@ struct SignupView: View {
     let genderList: [String] = ["남성", "여성", "공개불가"]
     let dateFormatter: DateFormatter = DateFormatter()
 
-    func uploadUserInfo() {
-        let uid: String = Auth.auth().currentUser!.uid
-        let db = Firestore.firestore()
-
-        db.collection("users").document(uid).setData([
-            "name": userName,
-            "gender": genderSelection,
-            "birthday": Timestamp(date: userBirthday!),
-        ])
-    }
-
     var body: some View {
         ZStack {
             GeometryReader { proxy in
@@ -90,7 +79,7 @@ struct SignupView: View {
                                 secondaryButton: .default(
                                     Text("확인"),
                                     action: {
-                                        uploadUserInfo()
+                                        FBStore.uploadUserInfo(userName: userName, userGender: genderSelection, userBirthday: userBirthday!)
                                         subscriptionManager.fetchSubscriptionList()
                                         userAuth.isSignedIn = true
                                         userInfoManager.fetchUserInfo()

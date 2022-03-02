@@ -38,8 +38,6 @@ struct ListItemView: View {
                                 .font(.system(size: 15))
                                 .foregroundColor(Color(hex: 0x454545))
                             
-                            var _ = print("실행순서 검사 - 다음날짜")
-
                             Text("\(DateStruct.outputDate.string(from: data.nextDate))")
                                 .foregroundColor(.black.opacity(0.9))
                                 .font(.system(size: 17, weight: .semibold))

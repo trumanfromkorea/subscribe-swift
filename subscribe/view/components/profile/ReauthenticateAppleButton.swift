@@ -49,14 +49,6 @@ struct ReauthenticateAppleButton: View {
                                     print(error.localizedDescription)
                                 case let .success(authDataResult):
                                     let _ = (authDataResult, appleIDCredential)
-//                                                      FBAuth.handle(signInWithAppleRestult) { result in
-//                                                          switch result {
-//                                                          case let .failure(error):
-//                                                              print(error.localizedDescription)
-//                                                          case .success:
-//                                                              print("Successful Login")
-//                                                          }
-//                                                      }
                                 }
                             }
                         }

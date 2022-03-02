@@ -22,17 +22,6 @@ struct ModifyProfileView: View {
     @State var showDatePicker: Bool = false
     @State var showAlert: Bool = false
 
-    func uploadUserInfo() {
-        let uid: String = Auth.auth().currentUser!.uid
-        let db = Firestore.firestore()
-
-        db.collection("users").document(uid).setData([
-            "name": userName,
-            "gender": genderSelection,
-            "birthday": Timestamp(date: userBirthday!),
-        ])
-    }
-
     var body: some View {
         let canStart: Bool = userName != "" && userBirthday != nil && genderSelection != -1
 
@@ -69,7 +58,7 @@ struct ModifyProfileView: View {
                         secondaryButton: .default(
                             Text("확인"),
                             action: {
-                                uploadUserInfo()
+                                FBStore.uploadUserInfo(userName: userName, userGender: genderSelection, userBirthday: userBirthday!)
                                 userInfoManager.fetchUserInfo()
                                 self.presentationMode.wrappedValue.dismiss()
                             }
@@ -83,8 +72,6 @@ struct ModifyProfileView: View {
             userName = userInfoManager.userName
             userBirthday = userInfoManager.userBirthday
             genderSelection = userInfoManager.userGender
-
-            print(userInfoManager.userGender)
         }
         .navigationBarTitle("회원정보 수정", displayMode: .inline)
         .popup(
@@ -97,74 +84,3 @@ struct ModifyProfileView: View {
         .padding(.horizontal, 15)
     }
 }
-
-struct ProfileInputView: View {
-    @Binding var userName: String
-    @Binding var genderSelection: Int
-    @Binding var userBirthday: Date?
-    @Binding var showDatePicker: Bool
-
-    let genderList: [String] = ["남성", "여성", "공개불가"]
-
-    let dateFormatter: DateFormatter = {
-        let formatter: DateFormatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "yyyy년 M월 d일"
-        return formatter
-    }()
-
-    var body: some View {
-        VStack(alignment: .leading) {
-            Group {
-                Text("별명")
-                    .bold()
-                TextField("앱 내에서 사용할 별명을 입력해주세요", text: $userName)
-                    .textFieldStyle(.roundedBorder)
-            }
-
-            Spacer().frame(height: 40)
-
-            Group {
-                Text("성별")
-                    .bold()
-
-                Picker("", selection: $genderSelection) {
-                    ForEach(genderList.indices) { index in
-                        Text(genderList[index]).tag(genderList[index])
-                    }
-                }
-                .pickerStyle(SegmentedPickerStyle())
-            }
-
-            Spacer().frame(height: 40)
-
-            Group {
-                Text("생년월일")
-                    .bold()
-
-                HStack {
-                    Text(dateFormatter.string(from: userBirthday ?? Date()))
-                    Spacer()
-                    Image(systemName: "calendar.circle.fill")
-                        .resizable()
-                        .frame(width: 25, height: 25)
-                        .foregroundColor(.blue)
-                }
-                .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
-//                .frame(width: windowWidth, alignment: .leading)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 5).stroke(Color(hex: 0xD7D7D7), lineWidth: 0.5)
-                )
-                .onTapGesture {
-                    showDatePicker = true
-                }
-            }
-        }
-    }
-}
-
-// struct ModifyProfileView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ModifyProfileView()
-//    }
-// }

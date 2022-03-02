@@ -26,10 +26,8 @@ struct ContentView: View {
                 LoginView()
                     .onAppear {
                         if Auth.auth().currentUser != nil {
-                            print("==================== 수행확인 currentUser true")
                             userAuth.isSignedIn = true
                         } else {
-                            print("+++++++++++++++++++++ 수행확인 currentUser false")
                             userAuth.isSignedIn = false
                         }
                     }

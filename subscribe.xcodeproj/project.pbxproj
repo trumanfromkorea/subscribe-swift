@@ -55,6 +55,8 @@
 		0DDCCA8227C8D137000E2454 /* ReauthenticateAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCCA8127C8D137000E2454 /* ReauthenticateAppleButton.swift */; };
 		0DDCCA8427C8DA42000E2454 /* DeleteUserPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCCA8327C8DA42000E2454 /* DeleteUserPopup.swift */; };
 		0DE1663A27C66DF700BD3CBF /* BottomModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE1663927C66DF700BD3CBF /* BottomModalView.swift */; };
+		0DE6767227CFCDFC00BBE102 /* Firestore_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE6767127CFCDFC00BBE102 /* Firestore_model.swift */; };
+		0DE6767527CFCED900BBE102 /* ProfileInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE6767427CFCED900BBE102 /* ProfileInputView.swift */; };
 		0DFB4A0A27C2515C00448275 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFB4A0927C2515C00448275 /* SignupView.swift */; };
 		6927D139658783FC47566A05 /* Pods_subscribe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A73E7895DAC71BD4CB2A1F85 /* Pods_subscribe.framework */; };
 		C33C964411D62F923B0FCEEC /* Pods_subscribe_subscribeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26A63E1E50FED0643BD4CB5D /* Pods_subscribe_subscribeUITests.framework */; };
@@ -129,6 +131,8 @@
 		0DDCCA8127C8D137000E2454 /* ReauthenticateAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReauthenticateAppleButton.swift; sourceTree = "<group>"; };
 		0DDCCA8327C8DA42000E2454 /* DeleteUserPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserPopup.swift; sourceTree = "<group>"; };
 		0DE1663927C66DF700BD3CBF /* BottomModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomModalView.swift; sourceTree = "<group>"; };
+		0DE6767127CFCDFC00BBE102 /* Firestore_model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firestore_model.swift; sourceTree = "<group>"; };
+		0DE6767427CFCED900BBE102 /* ProfileInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInputView.swift; sourceTree = "<group>"; };
 		0DFB4A0927C2515C00448275 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		146427E507811910E9EC9F23 /* Pods-subscribe-subscribeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-subscribe-subscribeUITests.debug.xcconfig"; path = "Target Support Files/Pods-subscribe-subscribeUITests/Pods-subscribe-subscribeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		26A63E1E50FED0643BD4CB5D /* Pods_subscribe_subscribeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_subscribe_subscribeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -330,11 +334,8 @@
 		0DCC9C95278DAEAF0000E684 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				0DCC9C93278DA8C60000E684 /* UserAuth_model.swift */,
-				0D2188A727C382C200F45C50 /* UI_model.swift */,
-				0D79DAE127B61EB800EB7AC2 /* UserInfo_model.swift */,
-				0D79DAE327B62C0F00EB7AC2 /* SubscriptionList_model.swift */,
-				0D2188A927C388A800F45C50 /* FBAuth_model.swift */,
+				0DE6767027CFCDE100BBE102 /* Firebase */,
+				0DE6766F27CFCDB700BBE102 /* Global */,
 				0D0BE09927B665860043F98D /* Extensions.swift */,
 				0D12EB2C27B9246400BE8321 /* Date_model.swift */,
 				0D801BC827CD2AD800696192 /* LocalNotificationManager.swift */,
@@ -367,6 +368,7 @@
 				0DDCCA7B27C8CBC8000E2454 /* DatePickerPopup.swift */,
 				0D947ADA27CA2D5100908822 /* AppleLoginButton.swift */,
 				0D947ADF27CA35F100908822 /* AgreePolicy.swift */,
+				0DE6767427CFCED900BBE102 /* ProfileInputView.swift */,
 			);
 			path = auth;
 			sourceTree = "<group>";
@@ -380,6 +382,26 @@
 				0DDCCA8327C8DA42000E2454 /* DeleteUserPopup.swift */,
 			);
 			path = profile;
+			sourceTree = "<group>";
+		};
+		0DE6766F27CFCDB700BBE102 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				0D2188A727C382C200F45C50 /* UI_model.swift */,
+				0D79DAE127B61EB800EB7AC2 /* UserInfo_model.swift */,
+				0D79DAE327B62C0F00EB7AC2 /* SubscriptionList_model.swift */,
+				0DCC9C93278DA8C60000E684 /* UserAuth_model.swift */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		0DE6767027CFCDE100BBE102 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				0D2188A927C388A800F45C50 /* FBAuth_model.swift */,
+				0DE6767127CFCDFC00BBE102 /* Firestore_model.swift */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		4C184BF5589DA97C97B040B5 /* Frameworks */ = {
@@ -663,7 +685,9 @@
 				0DDCCA8427C8DA42000E2454 /* DeleteUserPopup.swift in Sources */,
 				0D2A1D5F27B7D29400526266 /* DetailsComponents.swift in Sources */,
 				0D0BE09827B64F6D0043F98D /* ListItemView.swift in Sources */,
+				0DE6767527CFCED900BBE102 /* ProfileInputView.swift in Sources */,
 				0D15986A27B3A7DF00202AB3 /* Fields.swift in Sources */,
+				0DE6767227CFCDFC00BBE102 /* Firestore_model.swift in Sources */,
 				0D452163278DA3D200B81AE8 /* LoginView.swift in Sources */,
 				0D2188A627C3807600F45C50 /* LoadingView.swift in Sources */,
 				0D452165278DA3DA00B81AE8 /* MainView.swift in Sources */,

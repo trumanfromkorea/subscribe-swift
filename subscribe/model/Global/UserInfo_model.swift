@@ -34,9 +34,7 @@ class UserInfoManager: ObservableObject {
         if uid == nil {
             return
         }
-        
-        print("사용자 정보를 받아옵니다")
-        
+                
         let db = Firestore.firestore()
         let docRef = db.collection("users").document(uid!)
         

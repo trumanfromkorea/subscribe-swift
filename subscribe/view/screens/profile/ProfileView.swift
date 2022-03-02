@@ -25,8 +25,10 @@ struct ProfileView: View {
                         .font(.system(size: 25, weight: .bold))
 
                     Spacer().frame(height: 30)
-
-                    ProfileContainer(userName: userInfoManager.userName)
+                    
+                    NavigationLink(destination: ModifyProfileView()) {
+                        ProfileContainer(userName: userInfoManager.userName)
+                    }
 
                     Spacer().frame(height: 30)
 

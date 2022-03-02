@@ -35,6 +35,8 @@ struct SignupView: View {
 
         db.collection("users").document(uid).setData([
             "name": userName,
+            "gender": genderSelection,
+            "birthday": Timestamp(date: userBirthday!)
         ])
     }
 

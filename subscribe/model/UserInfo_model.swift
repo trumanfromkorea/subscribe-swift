@@ -13,6 +13,9 @@ import FirebaseAuth
 class UserInfoManager: ObservableObject {
     
     @Published var userName: String = ""
+    @Published var userGender: Int = -1
+    @Published var userBirthday: Date = Date()
+    
     @Published var firstLogin: Bool?
     
     init() {
@@ -49,6 +52,10 @@ class UserInfoManager: ObservableObject {
                 let data = document.data()
                 if let data = data {
                     self.userName = data["name"] as? String ?? ""
+                    self.userGender = data["gender"] as? Int ?? 2
+                    
+                    let birthday: Timestamp! = data["birthday"] as? Timestamp
+                    self.userBirthday = birthday!.dateValue()
                 }
             } else {
                 self.firstLogin = true

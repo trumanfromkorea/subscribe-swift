@@ -12,7 +12,7 @@ struct HomeView: View {
     @EnvironmentObject var userInfoManager: UserInfoManager
     @EnvironmentObject var subscriptionListManager: SubscriptionListManager
     @EnvironmentObject var uiManager: UIManager
-    
+
     @Binding var navigateToCreateView: Bool
     @Binding var showBottomSheet: Bool
 
@@ -41,15 +41,13 @@ struct HomeView: View {
 
                         // 구독 생성 화면으로 연결
                         NavigationLink(
-                            destination: CreateItemView(),
+                            destination: CreateItemView(isModifyView: false),
                             isActive: self.$navigateToCreateView
                         ) {
                             EmptyView()
                         }
-                        
-                        NavigationLink(destination: TestView()) {
-                            TotalCostView()
-                        }
+
+                        TotalCostView()
 
                         ListGroupView(
                             data: subscriptionListManager.serviceList ?? [],

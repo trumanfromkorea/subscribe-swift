@@ -12,10 +12,14 @@ import SwiftUI
 struct DetailsView: View {
     var detailsInfo: SubscriptionInfo
 
+    @EnvironmentObject var createItem: CreateItemManager
+
     private let navigationController = UINavigationController()
     private let dateFormatter: DateFormatter = DateFormatter()
 
     @State var showAlert: Bool = false
+    @State var navigateToModifyView = false
+    
     @EnvironmentObject var subscriptionListManager: SubscriptionListManager
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
@@ -41,6 +45,15 @@ struct DetailsView: View {
             let windowWidth = proxy.size.width
 
             VStack(alignment: .leading) {
+                
+                NavigationLink(
+                    destination: CreateItemView(isModifyView: true, data: detailsInfo),
+                    isActive: self.$navigateToModifyView
+                ) {
+                    EmptyView()
+                }
+
+                
                 DetailsTitleView(
                     title: detailsInfo.title,
                     date: dateFormatter.string(from: detailsInfo.startDate)
@@ -54,7 +67,8 @@ struct DetailsView: View {
                 Spacer()
 
                 Button {
-                    print("편집하기 버튼 클릭")
+                    createItem.setAfterCheck(compare: detailsInfo.category)
+                    navigateToModifyView = true
                 } label: {
                     Text("편집하기")
                         .padding()
@@ -65,6 +79,7 @@ struct DetailsView: View {
                         .cornerRadius(10)
                 }
 
+               
                 Button {
                     showAlert = true
                 } label: {
@@ -111,20 +126,20 @@ struct SubscriptionInfoKeyText: View {
     }
 }
 
-//
-// struct DetailsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DetailsView(
-//            detailsInfo: SubscriptionInfo(
-//                id: "1",
-//                category: "구독 서비스",
-//                title: "유튜브 프리미엄",
-//                fee: "14000",
-//                startDate: Date(),
-//                nextDate: Date(),
-//                cycle: 1,
-//                cycleNum: 1
-//            )
-//        )
-//    }
-// }
+struct DetailsView_Previews: PreviewProvider {
+    static var previews: some View {
+        DetailsView(
+            detailsInfo: SubscriptionInfo(
+                id: "",
+                category: "services",
+                title: "sampleTitle",
+                fee: "15000",
+                startDate: Date(),
+                nextDate: Date(),
+                cycleType: 1,
+                cycleValue: "13",
+                isLastDate: false
+            )
+        )
+    }
+}

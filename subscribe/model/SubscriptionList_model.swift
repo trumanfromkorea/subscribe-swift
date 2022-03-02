@@ -25,8 +25,13 @@ class CreateItemManager: ObservableObject {
     func setETC() {
         type = "etc"
     }
-}
 
+    func setAfterCheck(compare: String) {
+        if compare == "services" { setService() }
+        else if compare == "livings" { setLiving() }
+        else { setETC() }
+    }
+}
 
 // 구독 리스트 가져오기
 class SubscriptionListManager: ObservableObject {
@@ -62,10 +67,10 @@ class SubscriptionListManager: ObservableObject {
         return subscriptionData
     }
 
-    func resetSum(){
-        self.serviceSum = 0
-        self.livingsSum = 0
-        self.etcSum = 0
+    func resetSum() {
+        serviceSum = 0
+        livingsSum = 0
+        etcSum = 0
     }
 
     // 구독 정보 가져오기

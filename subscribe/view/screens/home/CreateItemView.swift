@@ -22,15 +22,27 @@ struct CreateItemView: View {
 
     @State var subscribeName: String = ""
     @State var subscribeFee: String = ""
-    @State var subscribeCycleText: String = ""
     @State var subscribeDate: Date = Date()
 
     @State var showAlert: Bool = false
+    
+    var isModifyView: Bool
 
     let navigationController = UINavigationController()
 
-    init() {
+    init(isModifyView: Bool) {
         navigationController.navigationBar.topItem?.title = ""
+        self.isModifyView = isModifyView
+    }
+    
+    init(isModifyView: Bool, data: SubscriptionInfo ) {
+        navigationController.navigationBar.topItem?.title = ""
+        self.isModifyView = isModifyView
+        
+        _subscribeName = State(initialValue: data.title)
+        _subscribeFee = State(initialValue: data.fee)
+        _subscribeDate = State(initialValue: data.startDate)
+        _selectedCycle = State(initialValue: data.cycleType)
     }
 
     func uploadItem() {
@@ -97,7 +109,7 @@ struct CreateItemView: View {
             ScrollView(showsIndicators: false) {
                 Group {
                     Spacer().frame(height: 30)
-                    SubscribeName(title: "구독 서비스명", placeholder: "구독 서비스명을 입력해주세요", text: $subscribeName)
+                    SubscribeName(title: "구독 서비스명", placeholder: "구독 서비스명을 입력해주세요", isModifyView: isModifyView, text: $subscribeName)
                 }
 
                 Group {
@@ -154,6 +166,6 @@ struct CreateItemView: View {
 
 struct CreateItemView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateItemView()
+        CreateItemView(isModifyView: true)
     }
 }

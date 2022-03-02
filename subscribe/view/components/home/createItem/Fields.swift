@@ -11,6 +11,7 @@ import SwiftUI
 struct SubscribeName: View {
     var title: String
     var placeholder: String
+    var isModifyView: Bool
 
     @Binding var text: String
 
@@ -21,6 +22,7 @@ struct SubscribeName: View {
 
             TextField(placeholder, text: $text)
                 .textFieldStyle(.roundedBorder)
+                .disabled(isModifyView)
         }
     }
 }

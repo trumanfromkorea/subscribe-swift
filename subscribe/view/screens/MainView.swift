@@ -20,24 +20,22 @@ struct MainView: View {
         ZStack {
             Color.clear
 
-            TabView(selection: $selection) {
-                NavigationView {
+            NavigationView {
+                TabView(selection: $selection) {
                     HomeView(navigateToCreateView: $navigateToCreateView, showBottomSheet: $showBottomSheet)
-                }
-                .tabItem {
-                    Image(systemName: "house.fill")
-                    Text("홈")
-                }
-                .tag(0)
+                        .tabItem {
+                            Image(systemName: "house.fill")
+                            Text("홈")
+                        }
+                        .tag(0)
 
-                NavigationView {
                     ProfileView()
+                        .tabItem {
+                            Image(systemName: "person.fill")
+                            Text("프로필")
+                        }
+                        .tag(1)
                 }
-                .tabItem {
-                    Image(systemName: "person.fill")
-                    Text("프로필")
-                }
-                .tag(1)
             }
         }
         .edgesIgnoringSafeArea(.all)
@@ -57,5 +55,10 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+            .environmentObject(UserAuth())
+            .environmentObject(UserInfoManager())
+            .environmentObject(SubscriptionListManager())
+            .environmentObject(CreateItemManager())
+            .environmentObject(UIManager())
     }
 }

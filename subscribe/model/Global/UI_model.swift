@@ -9,6 +9,7 @@ import Foundation
 
 class UIManager: ObservableObject {
     @Published var isLoading : Bool = false
+    @Published var navigationBarHidden: Bool = true
     
     func setLoadingTrue () {
         self.isLoading = true
@@ -16,5 +17,13 @@ class UIManager: ObservableObject {
     
     func setLoadingFalse() {
         self.isLoading = false
+    }
+    
+    func setNavigationBarHidden() {
+        self.navigationBarHidden = true
+    }
+    
+    func setNavigationBarVisible() {
+        self.navigationBarHidden = false
     }
 }

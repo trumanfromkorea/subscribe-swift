@@ -13,6 +13,7 @@ struct SignupView: View {
     @EnvironmentObject var userAuth: UserAuth
     @EnvironmentObject var userInfoManager: UserInfoManager
     @EnvironmentObject var subscriptionManager: SubscriptionListManager
+    @EnvironmentObject var uiManager: UIManager
 
     @State var userName: String = ""
     @State var userBirthday: Date?
@@ -103,14 +104,14 @@ struct SignupView: View {
             DatePickerPopupView(showDatePicker: $showDatePicker, savedDate: $userBirthday)
         }
         .onAppear(perform: {
+            uiManager.setNavigationBarHidden()
             dateFormatter.locale = Locale(identifier: "ko_KR")
             dateFormatter.dateFormat = "yyyy년 M월 d일"
 
             userBirthday = Date()
         })
         .ignoresSafeArea(.keyboard)
-        .navigationTitle("")
-        .navigationBarHidden(true)
+        .navigationBarTitle("")
     }
 }
 

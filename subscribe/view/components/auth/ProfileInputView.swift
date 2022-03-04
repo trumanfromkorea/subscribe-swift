@@ -61,6 +61,7 @@ struct ProfileInputView: View {
                         .foregroundColor(.blue)
                 }
                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
+                .background(.white)
                 .overlay(
                     RoundedRectangle(cornerRadius: 5).stroke(Color(hex: 0xD7D7D7), lineWidth: 0.5)
                 )

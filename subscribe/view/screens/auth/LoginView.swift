@@ -24,6 +24,8 @@ struct LoginView: View {
                 Spacer()
 
                 AppleLoginButton()
+                
+                Spacer().frame(height: 20)
             }
         }
     }

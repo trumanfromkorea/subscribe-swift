@@ -50,6 +50,7 @@
 		0DCC9C94278DA8C60000E684 /* UserAuth_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCC9C93278DA8C60000E684 /* UserAuth_model.swift */; };
 		0DCC9C9A278DB9490000E684 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCC9C99278DB9490000E684 /* HomeView.swift */; };
 		0DCC9C9C278DBB0E0000E684 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCC9C9B278DBB0E0000E684 /* ProfileView.swift */; };
+		0DD3375027D1F52D000B5EEA /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD3374F27D1F52D000B5EEA /* WebView.swift */; };
 		0DDCCA7C27C8CBC8000E2454 /* DatePickerPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCCA7B27C8CBC8000E2454 /* DatePickerPopup.swift */; };
 		0DDCCA7F27C8CBFF000E2454 /* ProfileMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCCA7E27C8CBFF000E2454 /* ProfileMenuItem.swift */; };
 		0DDCCA8227C8D137000E2454 /* ReauthenticateAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCCA8127C8D137000E2454 /* ReauthenticateAppleButton.swift */; };
@@ -125,6 +126,7 @@
 		0DCC9C93278DA8C60000E684 /* UserAuth_model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth_model.swift; sourceTree = "<group>"; };
 		0DCC9C99278DB9490000E684 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0DCC9C9B278DBB0E0000E684 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		0DD3374F27D1F52D000B5EEA /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		0DD8D9BF279D78AA00A7BD1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0DDCCA7B27C8CBC8000E2454 /* DatePickerPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerPopup.swift; sourceTree = "<group>"; };
 		0DDCCA7E27C8CBFF000E2454 /* ProfileMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenuItem.swift; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 				0D8D4B6B27CF743000C3C17D /* TestView.swift */,
 				0D74551127AD031800122F9C /* screens */,
 				0D0BF7D027A561D200CB9E44 /* components */,
+				0DD3374F27D1F52D000B5EEA /* WebView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -702,6 +705,7 @@
 				0D79DAE427B62C0F00EB7AC2 /* SubscriptionList_model.swift in Sources */,
 				0D0BF7CD27A542AF00CB9E44 /* BottomSheetView.swift in Sources */,
 				0D8D4B6C27CF743000C3C17D /* TestView.swift in Sources */,
+				0DD3375027D1F52D000B5EEA /* WebView.swift in Sources */,
 				0D74550E27ACEA5C00122F9C /* CreateItemView.swift in Sources */,
 				0DDCCA7C27C8CBC8000E2454 /* DatePickerPopup.swift in Sources */,
 				0D947AD927CA2C8C00908822 /* ProfileContainer.swift in Sources */,
@@ -883,18 +887,19 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = subscribe/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Superscribe;
+				INFOPLIST_KEY_CFBundleDisplayName = SuperScribe;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.trumanfromkorea.subscribe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -919,18 +924,19 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = subscribe/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Superscribe;
+				INFOPLIST_KEY_CFBundleDisplayName = SuperScribe;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.trumanfromkorea.subscribe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

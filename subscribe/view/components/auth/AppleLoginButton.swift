@@ -54,7 +54,7 @@ struct AppleLoginButton: View {
                 }
             }
         )
-        .frame(width: 280, height: 45, alignment: .center)
+        .frame(width: UIScreen.main.bounds.width - 50, height: 45, alignment: .center)
         .signInWithAppleButtonStyle(.black)
     }
 }

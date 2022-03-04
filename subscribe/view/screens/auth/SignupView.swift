@@ -109,6 +109,8 @@ struct SignupView: View {
             userBirthday = Date()
         })
         .ignoresSafeArea(.keyboard)
+        .navigationTitle("")
+        .navigationBarHidden(true)
     }
 }
 

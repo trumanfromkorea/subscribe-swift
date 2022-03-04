@@ -34,7 +34,7 @@ struct ProfileView: View {
 
                     Divider()
 
-                    ProfileMenuItem(title: "환경설정")
+//                    ProfileMenuItem(title: "환경설정")
 
                     ProfileMenuItem(title: "로그아웃")
                         .onTapGesture {
@@ -64,9 +64,6 @@ struct ProfileView: View {
                 .padding(EdgeInsets(top: 30, leading: 15, bottom: 0, trailing: 15))
             }
 
-//            if showPopup {
-//                DeleteUserPopup(showPopup: $showPopup, canDelete: $canDelete)
-//            }
         }
         .popup(
             isPresented: $showPopup,

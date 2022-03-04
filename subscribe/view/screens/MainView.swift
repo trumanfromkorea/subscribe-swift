@@ -20,25 +20,25 @@ struct MainView: View {
         ZStack {
             Color.clear
 
-            NavigationView {
-                TabView(selection: $selection) {
+            TabView(selection: $selection) {
+                NavigationView {
                     HomeView(navigateToCreateView: $navigateToCreateView, showBottomSheet: $showBottomSheet)
-                        .tabItem {
-                            Image(systemName: "house.fill")
-                            Text("홈")
-                        }
-                        .tag(0)
-
-                    ProfileView()
-                        .tabItem {
-                            Image(systemName: "person.fill")
-                            Text("프로필")
-                        }
-                        .tag(1)
                 }
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-            }
+                .tabItem {
+                    Image(systemName: "house.fill")
+                    Text("홈")
+                }
+                .tag(0)
 
+                NavigationView {
+                    ProfileView()
+                }
+                .tabItem {
+                    Image(systemName: "person.fill")
+                    Text("프로필")
+                }
+                .tag(1)
+            }
         }
         .edgesIgnoringSafeArea(.all)
         .popup(

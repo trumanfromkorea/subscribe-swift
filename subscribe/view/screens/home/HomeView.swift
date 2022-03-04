@@ -71,8 +71,7 @@ struct HomeView: View {
                 } // bottom sheet 올라와있으면 스크롤 금지
                 .padding(.horizontal, 15)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .navigationTitle("")
-                .navigationBarHidden(true)
+               
 
                 // 추가 버튼
                 FloatingButtonView(showMenuItem: $showBottomSheet)
@@ -87,6 +86,8 @@ struct HomeView: View {
                 }
             }
         }
+        .navigationTitle("")
+        .navigationBarHidden(true)
     }
 }
 

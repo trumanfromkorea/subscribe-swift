@@ -34,7 +34,9 @@ struct ContentView: View {
             } else if userInfoManager.firstLogin == nil {
                 LoadingView()
             } else if userInfoManager.firstLogin! {
-                SignupView()
+                NavigationView {
+                    SignupView()
+                }
             } else {
                 MainView()
                     .onAppear {
@@ -45,8 +47,6 @@ struct ContentView: View {
                         }
                     }
             }
-
-            
         }
     }
 }

@@ -5,17 +5,16 @@
 //  Created by 장재훈 on 2022/02/21.
 //
 
-import Foundation
 import AuthenticationServices
 import CryptoKit
 import FirebaseAuth
 import FirebaseFirestore
+import Foundation
 import SwiftUI
 
 struct FBAuth {
-    
     @EnvironmentObject var userAuth: UserAuth
-    
+
     static func randomNonceString(length: Int = 32) -> String {
         precondition(length > 0)
         let charset: [Character] =
@@ -62,20 +61,22 @@ struct FBAuth {
     }
 
     // 애플 로그인
-    static func signInWithApple(idTokenString: String,
-                         nonce: String,
-                         completion: @escaping (Result<AuthDataResult, Error>) -> Void)
+    static func signInWithApple(
+        idTokenString: String,
+        nonce: String,
+        completion: @escaping (Result<AuthDataResult, Error>) -> Void)
     {
         // Initialize a Firebase credential.
-        let credential = OAuthProvider.credential(withProviderID: "apple.com",
-                                                  idToken: idTokenString,
-                                                  rawNonce: nonce)
+        let credential = OAuthProvider.credential(
+            withProviderID: "apple.com",
+            idToken: idTokenString,
+            rawNonce: nonce
+        )
         // Sign in with Apple.
         Auth.auth().signIn(with: credential) { authDataResult, err in
             if let err = err {
                 // Error. If error.code == .MissingOrInvalidNonce, make sure
-                // you're sending the SHA256-hashed nonce as a hex string with
-                // your request to Apple.
+                // you're sending the SHA256-hashed nonce as a hex string with your request to Apple.
                 print(err.localizedDescription)
                 completion(.failure(err))
                 return
@@ -90,9 +91,18 @@ struct FBAuth {
         }
     }
 
-    static func reauthenticateWithApple(idTokenString: String, nonce: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+    static func reauthenticateWithApple(
+        idTokenString: String,
+        nonce: String,
+        completion: @escaping (Result<Bool, Error>) -> Void)
+    {
         if let user = Auth.auth().currentUser {
-            let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
+            let credential = OAuthProvider.credential(
+                withProviderID: "apple.com",
+                idToken: idTokenString,
+                rawNonce: nonce
+            )
+
             user.reauthenticate(with: credential) { _, error in
                 if let error = error {
                     completion(.failure(error))
@@ -102,6 +112,4 @@ struct FBAuth {
             }
         }
     }
-
-
 }

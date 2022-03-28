@@ -7,6 +7,7 @@
 
 import Foundation
 
+// 화면에 일시적으로 보여지는 요소들을 위함
 class UIManager: ObservableObject {
     @Published var isLoading : Bool = false
     @Published var navigationBarHidden: Bool = true

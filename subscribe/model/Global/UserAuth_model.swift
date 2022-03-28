@@ -5,12 +5,13 @@
 //  Created by 장재훈 on 2022/01/11.
 //
 
+import AuthenticationServices
 import Combine
 import FirebaseAuth
 import FirebaseFirestore
-import AuthenticationServices
 import Foundation
 
+// Auth 기능 관련 모델
 class UserAuth: ObservableObject {
     @Published var isSignedIn: Bool = false
 
@@ -20,11 +21,10 @@ class UserAuth: ObservableObject {
                 print(error?.localizedDescription as Any)
                 return
             }
-            
+
             userInfoManager.fetchUserInfo()
-            
+
             self.isSignedIn = true
-            
         }
     }
 
@@ -37,12 +37,12 @@ class UserAuth: ObservableObject {
         }
     }
 
-    func deleteUser(completion: @escaping (Result<Bool, Error>) -> Void)  {
+    func deleteUser(completion: @escaping (Result<Bool, Error>) -> Void) {
         let currentUser = Auth.auth().currentUser!
         let db = Firestore.firestore()
-        
-        db.collection("subscriptions").document(currentUser.uid).delete { subResult in
-            db.collection("users").document(currentUser.uid).delete { userResult in
+
+        db.collection("subscriptions").document(currentUser.uid).delete { _ in
+            db.collection("users").document(currentUser.uid).delete { _ in
                 currentUser.delete { error in
                     if let error = error {
                         completion(.failure(error))
@@ -53,7 +53,5 @@ class UserAuth: ObservableObject {
                 }
             }
         }
-        
-      
     }
 }

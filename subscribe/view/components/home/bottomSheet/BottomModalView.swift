@@ -11,8 +11,7 @@ struct BottomModalView: View {
     
     var body: some View {
         GeometryReader { proxy in
-            
-            let height = proxy.size.height
+
             let width = proxy.frame(in: .global).width
             
             VStack {

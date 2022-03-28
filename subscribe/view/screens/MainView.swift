@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ExytePopupView
 
 struct MainView: View {
     @State private var selection = 0
@@ -39,6 +40,7 @@ struct MainView: View {
             }
         }
         .edgesIgnoringSafeArea(.all)
+        // 추가 버튼 눌렀을 때 하단 팝업
         .popup(
             isPresented: $showBottomSheet,
             type: .toast,

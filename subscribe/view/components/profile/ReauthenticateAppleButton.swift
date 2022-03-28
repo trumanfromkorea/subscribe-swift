@@ -9,6 +9,7 @@ import AuthenticationServices
 import Foundation
 import SwiftUI
 
+// 회원 탈퇴시 재인증
 struct ReauthenticateAppleButton: View {
     @State private var currentNonce: String?
     var handleResult: ((Result<Bool, Error>) -> Void)? = nil

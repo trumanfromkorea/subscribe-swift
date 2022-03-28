@@ -42,7 +42,11 @@ struct AppleLoginButton: View {
                             return
                         }
 
-                        let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
+                        let credential = OAuthProvider.credential(
+                            withProviderID: "apple.com",
+                            idToken: idTokenString,
+                            rawNonce: nonce
+                        )
 
                         userAuth.signIn(credential: credential, userInfoManager: userInfoManager)
 

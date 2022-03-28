@@ -7,6 +7,7 @@
 
 import Foundation
 
+// 구독 아이템 객체
 struct SubscriptionInfo: Hashable {
     var id: String
     var category: String

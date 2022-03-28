@@ -65,7 +65,8 @@ struct DetailsView: View {
                 )
 
                 Spacer()
-
+                
+                // 편집버튼
                 Button {
                     createItem.setAfterCheck(compare: detailsInfo.category)
                     navigateToModifyView = true
@@ -79,7 +80,7 @@ struct DetailsView: View {
                         .cornerRadius(10)
                 }
 
-               
+               // 삭제버튼
                 Button {
                     showAlert = true
                 } label: {

@@ -15,7 +15,6 @@ struct HomeView: View {
     @Binding var navigateToCreateView: Bool
     @Binding var showBottomSheet: Bool
 
-    // http request sample code
     @State private var user: User?
 
     // 리스트 샘플 데이터
@@ -45,9 +44,11 @@ struct HomeView: View {
                         ) {
                             EmptyView()
                         }
-
+                        
+                        // 월간 총 지출
                         TotalCostView()
-
+                        
+                        // 구독 모아보기
                         ListGroupView(
                             data: subscriptionListManager.serviceList ?? [],
                             sum: subscriptionListManager.serviceSum,

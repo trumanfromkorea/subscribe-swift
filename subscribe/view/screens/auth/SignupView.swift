@@ -35,7 +35,7 @@ struct SignupView: View {
             GeometryReader { proxy in
 
                 let windowWidth = proxy.size.width
-                let canStart: Bool = userName != "" && userBirthday != nil && genderSelection != -1 && agree_01 && agree_02
+                let canStart: Bool = userName != "" && genderSelection != -1 && agree_01 && agree_02
 
                 ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading) {
@@ -59,7 +59,12 @@ struct SignupView: View {
                             showDatePicker: $showDatePicker
                         )
 
-                        AgreePolicy(agreeAll: $agreeAll, agree_01: $agree_01, agree_02: $agree_02, agree_03: $agree_03)
+                        AgreePolicy(
+                            agreeAll: $agreeAll,
+                            agree_01: $agree_01,
+                            agree_02: $agree_02,
+                            agree_03: $agree_03
+                        )
                             .padding(EdgeInsets(top: 40, leading: 0, bottom: 20, trailing: 0))
 
                         Button {
@@ -80,7 +85,11 @@ struct SignupView: View {
                                 secondaryButton: .default(
                                     Text("확인"),
                                     action: {
-                                        FBStore.uploadUserInfo(userName: userName, userGender: genderSelection, userBirthday: userBirthday!)
+                                        FBStore.uploadUserInfo(
+                                            userName: userName,
+                                            userGender: genderSelection,
+                                            userBirthday: userBirthday ?? DateStruct.dummyDate
+                                        )
                                         subscriptionManager.fetchSubscriptionList()
                                         userAuth.isSignedIn = true
                                         userInfoManager.fetchUserInfo()
@@ -107,8 +116,6 @@ struct SignupView: View {
             uiManager.setNavigationBarHidden()
             dateFormatter.locale = Locale(identifier: "ko_KR")
             dateFormatter.dateFormat = "yyyy년 M월 d일"
-
-            userBirthday = Date()
         })
         .ignoresSafeArea(.keyboard)
         .navigationBarTitle("")

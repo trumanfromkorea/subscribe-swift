@@ -37,6 +37,7 @@ struct ModifyProfileView: View {
                     userBirthday: $userBirthday,
                     showDatePicker: $showDatePicker
                 )
+                .padding(.horizontal, 15)
 
                 Spacer()
 
@@ -45,7 +46,7 @@ struct ModifyProfileView: View {
                 } label: {
                     Text("수정하기")
                         .padding()
-                        .frame(width: windowWidth, alignment: .center)
+                        .frame(width: windowWidth - 30, alignment: .center)
                         .background(canStart ? .blue : .gray)
                         .foregroundColor(.white)
                         .font(.system(size: 19, weight: .bold))
@@ -77,10 +78,10 @@ struct ModifyProfileView: View {
         .popup(
             isPresented: $showDatePicker,
             closeOnTap: false,
+            closeOnTapOutside: true,
             backgroundColor: .black.opacity(0.5)
         ) {
             DatePickerPopupView(showDatePicker: $showDatePicker, savedDate: $userBirthday)
         }
-        .padding(.horizontal, 15)
     }
 }

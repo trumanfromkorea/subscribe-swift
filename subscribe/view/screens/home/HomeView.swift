@@ -15,7 +15,6 @@ struct HomeView: View {
     @Binding var navigateToCreateView: Bool
     @Binding var showBottomSheet: Bool
 
-    @State private var user: User?
 
     // 리스트 샘플 데이터
     @State var subscriptionInfoData: [SubscriptionInfo]?

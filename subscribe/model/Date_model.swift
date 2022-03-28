@@ -8,7 +8,6 @@
 import Foundation
 
 struct DateStruct {
-    
     static let inputFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
@@ -22,7 +21,17 @@ struct DateStruct {
         formatter.dateFormat = "MM월 dd일 (EE)"
         return formatter
     }()
-    
+
+    static let dummyDate: Date = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "yyyy-MM-dd"
+
+        var date: Date = formatter.date(from: "1900-01-01")!
+
+        return date
+    }()
+
     // 이 달의 첫번째 날짜
     static func firstDayOfMonth(_ date: Date) -> Date {
         var calendar: Calendar = Calendar(identifier: .gregorian)
@@ -90,10 +99,8 @@ struct DateStruct {
 // MARK: - 다음 구독날짜 계산 메소드
 
 struct DateCalculator {
-    
     // 다음 구독 날짜 계산 메소드
     static func nextDateCalculator(_ cycleType: Int, _ cycleValue: String) -> Date {
-                
         // 주간구독
         if cycleType == 0 {
             return weeklyDate(cycleValue)
@@ -112,22 +119,22 @@ struct DateCalculator {
     static func weeklyDate(_ cycleValue: String) -> Date {
         var calendar: Calendar = Calendar(identifier: .gregorian)
         calendar.locale = Locale(identifier: "ko_KR")
-        
+
         var nextDate: Date = Date()
         var weekday: Int = calendar.dateComponents([.weekday], from: nextDate).weekday!
-        
+
         while weekday != Int(cycleValue)! {
-            nextDate = calendar.date(byAdding: .day, value: 1,  to: nextDate)!
+            nextDate = calendar.date(byAdding: .day, value: 1, to: nextDate)!
             weekday = calendar.dateComponents([.weekday], from: nextDate).weekday!
         }
-        
+
         return nextDate
     }
 
     // 월간구독 다음날짜
-    static func monthlyDate(_ cycleValue: String) -> Date{
+    static func monthlyDate(_ cycleValue: String) -> Date {
         let calendar: Calendar = Calendar.current
-        
+
         let format01: DateFormatter = DateFormatter()
         format01.locale = Locale(identifier: "ko_KR")
         format01.dateFormat = "yyyyMM"
@@ -151,13 +158,13 @@ struct DateCalculator {
     }
 
     // 연간구독 다음날짜
-    static func yearlyDate(_ cycleValue: String) -> Date{
+    static func yearlyDate(_ cycleValue: String) -> Date {
         let calendar: Calendar = Calendar.current
-        
+
         let format01: DateFormatter = DateFormatter()
         format01.locale = Locale(identifier: "ko_KR")
         format01.dateFormat = "MMdd"
-        
+
         let format02: DateFormatter = DateFormatter()
         format02.locale = Locale(identifier: "ko_KR")
         format02.dateFormat = "yyyyMMdd"
@@ -166,14 +173,11 @@ struct DateCalculator {
 
         let year: Int = calendar.dateComponents([.year], from: Date()).year!
         let nextDate: Date? = format02.date(from: String(year) + cycleValue)
-        
+
         if cycleValue > todayString { // 구독날짜 전일때
             return nextDate!
         } else { // 지났을때
             return calendar.date(byAdding: .year, value: 1, to: nextDate!)!
         }
     }
-
 }
-
-

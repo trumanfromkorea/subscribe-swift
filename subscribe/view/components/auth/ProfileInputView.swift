@@ -49,11 +49,15 @@ struct ProfileInputView: View {
             Spacer().frame(height: 40)
 
             Group {
-                Text("생년월일")
+                Text("생년월일 (선택)")
                     .bold()
 
                 HStack {
-                    Text(dateFormatter.string(from: userBirthday ?? Date()))
+                    Text(userBirthday == nil || userBirthday == DateStruct.dummyDate ?
+                        "탭하여 날짜 선택하기"
+                        :
+                        dateFormatter.string(from: userBirthday ?? Date())
+                    )
                     Spacer()
                     Image(systemName: "calendar.circle.fill")
                         .resizable()
